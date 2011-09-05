@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Loclatitude:</b>
+  <%= @interaction.Loclatitude %>
+</p>
+
+<p>
+  <b>Loclongitude:</b>
+  <%= @interaction.loclongitude %>
+</p>
+
+<p>
+  <b>Locationtype:</b>
+  <%= @interaction.LocationType %>
+</p>
+
+<p>
+  <b>Persona:</b>
+  <%= @interaction.PersonA %>
+</p>
+
+<p>
+  <b>Personb:</b>
+  <%= @interaction.PersonB %>
+</p>
+
+<p>
+  <b>Timestamp:</b>
+  <%= @interaction.Timestamp %>
+</p>
+
+<p>
+  <b>Deltime:</b>
+  <%= @interaction.deltime %>
+</p>
+
+
+<%= link_to 'Edit', edit_interaction_path(@interaction) %> |
+<%= link_to 'Back', interactions_path %>

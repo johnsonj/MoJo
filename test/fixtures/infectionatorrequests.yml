@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bug_id: 1
+  start_time: 2011-09-05 15:09:00
+  stop_time: 2011-09-05 15:09:00
+  submitted: 2011-09-05 15:09:00
+
+two:
+  bug_id: 1
+  start_time: 2011-09-05 15:09:00
+  stop_time: 2011-09-05 15:09:00
+  submitted: 2011-09-05 15:09:00

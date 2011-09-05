@@ -1,0 +1,45 @@
+<%= form_for(@interaction) do |f| %>
+  <% if @interaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@interaction.errors.count, "error") %> prohibited this interaction from being saved:</h2>
+
+      <ul>
+      <% @interaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Loclatitude %><br />
+    <%= f.text_field :Loclatitude %>
+  </div>
+  <div class="field">
+    <%= f.label :loclongitude %><br />
+    <%= f.text_field :loclongitude %>
+  </div>
+  <div class="field">
+    <%= f.label :LocationType %><br />
+    <%= f.text_field :LocationType %>
+  </div>
+  <div class="field">
+    <%= f.label :PersonA %><br />
+    <%= f.text_field :PersonA %>
+  </div>
+  <div class="field">
+    <%= f.label :PersonB %><br />
+    <%= f.text_field :PersonB %>
+  </div>
+  <div class="field">
+    <%= f.label :Timestamp %><br />
+    <%= f.datetime_select :Timestamp %>
+  </div>
+  <div class="field">
+    <%= f.label :deltime %><br />
+    <%= f.datetime_select :deltime %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

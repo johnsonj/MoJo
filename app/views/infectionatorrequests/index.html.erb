@@ -1,0 +1,29 @@
+<h1>Listing infectionatorrequests</h1>
+
+<table>
+  <tr>
+    <th>Bug</th>
+    <th>Start time</th>
+    <th>Stop time</th>
+    <th>Submitted</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @infectionatorrequests.each do |infectionatorrequest| %>
+  <tr>
+    <td><%= infectionatorrequest.bug_id %></td>
+    <td><%= infectionatorrequest.start_time %></td>
+    <td><%= infectionatorrequest.stop_time %></td>
+    <td><%= infectionatorrequest.submitted %></td>
+    <td><%= link_to 'Show', infectionatorrequest %></td>
+    <td><%= link_to 'Edit', edit_infectionatorrequest_path(infectionatorrequest) %></td>
+    <td><%= link_to 'Destroy', infectionatorrequest, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Infectionatorrequest', new_infectionatorrequest_path %>
