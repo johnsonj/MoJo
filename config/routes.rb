@@ -1,5 +1,11 @@
 MoJo::Application.routes.draw do
-  resources :infectionatorrequests
+ 	resources :infectionatorrequests
+	resources :users
+	resources :locations
+	resources :locationtypes
+	resources :bugs
+	resources :interactions
+	resources :infectionatorrequestusers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
