@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-MoJo::Application.initialize!
+Ipro369MoJo::Application.initialize!

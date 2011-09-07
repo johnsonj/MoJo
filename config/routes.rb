@@ -1,11 +1,19 @@
-MoJo::Application.routes.draw do
- 	resources :infectionatorrequests
-	resources :users
-	resources :locations
-	resources :locationtypes
-	resources :bugs
-	resources :interactions
-	resources :infectionatorrequestusers
+Ipro369MoJo::Application.routes.draw do
+
+  resources :infectionatorrequests
+  resources :users
+  resources :locations
+  resources :locationtypes
+  resources :bugs
+  resources :interactions
+  resources :sessions
+  resources :infectionatorrequestusers
+
+  get '/signup' => 'users#new', :as => "signup_path"
+  get '/login' => 'sessions#new', :as => "login_path"
+  get '/logout' => 'sessions#destroy', :as => "logout_path"
+  root :to => "users#new"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
