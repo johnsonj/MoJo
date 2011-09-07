@@ -20,7 +20,6 @@ test:
 
 # "postgres://izgakdaotz:jEDrgRPVU7W8CflMqvDQ@ec2-107-20-239-110.compute-1.amazonaws.com/izgakdaotz"
 production:
- encoding: unicode
   adapter: postgresql
   username: izgakdaotz
   port: 5432
