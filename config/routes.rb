@@ -13,7 +13,7 @@ Ipro369MoJo::Application.routes.draw do
   get '/login' => 'sessions#new', :as => "login_path"
   get '/logout' => 'sessions#destroy', :as => "logout_path"
   root :to => "users#new"
-
+                      #dumb things
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
