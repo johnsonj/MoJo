@@ -10,16 +10,52 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924213414) do
+ActiveRecord::Schema.define(:version => 20110924223155) do
+
+  create_table "bagtypes", :force => true do |t|
+    t.integer  "size"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.binary   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "interactions", :force => true do |t|
     t.float    "Loclatitude"
     t.float    "loclongitude"
-    t.integer  "LocationType"
     t.integer  "PersonA"
     t.integer  "PersonB"
     t.datetime "Timestamp"
     t.datetime "deltime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "item_histories", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "signature"
+    t.datetime "stamp"
+    t.integer  "runningdistance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "image_id"
+    t.integer  "rarity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20110924213414) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.integer  "bagtype_id"
   end
 
 end

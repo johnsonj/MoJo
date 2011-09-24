@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Size:</b>
+  <%= @bagtype.size %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @bagtype.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_bagtype_path(@bagtype) %> |
+<%= link_to 'Back', bagtypes_path %>

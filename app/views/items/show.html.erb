@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @item.user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @item.description %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @item.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @item.longitude %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @item.image_id %>
+</p>
+
+<p>
+  <b>Rarity:</b>
+  <%= @item.rarity %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
