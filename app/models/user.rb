@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
   has_many :location
   has_many :interaction
-  has_and_belongs_to_many :infectionatorrequests
 
   validates_presence_of :password, :on => :create
 
