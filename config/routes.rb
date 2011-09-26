@@ -1,21 +1,20 @@
 Ipro369MoJo::Application.routes.draw do
 
   resources :item_histories
-
   resources :items
-
   resources :images
-
   resources :bagtypes
   resources :users
   resources :locations
   resources :interactions
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
 
-  get '/signup' => 'users#new', :as => "signup_path"
-  get '/login' => 'sessions#new', :as => "login_path"
-  get '/logout' => 'sessions#destroy', :as => "logout_path"
-  root :to => "users#new"
+  match '/signup' => 'users#new'
+  match '/login' => 'sessions#new'
+  match '/logout' => 'sessions#destroy'
+  root :to => "sessions#new", :as => "home_page"
+
+  match 'api/login' => 'sessions#login', :as => 'api_login'
                       #dumb things
 
   # The priority is based upon order of creation:

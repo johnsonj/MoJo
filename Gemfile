@@ -13,6 +13,7 @@ gem 'json'
 group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'annotate', '2.4.1.beta1'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 # Gems used only for assets and not required
@@ -32,7 +33,6 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   gem 'rspec-rails', '2.6.1'
