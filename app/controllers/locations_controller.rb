@@ -42,7 +42,6 @@ class LocationsController < ApplicationController
   # POST /locations.xml
   def create
     @location = Location.new(params[:location])
-    @location.user = User.find(session[:user_id])
 
     respond_to do |format|
       if @location.save
@@ -54,6 +53,24 @@ class LocationsController < ApplicationController
       end
     end
   end
+
+  def ping
+    @location = Location.new()
+    @location.user = current_user
+    @location.latitude = params[:latitude]
+    @location.longitude = params[:longitude]
+    @location.timestamp = params[:timestamp]
+
+    respond_to do |format|
+      if @location.save
+        format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
+        format.json  { render :json => @location, :status => :created, :location => @location }
+      else
+        format.html { render :action => "new" }
+        format.json  { render :json => @location.errors, :status => :unprocessable_entity }
+      end
+    end
+  end 
 
   # PUT /locations/1
   # PUT /locations/1.xml
