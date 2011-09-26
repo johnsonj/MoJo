@@ -12,6 +12,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/signup' => 'users#new'
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
+  match '/api/locationPing/' => 'locations#create'
   root :to => "sessions#new", :as => "home_page"
 
   match 'api/login' => 'sessions#login', :as => 'api_login'

@@ -13,4 +13,7 @@
 
 class Location < ActiveRecord::Base
 	belongs_to :user
+	validates :latitude, :presence => true
+	validates :longitude, :presence => true
+	validates :timestamp, :presence => true
 end

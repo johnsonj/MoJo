@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @locations }
+      format.json  { render :json => @locations }
     end
   end
 
@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @location }
+      format.json  { render :json => @location }
     end
   end
 
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @location }
+      format.json  { render :json => @location }
     end
   end
 
@@ -45,10 +45,10 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
-        format.xml  { render :xml => @location, :status => :created, :location => @location }
+        format.json  { render :json => @location, :status => :created, :location => @location }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -61,10 +61,10 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(params[:location])
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -77,7 +77,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(locations_url) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 end
