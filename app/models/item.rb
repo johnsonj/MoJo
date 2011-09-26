@@ -16,6 +16,6 @@
 
 class Item < ActiveRecord::Base
   has_one :Image
-  has_one :User
+  belongs_to :User
   has_many :ItemHistory
 end

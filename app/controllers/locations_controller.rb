@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+
   # GET /locations
   # GET /locations.xml
   def index
@@ -41,6 +42,7 @@ class LocationsController < ApplicationController
   # POST /locations.xml
   def create
     @location = Location.new(params[:location])
+    @location.user = User.find(session[:user_id])
 
     respond_to do |format|
       if @location.save
@@ -63,7 +65,7 @@ class LocationsController < ApplicationController
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
         format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
+        foigned_in?mat.html { render :action => "edit" }
         format.json  { render :json => @location.errors, :status => :unprocessable_entity }
       end
     end

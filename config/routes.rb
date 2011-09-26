@@ -15,6 +15,9 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/locationPing/' => 'locations#create'
   root :to => "sessions#new", :as => "home_page"
 
+	match '/backpack' => 'items#backpack'
+	match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
+
   match 'api/login' => 'sessions#login', :as => 'api_login'
                       #dumb things
 

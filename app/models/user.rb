@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_one :bagtype
   has_many :location
   has_many :interaction
-
+  has_many :items
   validates_presence_of :password, :on => :create
 
 end

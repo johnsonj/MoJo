@@ -10,6 +10,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def backpack
+	@items = current_user.items
+	respond_to do |format|
+		format.html
+		format.json { render json: @items }
+	end
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
