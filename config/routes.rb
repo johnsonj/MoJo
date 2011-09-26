@@ -12,14 +12,19 @@ Ipro369MoJo::Application.routes.draw do
   match '/signup' => 'users#new'
   match '/login' => 'sessions#new'
   match '/logout' => 'sessions#destroy'
-  match '/api/locationPing/' => 'locations#create'
   root :to => "sessions#new", :as => "home_page"
 
 	match '/backpack' => 'items#backpack'
-	match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
+  match '/itemDetails/:id' => 'item_histories#itemDetails'
 
-  match 'api/login' => 'sessions#login', :as => 'api_login'
-                      #dumb things
+  ### API Methods ###
+  match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'
+  match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
+  match '/api/locationPing' => 'locations#create', :format => 'json'
+  match '/api/login' => 'sessions#login', :as => 'api_login'
+        
+
+  #dumb things
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
