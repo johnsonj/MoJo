@@ -24,5 +24,6 @@ class User < ActiveRecord::Base
   has_many :interaction
 
   validates_presence_of :password, :on => :create
+  validates :username, :length => { :maximum => 20 }
 
 end
