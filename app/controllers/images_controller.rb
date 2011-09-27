@@ -80,4 +80,16 @@ class ImagesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def getImage
+    @image = Image.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @image
+        format.json { render :json => @image.image }
+      else
+        format.json { render :json => @image.errors, :status => :not_found }
+      end
+    end
+  end
 end

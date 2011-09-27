@@ -11,11 +11,11 @@ class ItemsController < ApplicationController
   end
 
   def backpack
-	@items = current_user.items
-	respond_to do |format|
-		format.html
-		format.json { render json: @items }
-	end
+    @items = current_user.items
+    respond_to do |format|
+      format.html
+      format.json { render json: @items }
+    end
   end
 
   # GET /items/1
