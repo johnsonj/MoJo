@@ -1,22 +1,35 @@
 Ipro369MoJo::Application.routes.draw do
 
   resources :item_histories
-
   resources :items
-
   resources :images
-
   resources :bagtypes
   resources :users
   resources :locations
   resources :interactions
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
 
-  get '/signup' => 'users#new', :as => "signup_path"
-  get '/login' => 'sessions#new', :as => "login_path"
-  get '/logout' => 'sessions#destroy', :as => "logout_path"
-  root :to => "users#new"
-                      #dumb things
+  match '/signup' => 'users#new'
+  match '/login' => 'sessions#new'
+  match '/logout' => 'sessions#destroy'
+  root :to => "sessions#new", :as => "home_page"
+
+	match '/backpack' => 'items#backpack'
+  match '/itemDetails/:id' => 'item_histories#itemDetails'
+
+  ### API Methods ###
+  match '/api/pickupItem' => 'items#pickup', :format => 'json'
+  match '/api/dropItem' => 'items#drop', :format => 'json'
+  match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'
+  match '/api/getItemDetails' => 'item_histories#itemDetails', :format => 'json'
+  match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
+  match '/api/locationPing' => 'locations#ping', :format => 'json'
+  match '/api/getImage' => 'images#getImage', :format => 'json'
+  match '/api/locationPing/:latitude/:longitude/:timestamp' => 'locations#ping', :format => 'json'
+  match '/api/login' => 'sessions#login', :as => 'api_login'
+        
+
+  #dumb things
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -63,7 +76,7 @@ Ipro369MoJo::Application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
+ ##   end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

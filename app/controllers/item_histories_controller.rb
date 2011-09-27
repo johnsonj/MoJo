@@ -9,7 +9,14 @@ class ItemHistoriesController < ApplicationController
       format.json { render json: @item_histories }
     end
   end
-
+  def itemDetails
+    @item = Item.find(params[:id])
+    @item_histories = @item.ItemHistory
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {render json: @item_histories }
+    end
+  end 
   # GET /item_histories/1
   # GET /item_histories/1.json
   def show

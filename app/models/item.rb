@@ -16,6 +16,6 @@
 
 class Item < ActiveRecord::Base
   has_one :Image
-  has_one :User
-  has_many :ItemHistory
+  belongs_to :User
+  has_many :ItemHistory, :order => "stamp DESC", :limit => 30
 end

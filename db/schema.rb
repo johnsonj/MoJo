@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924223155) do
+ActiveRecord::Schema.define(:version => 20110927174003) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer  "size"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(:version => 20110924223155) do
   end
 
   create_table "images", :force => true do |t|
-    t.binary   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
   end
 
   create_table "interactions", :force => true do |t|
@@ -44,9 +46,9 @@ ActiveRecord::Schema.define(:version => 20110924223155) do
     t.float    "longitude"
     t.string   "signature"
     t.datetime "stamp"
-    t.integer  "runningdistance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "runningdistance"
   end
 
   create_table "items", :force => true do |t|
