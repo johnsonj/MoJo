@@ -86,7 +86,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image
-        format.json { render :json => @image.image }
+        format.json { render :json => @image.icon.url }
       else
         format.json { render :json => @image.errors, :status => :not_found }
       end

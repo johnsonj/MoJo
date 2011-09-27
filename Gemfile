@@ -4,6 +4,8 @@ gem 'rails', '3.1.0'
 gem 'pg'
 gem 'json'
 gem 'jquery-rails'
+gem "paperclip", "~> 2.4"
+gem 'aws-s3'
 
 group :development do
   gem 'sqlite3'
