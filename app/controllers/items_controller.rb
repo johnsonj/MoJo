@@ -46,6 +46,23 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def pickup
+    @item = Item.find(params[:id])
+    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+
+
+      if @item.user_id == WORLD_USER_ID 
+        @item.user_id = current_user.id
+#@item.save()
+        end 
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @item }
+    end
+
+  end
+
   # POST /items
   # POST /items.json
   def create

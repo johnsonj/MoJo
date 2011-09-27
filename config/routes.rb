@@ -18,6 +18,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
   ### API Methods ###
+  match '/api/pickupItem' => 'items#pickup', :format => 'json'
   match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getItemDetails' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
@@ -73,7 +74,7 @@ Ipro369MoJo::Application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
+ ##   end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

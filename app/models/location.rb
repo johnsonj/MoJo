@@ -16,4 +16,12 @@ class Location < ActiveRecord::Base
 	validates :latitude, :presence => true
 	validates :longitude, :presence => true
 	validates :timestamp, :presence => true
-end
+  def self.ping(params={})
+    location = Location.new()
+    location.user = params[:user]
+    location.latitude = params[:latitude]
+    location.longitude = params[:longitude]
+    location.timestamp = params[:timestamp]
+    location.save()
+  end
+end 
