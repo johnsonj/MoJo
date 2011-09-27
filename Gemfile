@@ -1,16 +1,14 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
 gem 'pg'
 gem 'json'
-
+gem 'jquery-rails'
+gem "paperclip", "~> 2.4"
+gem 'aws-s3'
 
 group :development do
+  gem 'sqlite3'
   gem 'rspec-rails', '2.6.1'
   gem 'annotate', '2.4.1.beta1'
   gem 'ruby-debug19', :require => 'ruby-debug'
@@ -24,18 +22,9 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-
 group :test do
   gem 'rspec-rails', '2.6.1'
+  gem 'factory_girl_rails', '1.0'
   gem 'webrat', '0.7.1'
   # Pretty printed test output
   gem 'turn', :require => false
