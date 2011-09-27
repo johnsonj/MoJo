@@ -17,15 +17,21 @@
 class ItemHistory < ActiveRecord::Base
   belongs_to :Item
   has_one :User
-  
+ 
+  before_create :init
   before_save :calculate_runningdistance
+  reverse_geocoded_by :latitude, :longitude
 
+  def init
+    self.stamp = DateTime.current
+  end
   def calculate_runningdistance
     previous = ItemHistory.where(:item_id => self.item_id).last
-    if previous != nil
-      runningdistance = 7
+    if previous && previous.runningdistance
+      dist = (self.distance_from(previous))
+      self.runningdistance = dist + previous.runningdistance
     else
-      runningdistance = 0
+      self.runningdistance = 0
     end
   end
 end

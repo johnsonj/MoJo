@@ -54,7 +54,42 @@ class ItemsController < ApplicationController
     
     if valid
       @item.user_id = current_user.id
+      @item.latitude = params[:latitutde]
+      @item.longitude = params[:longitude]
+      valid = @item.save
     end
+
+    respond_to do |format|
+      if valid
+        format.html # show.html.erb
+        format.json { render :json => @item }
+      else
+        format.json { render :json => @item.errors, :status => :unprocessable_entry }
+      end
+    end
+  end
+
+  def drop
+    @item = Item.find(params[:id])
+    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+
+    valid = @item.user_id == current_user.id
+
+    if valid
+      @item.user_id = 0
+      @item.latitude = params[:latitude]
+      @item.longitude = params[:longitude]
+      valid = @item.save
+    end
+    if valid
+     history = ItemHistory.new()
+     history.user_id = current_user.id
+     history.item_id = params[:id]
+     history.latitude = params[:latitude]
+     history.longitude = params[:longitude]
+     history.signature = params[:signature]
+     valid = history.save()
+   end
 
     respond_to do |format|
       if valid

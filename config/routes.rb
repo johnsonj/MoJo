@@ -19,6 +19,7 @@ Ipro369MoJo::Application.routes.draw do
 
   ### API Methods ###
   match '/api/pickupItem' => 'items#pickup', :format => 'json'
+  match '/api/dropItem' => 'items#drop', :format => 'json'
   match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getItemDetails' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getBackpackItems' => 'items#backpack', :format => 'json'

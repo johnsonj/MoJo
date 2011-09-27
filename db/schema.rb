@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927024724) do
+ActiveRecord::Schema.define(:version => 20110927174003) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer  "size"
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(:version => 20110927024724) do
     t.float    "longitude"
     t.string   "signature"
     t.datetime "stamp"
-    t.integer  "runningdistance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "runningdistance"
   end
 
   create_table "items", :force => true do |t|
