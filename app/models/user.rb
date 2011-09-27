@@ -15,14 +15,18 @@
 #
 
 class User < ActiveRecord::Base
+  
+  def self.WORLD_USER_ID; @WORLD_USER_ID ||= 0; end
+
   attr_accessible :email, :username, :password, :password_confirmation, :sex, :age, :phoneinformation, :bagtype_id
 
   has_secure_password
-
+  
   has_one :bagtype
   has_many :location
   has_many :interaction
   has_many :items
+  
   validates_presence_of :password, :on => :create
 
 end

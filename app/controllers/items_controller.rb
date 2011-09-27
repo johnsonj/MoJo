@@ -50,15 +50,19 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
-
-      if @item.user_id == WORLD_USER_ID 
-        @item.user_id = current_user.id
-#@item.save()
-        end 
+    valid = @item.user_id == User.WORLD_USER_ID
+    
+    if valid
+      @item.user_id = current_user.id
+    end
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @item }
+      if valid
+        format.html # show.html.erb
+        format.json { render :json => @item }
+      else
+        format.json { render :json => @item.errors, :status => :unprocessable_entry }
+      end
     end
 
   end
