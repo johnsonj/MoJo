@@ -60,16 +60,16 @@ class LocationsController < ApplicationController
     @location.latitude = params[:latitude]
     @location.longitude = params[:longitude]
     @location.timestamp = params[:timestamp]
-
-    respond_to do |format|
-      if @location.save
-        format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
-        format.json  { render :json => @location, :status => :created, :location => @location }
-      else
-        format.html { render :action => "new" }
-        format.json  { render :json => @location.errors, :status => :unprocessable_entity }
-      end
-    end
+    
+      respond_to do |format|
+        if @location.save
+          format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
+          format.json  { render :json => @location, :status => :created, :location => @location }
+        else
+          format.html { render :action => "new" }
+          format.json  { render :json => @location.errors, :status => :unprocessable_entity }
+        end
+     end
   end 
 
   # PUT /locations/1

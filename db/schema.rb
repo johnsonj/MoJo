@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(:version => 20110928002853) do
     t.float    "longitude"
     t.string   "signature"
     t.datetime "stamp"
-    t.integer  "runningdistance"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "runningdistance"
   end
 
   create_table "items", :force => true do |t|
