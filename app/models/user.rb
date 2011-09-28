@@ -12,6 +12,7 @@
 #  updated_at       :datetime
 #  email            :string(255)
 #  bagtype_id       :integer
+#  api_key          :text
 #
 
 class User < ActiveRecord::Base
@@ -24,5 +25,13 @@ class User < ActiveRecord::Base
   has_many :interaction
   has_many :items
   validates_presence_of :password, :on => :create
+
+  def self.getByApiKey(key)
+    if key.blank?
+      nil
+    else
+      User.find_all_by_api_key(key)
+    end
+  end
 
 end

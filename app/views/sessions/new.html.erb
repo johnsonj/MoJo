@@ -1,5 +1,12 @@
 <h1>Log in</h1>
-
+<% if flash[:warning] or flash[:notice] %>
+  <div id="notice" <% if flash[:warning] %>class="warning"<% end %>>
+    <%= flash[:warning] || flash[:notice] %>
+  </div>
+  <script type="text/javascript">
+    setTimeout("new Effect.Fade('notice');", 15000)
+  </script>
+<% end %>
 <%= form_for(:session, :url => sessions_path) do |f| %>
   <div class="field">
     <%= f.label :username %><br />

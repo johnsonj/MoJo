@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927024724) do
+ActiveRecord::Schema.define(:version => 20110928002853) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer  "size"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20110927024724) do
     t.datetime "updated_at"
     t.string   "email"
     t.integer  "bagtype_id"
+    t.text     "api_key"
   end
 
 end
