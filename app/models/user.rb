@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     if key.blank?
       nil
     else
-      User.find_all_by_api_key(key)
+      User.find_by_api_key(key)
     end
   end
 
