@@ -7,5 +7,14 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.getByApiKey(params[:apiKey])
   end
 
+  def isAdmin?
+    current_user if current_user.type == :admin
+  end
+
+  def hasAccess(sym, key)
+    usr = User.getByApiKey(key)
+    usr if usr.type == sym
+  end
+
   helper_method :current_user
 end

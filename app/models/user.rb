@@ -16,19 +16,22 @@
 #
 
 class User < ActiveRecord::Base
-  
-  def self.WORLD_USER_ID; @WORLD_USER_ID ||= 0; end
 
-  attr_accessible :email, :username, :password, :password_confirmation, :sex, :age, :phoneinformation, :bagtype_id
+  def self.WORLD_USER_ID
+    @WORLD_USER_ID ||= 0
+  end
+
+  attr_accessible :email, :username, :password, :password_confirmation, :sex, :age, :bagtype_id
 
   has_secure_password
-  
+
   has_one :bagtype
   has_many :location
   has_many :interaction
   has_many :items
-  
+
   validates_presence_of :password, :on => :create
+  validates_inclusion_of :type, :in => [:normal, :admin, :app, :interactions]
 
   def self.getByApiKey(key)
     if key.blank?
@@ -36,6 +39,14 @@ class User < ActiveRecord::Base
     else
       User.find_by_api_key(key)
     end
+  end
+
+  def type
+    read_attribute(:type).to_sym
+  end
+
+  def type= (value)
+    write_attribute(:type, value.to_s)
   end
 
 end
