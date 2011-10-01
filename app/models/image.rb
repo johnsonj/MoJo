@@ -20,7 +20,7 @@ class Image < ActiveRecord::Base
                         :large => "600x400"
                     },
                     :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :s3_credentials => S3_CONFIG,
                     :path => ":attachment/:id/:style.:extension",
                     :bucket => 'MoJoIcons'
 end
