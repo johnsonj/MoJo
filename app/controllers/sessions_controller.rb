@@ -1,6 +1,8 @@
 require 'digest/sha1'
+require 'sessions_helper'
 
 class SessionsController < ApplicationController
+  include SessionsHelper
 
   def new
   end
@@ -34,7 +36,7 @@ class SessionsController < ApplicationController
     respond_to do |format|
      format.html {
        session[:user_id] = nil
-       redirect_to root_url, :notice => "Logged out!"
+       redirect_to :home_page, :notice => "Logged out!"
      }
      format.json {
        if current_user
@@ -46,10 +48,6 @@ class SessionsController < ApplicationController
        end
      }
     end
-  end
-
-  def isLoggedIn?
-    session[:user_id].nil?
   end
 
 end

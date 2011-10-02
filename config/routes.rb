@@ -9,9 +9,9 @@ Ipro369MoJo::Application.routes.draw do
   resources :interactions
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/signup' => 'users#new'
-  match '/login' => 'sessions#new'
-  match '/logout' => 'sessions#destroy'
+  match '/signup' => 'users#new', :as => :signup_path
+  match '/login' => 'sessions#new', :as => :login_path
+  match '/logout' => 'sessions#destroy', :as => :logout_path
   root :to => "sessions#new", :as => "home_page"
 
 	match '/backpack' => 'items#backpack'

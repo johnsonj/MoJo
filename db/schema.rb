@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110930024809) do
+ActiveRecord::Schema.define(:version => 20111002004928) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer  "size"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20110930024809) do
     t.string   "email"
     t.integer  "bagtype_id"
     t.text     "api_key"
-    t.string   "type"
+    t.string   "user_type",       :default => "normal", :null => false
   end
 
 end

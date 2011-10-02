@@ -9,9 +9,9 @@
 #  longitude       :float
 #  signature       :string(255)
 #  stamp           :datetime
-#  runningdistance :integer
 #  created_at      :datetime
 #  updated_at      :datetime
+#  runningdistance :float
 #
 
 require 'spec_helper'
