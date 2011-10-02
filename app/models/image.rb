@@ -22,5 +22,5 @@ class Image < ActiveRecord::Base
                     :storage => :s3,
                     :s3_credentials => S3_CONFIG,
                     :path => ":attachment/:id/:style.:extension",
-                    :bucket => 'MoJoIcons'
+                    :bucket => S3_CONFIG['bucket']
 end
