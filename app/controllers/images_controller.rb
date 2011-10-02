@@ -17,7 +17,13 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @image }
+      format.json {
+        if current_user
+          render :json => @image.icon.url
+        else
+          render :json => "Unauthorized Access", :status => :unauthorized
+        end
+      }
     end
   end
 

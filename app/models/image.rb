@@ -2,10 +2,12 @@
 #
 # Table name: images
 #
-#  id         :integer         not null, primary key
-#  image      :binary
-#  created_at :datetime
-#  updated_at :datetime
+#  id                :integer         not null, primary key
+#  created_at        :datetime
+#  updated_at        :datetime
+#  icon_file_name    :string(255)
+#  icon_content_type :string(255)
+#  icon_file_size    :integer
 #
 
 class Image < ActiveRecord::Base
@@ -18,7 +20,7 @@ class Image < ActiveRecord::Base
                         :large => "600x400"
                     },
                     :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :s3_credentials => S3_CONFIG,
                     :path => ":attachment/:id/:style.:extension",
                     :bucket => 'MoJoIcons'
 end
