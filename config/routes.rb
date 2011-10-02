@@ -9,12 +9,13 @@ Ipro369MoJo::Application.routes.draw do
   resources :interactions
   resources :sessions, :only => [:new, :create, :destroy]
 
+  match '/items/new' => 'items#testnew'
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
   root :to => "sessions#new", :as => "home_page"
 
-	match '/backpack' => 'items#backpack'
+  match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
   ### API Methods ###

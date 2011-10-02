@@ -10,6 +10,17 @@ class ItemsController < ApplicationController
     end
   end
 
+  def testnew
+    puts "sh dfkshdf ksdf"
+    @item = Item.new
+    @item.user_id = current_user.id
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @item }
+    end
+  end
+
   def backpack
     @items = current_user.items
     respond_to do |format|
@@ -33,7 +44,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
-   # @item.user_id = current_user.id
+    @item.user_id = current_user.id
 
     respond_to do |format|
       format.html # new.html.erb
