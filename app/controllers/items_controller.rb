@@ -18,6 +18,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def nearby
+    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    @items = Item.near([params[:latitude].to_f, params[:longitude].to_f], Item.NEAR_BY_DISTANCE).where(:user_id => User.WORLD_USER_ID)
+  
+    respond_to do |format|
+      format.json { render json: @items }
+    end
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show

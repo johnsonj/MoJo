@@ -23,6 +23,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getItemDetails' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
+  match '/api/getItemsNearBy' => 'items#nearby', :format => 'json'
   match '/api/locationPing' => 'locations#ping', :format => 'json'
   match '/api/getImage' => 'images#show', :format => 'json'
   match '/api/locationPing/:latitude/:longitude/:timestamp' => 'locations#ping', :format => 'json'
