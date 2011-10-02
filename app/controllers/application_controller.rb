@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 
+  private
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @current_user ||= User.getByApiKey(params[:apiKey])
@@ -13,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def hasAccess(sym, key)
     usr = User.getByApiKey(key)
-    usr if usr.type == sym
+    usr if usr.user_type == sym
   end
 
   helper_method :current_user
