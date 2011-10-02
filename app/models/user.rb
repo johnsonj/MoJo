@@ -31,9 +31,6 @@ class User < ActiveRecord::Base
   has_many :items
 
   validates_presence_of :password, :on => :create
-<<<<<<< HEAD
-  validates :username, :length => { :maximum => 20 }
-=======
   validates_inclusion_of :type, :in => [:normal, :admin, :app, :interactions]
 
   def self.getByApiKey(key)
@@ -51,6 +48,6 @@ class User < ActiveRecord::Base
   def type= (value)
     write_attribute(:type, value.to_s)
   end
->>>>>>> 502968e6acb0205c154ec7279a3cffef8ffefeb2
+
 
 end

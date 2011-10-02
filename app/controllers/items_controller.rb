@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
-    @item.user_id = current_user.id
+   # @item.user_id = current_user.id
 
     respond_to do |format|
       format.html # new.html.erb
