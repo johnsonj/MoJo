@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     @items = Item.near([params[:latitude].to_f, params[:longitude].to_f], Item.NEAR_BY_DISTANCE).where(:user_id => User.WORLD_USER_ID)
   
     respond_to do |format|
-      format.json { render json: @items }
+      format.json { render json: @items.to_json(:only => [:description, :name, :rarity, :image_id, :distance ])  }
     end
   end
 
@@ -70,10 +70,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if valid
-        format.html # show.html.erb
-        format.json { render :json => @item }
+        format.json { render :json => 1 }
       else
-        format.json { render :json => @item.errors, :status => :unprocessable_entry }
+        format.json { render :json => -1 }
       end
     end
   end
@@ -103,9 +102,9 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if valid
         format.html # show.html.erb
-        format.json { render :json => @item }
+        format.json { render :json => 1 }
       else
-        format.json { render :json => @item.errors, :status => :unprocessable_entry }
+        format.json { render :json => 0, :status => :unprocessable_entry }
       end
     end
 
