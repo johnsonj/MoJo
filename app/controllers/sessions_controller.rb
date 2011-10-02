@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       }
       format.json {
         usr = User.find_by_username(params[:username])
-        if usr && usr.authenticate(params[:password]) #&& hasAccess(:app, params[:appKey])
+        if usr && usr.authenticate(params[:password]) && hasAccess(:app, params[:appKey])
           usr.api_key = Digest::SHA1.hexdigest(usr.email + usr.username + Time.now.to_s + Random.rand(1001).to_s)
           usr.save
           render :json => usr.api_key, :status => :ok
