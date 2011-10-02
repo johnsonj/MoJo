@@ -9,13 +9,12 @@ Ipro369MoJo::Application.routes.draw do
   resources :interactions
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/items/new' => 'items#testnew'
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
   root :to => "sessions#new", :as => "home_page"
 
-  match '/backpack' => 'items#backpack'
+	match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
   ### API Methods ###
@@ -24,6 +23,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getItemDetails' => 'item_histories#itemDetails', :format => 'json'
   match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
+  match '/api/getItemsNearBy' => 'items#nearby', :format => 'json'
   match '/api/locationPing' => 'locations#ping', :format => 'json'
   match '/api/getImage' => 'images#show', :format => 'json'
   match '/api/locationPing/:latitude/:longitude/:timestamp' => 'locations#ping', :format => 'json'
@@ -90,3 +90,4 @@ Ipro369MoJo::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+
