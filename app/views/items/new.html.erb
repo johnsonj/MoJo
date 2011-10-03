@@ -2,7 +2,7 @@
 
 
 
-<%= form_tag(:controller=>"items", :action=>"testnew") do %>
+<%= form_tag('/items/new', :method=>'GET') do %>
 <%= render 'form' %>
  <p>
    Number of Items to Make: <br />
