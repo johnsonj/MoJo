@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
     puts "Testing"
     @item = Item.new
     @item.user_id = current_user.id
+    puts params
 
     respond_to do |format|
       format.html # new.html.erb
