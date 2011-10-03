@@ -160,13 +160,17 @@ class ItemsController < ApplicationController
 end
 =======
 class ItemsController < ApplicationController
+  include SessionsHelper
+
+  before_filter :ensure_permissions
+
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @items }
     end
   end
@@ -174,8 +178,7 @@ class ItemsController < ApplicationController
   def backpack
     @items = current_user.items
     respond_to do |format|
-      format.html
-      format.json { render json: @items }
+      format.json { render json: @items.to_json(:only => [:description, :id, :image_id, :latitude, :longitude, :name, :rarity]) }
     end
   end
 
@@ -314,5 +317,11 @@ class ItemsController < ApplicationController
       format.json { head :ok }
     end
   end
+ 
+  private
+  def ensure_permissions
+    login_required
+  end
+  
 end
 >>>>>>> 3859d7c73080216b9585f68b02a70ca6341d46cc
