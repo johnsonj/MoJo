@@ -1,4 +1,8 @@
 class ItemHistoriesController < ApplicationController
+  include SessionsHelper
+
+  before_filter :ensure_permissions
+
   # GET /item_histories
   # GET /item_histories.json
   def index
@@ -89,5 +93,10 @@ class ItemHistoriesController < ApplicationController
       format.html { redirect_to item_histories_url }
       format.json { head :ok }
     end
+  end
+  
+  private 
+  def ensure_permissions
+    login_required
   end
 end

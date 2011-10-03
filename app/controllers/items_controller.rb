@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
+  include SessionsHelper
+
+  before_filter :ensure_permissions
+
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
 
     respond_to do |format|
+      format.html
       format.json { render json: @items }
     end
   end
@@ -151,4 +156,10 @@ class ItemsController < ApplicationController
       format.json { head :ok }
     end
   end
+ 
+  private
+  def ensure_permissions
+    login_required
+  end
+  
 end
