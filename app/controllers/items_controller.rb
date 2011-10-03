@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
     @items = Item.all
 
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @items }
     end
   end
@@ -13,8 +12,7 @@ class ItemsController < ApplicationController
   def backpack
     @items = current_user.items
     respond_to do |format|
-      format.html
-      format.json { render json: @items }
+      format.json { render json: @items.to_json(:only => [:description, :id, :image_id, :latitude, :longitude, :name, :rarity]) }
     end
   end
 

@@ -11,10 +11,13 @@ class ItemHistoriesController < ApplicationController
   end
   def itemDetails
     @item = Item.find(params[:id])
-    @item_histories = @item.ItemHistory
+    @item_histories = @item.ItemHistory if @item
     respond_to do |format|
-      format.html # index.html.erb
-      format.json {render json: @item_histories }
+      if @item_histories
+        format.json { render json: @item_histories.to_json(:only => [:id, :item_id, :latitude, :longitude, :runningdistance, :signature, :stamp, :user_id]) }
+      else
+        format.json { render json: 0, status: :unprocessable_entity } 
+      end
     end
   end 
   # GET /item_histories/1
