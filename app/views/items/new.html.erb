@@ -2,19 +2,47 @@
 
 
 
-<%= form_tag('/items/new', :method=>'GET') do %>
-<%= render 'form' %>
+<%= form_tag('/items', :method => "POST") do %>
+ <p>
+   User:<br />
+   <%= number_field_tag "user_id", current_user.id %>
+ </p>
+ <p>
+   Item Name: <br />
+   <%= text_field_tag "name" %>
+ </p>
+ <p>
+   Description: <br />
+   <%= text_area_tag "description" %>
+ </p>
+ <p>
+   Latitude: <br />
+   <%= text_field_tag "latitude" %>
+ </p>
+ <p>
+   Longitude: <br />
+   <%= text_field_tag "longitude" %>
+ </p>
+ <p>
+   Image: <br />
+   <%= number_field_tag "iamge_id" %>
+ </p>
+ <p>
+   Rarity: <br />
+   <%= number_field_tag "rarity" %>
+ </p>
+
  <p>
    Number of Items to Make: <br />
-   <%= number_field_tag "number", 0 %>
+   <%= number_field_tag "number", 1 %>
  </p>
  <p>
    Longitude Offset: <br />
-   <%= number_field_tag "longitudeoffset", 0 %>
+   <%= text_field_tag "longitudeoffset", 0 %>
  </p>
  <p>
    Latitude Offset: <br />
-   <%= number_field_tag "latitudeoffset", 0 %>
+   <%= text_field_tag "latitudeoffset", 0 %>
  </p>
  <p>
    <%= submit_tag 'Create Multiple' %>

@@ -1,8 +1,14 @@
 
 class ItemsController < ApplicationController
   include SessionsHelper
+  include ActiveModel::Validations
 
   before_filter :ensure_permissions
+
+validates :name, :length => { :minimum => 3 }
+validates_numericality_of :longitude
+validates_numericality_of :latitude
+
 
   # GET /items
   # GET /items.json
@@ -15,17 +21,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def multinew
-    puts "Testing"
-    @item = Item.new
-    @item.user_id = current_user.id
-    puts params
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item }
-    end
-  end
 
   def backpack
     @items = current_user.items
@@ -129,10 +124,26 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:item])
+   
+    @flag = true
+    params[:number].to_i.times {
+    @item = Item.new( :name => params[:name], :description => params[:description], :image_id => params[:image_id], :rarity => params[:rarity] ) 
+
+if params[:longitudeoffset].to_i != 0
+    @item.longitude = rand(params[:longitudeoffset].to_i-1) + rand + params[:longitude].to_i
+end
+
+if params[:latitudeoffset].to_i != 0
+    @item.latitude = rand(params[:latitudeoffset].to_i-1) + rand + params[:latitude].to_i
+end
+
+    @item.user_id = current_user.id
+    @flag = @item.save
+}
+debugger
 
     respond_to do |format|
-      if @item.save
+      if @flag
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
