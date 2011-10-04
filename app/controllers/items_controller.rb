@@ -15,16 +15,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  def multinew
-    puts "Testing"
-    @item = Item.new
-    @item.user_id = current_user.id
+  #def multinew
+   # puts "Testing"
+   # @item = Item.new
+   # @item.user_id = current_user.id
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html # new.html.erb
+  #    format.json { render json: @item }
+  #  end
+  #end
 
   def backpack
     @items = current_user.items

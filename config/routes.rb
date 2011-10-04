@@ -15,7 +15,6 @@ Ipro369MoJo::Application.routes.draw do
   match '/logout' => 'sessions#destroy', :as => :logout_path
   root :to => "sessions#new", :as => "home_page"
 
-  match '/items/new' => 'users#multinew'
   match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
