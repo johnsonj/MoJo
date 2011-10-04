@@ -5,7 +5,7 @@ module SessionsHelper
   end
 
   def isLoggedIn?
-    !session[:user_id].nil?
+    current_user != nil
   end
 
   def deny_access
