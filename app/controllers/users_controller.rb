@@ -3,7 +3,7 @@ require 'sessions_helper'
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_filter :myFilter, :only => [:edit, :update, :destroy]
+  before_filter :login_required, :only => [:index, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.xml
@@ -31,7 +31,11 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+    if isAdmin?
+      @form = 'adminform'
+    else
+      @form = 'form'
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @user }
@@ -41,6 +45,11 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    if isAdmin?
+      @form = 'adminform'
+    else
+      @form = 'form'
+    end
   end
 
   # POST /users
@@ -91,11 +100,6 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
       format.xml { head :ok }
     end
-  end
-
-  private
-  def myFilter
-    login_required
   end
 
 end
