@@ -9,12 +9,15 @@ Ipro369MoJo::Application.routes.draw do
   resources :interactions
   resources :sessions, :only => [:new, :create, :destroy]
 
-  match '/items/new' => 'users#multinew'
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
   root :to => "sessions#new", :as => "home_page"
 
+<<<<<<< HEAD
+=======
+  match '/items/new' => 'items#multinew'
+>>>>>>> 1ca28445685b2a35bc3cdedb7105b51f79b733d5
   match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
@@ -28,6 +31,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/locationPing' => 'locations#ping', :format => 'json'
   match '/api/getImage' => 'images#show', :format => 'json'
   match '/api/locationPing/:latitude/:longitude/:timestamp' => 'locations#ping', :format => 'json'
+  match '/api/registerUser' => 'users#create', :format => 'json'
   match '/api/login' => 'sessions#create', :as => 'api_login', :format => 'json'
   match '/api/logout' => 'sessions#destroy', :as => 'api_logout', :format => 'json'
 

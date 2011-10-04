@@ -3,7 +3,7 @@ require 'sessions_helper'
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_filter :myFilter, :only => [:edit, :update, :destroy]
+  before_filter :login_required, :only => [:index, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.xml
@@ -31,7 +31,11 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+    if isAdmin?
+      @form = 'adminform'
+    else
+      @form = 'form'
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @user }
@@ -41,13 +45,18 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    if isAdmin?
+      @form = 'adminform'
+    else
+      @form = 'form'
+    end
   end
 
   # POST /users
   # POST /users.xml
   def create
     if params[:appKey]
-      @user = User.new(params[:user]) if hasAccess(:app, params[:appKey])
+      @user = User.new(params) if hasAccess(:app, params[:appKey])
     else
       @user = User.new(params[:user])
     end
@@ -56,7 +65,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
-        format.json { render :json => "User Created Successfully", :status => :ok } if params[:appKey]
+        format.json { render :json => "User Created Successfully", :status => :ok } if hasAcces(:app, params[:appKey])
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
@@ -91,11 +100,6 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
       format.xml { head :ok }
     end
-  end
-
-  private
-  def myFilter
-    login_required
   end
 
 end

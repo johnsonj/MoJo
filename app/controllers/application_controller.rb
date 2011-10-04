@@ -10,12 +10,16 @@ class ApplicationController < ActionController::Base
   end
 
   def isAdmin?
-    current_user if current_user.type == :admin
+    current_user if current_user.user_type == :admin
   end
 
   def hasAccess(sym, key)
     usr = User.getByApiKey(key)
-    usr if usr.user_type == sym
+    if usr.user_type == sym
+      usr
+    else
+      puts 'Key : ' + key + ' does not have access to ' + sym.to_s
+    end
   end
 
   helper_method :current_user
