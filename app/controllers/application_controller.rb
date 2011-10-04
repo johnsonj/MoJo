@@ -15,7 +15,11 @@ class ApplicationController < ActionController::Base
 
   def hasAccess(sym, key)
     usr = User.getByApiKey(key)
-    usr if usr.user_type == sym
+    if usr.user_type == sym
+      usr
+    else
+      puts 'Key : ' + key + ' does not have access to ' + sym.to_s
+    end
   end
 
   helper_method :current_user
