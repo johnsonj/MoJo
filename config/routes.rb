@@ -28,6 +28,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/locationPing' => 'locations#ping', :format => 'json'
   match '/api/getImage' => 'images#show', :format => 'json'
   match '/api/locationPing/:latitude/:longitude/:timestamp' => 'locations#ping', :format => 'json'
+  match '/api/registerUser' => 'users#create', :format => 'json'
   match '/api/login' => 'sessions#create', :as => 'api_login', :format => 'json'
   match '/api/logout' => 'sessions#destroy', :as => 'api_logout', :format => 'json'
 
