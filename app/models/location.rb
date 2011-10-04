@@ -19,7 +19,7 @@ class Location < ActiveRecord::Base
 
   after_initialize :default_values
   def default_values
-    self.timestamp = DateTime.current() 
+    self.timestamp = DateTime.current() if !self.timestamp 
   end
   def self.ping(params={})
     location = Location.new()

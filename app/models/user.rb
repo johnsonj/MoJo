@@ -49,4 +49,5 @@ class User < ActiveRecord::Base
     write_attribute(:user_type, value.to_s)
   end
 
+
 end

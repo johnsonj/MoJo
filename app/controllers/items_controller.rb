@@ -1,20 +1,45 @@
+
 class ItemsController < ApplicationController
+  include SessionsHelper
+
+  before_filter :ensure_permissions
+
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @items }
+    end
+  end
+
+  def multinew
+    puts "Testing"
+    @item = Item.new
+    @item.user_id = current_user.id
+    puts params
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @item }
     end
   end
 
   def backpack
     @items = current_user.items
     respond_to do |format|
-      format.html
-      format.json { render json: @items }
+      format.json { render json: @items.to_json(:only => [:description, :id, :image_id, :latitude, :longitude, :name, :rarity]) }
+    end
+  end
+
+  def nearby
+    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    @items = Item.near([params[:latitude].to_f, params[:longitude].to_f], Item.NEAR_BY_DISTANCE).where(:user_id => User.WORLD_USER_ID)
+  
+    respond_to do |format|
+      format.json { render json: @items.to_json(:only => [:description, :name, :rarity, :image_id, :distance ])  }
     end
   end
 
@@ -61,10 +86,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if valid
-        format.html # show.html.erb
-        format.json { render :json => @item }
+        format.json { render :json => 1 }
       else
-        format.json { render :json => @item.errors, :status => :unprocessable_entry }
+        format.json { render :json => -1 }
       end
     end
   end
@@ -94,9 +118,9 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if valid
         format.html # show.html.erb
-        format.json { render :json => @item }
+        format.json { render :json => 1 }
       else
-        format.json { render :json => @item.errors, :status => :unprocessable_entry }
+        format.json { render :json => 0, :status => :unprocessable_entry }
       end
     end
 
@@ -145,4 +169,10 @@ class ItemsController < ApplicationController
       format.json { head :ok }
     end
   end
+ 
+  private
+  def ensure_permissions
+    login_required
+  end
+  
 end

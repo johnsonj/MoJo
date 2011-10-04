@@ -1,5 +1,25 @@
 <h1>New item</h1>
 
+
+
+<%= form_tag('/items/new', :method=>'GET') do %>
 <%= render 'form' %>
+ <p>
+   Number of Items to Make: <br />
+   <%= number_field_tag "number", 0 %>
+ </p>
+ <p>
+   Longitude Offset: <br />
+   <%= number_field_tag "longitudeoffset", 0 %>
+ </p>
+ <p>
+   Latitude Offset: <br />
+   <%= number_field_tag "latitudeoffset", 0 %>
+ </p>
+ <p>
+   <%= submit_tag 'Create Multiple' %>
+ </p>
+<% end %>
 
 <%= link_to 'Back', items_path %>
+
