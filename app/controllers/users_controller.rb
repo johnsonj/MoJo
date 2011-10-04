@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     if params[:appKey]
-      @user = User.new(params[:user]) if hasAccess(:app, params[:appKey])
+      @user = User.new(params) if hasAccess(:app, params[:appKey])
     else
       @user = User.new(params[:user])
     end
