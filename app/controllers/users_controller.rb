@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
-        format.json { render :json => "User Created Successfully", :status => :ok } if hasAcces(:app, params[:appKey])
+        format.json { render :json => "User Created Successfully", :status => :ok } if hasAccess(:app, params[:appKey])
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
