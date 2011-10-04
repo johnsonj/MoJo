@@ -140,7 +140,6 @@ end
     @item.user_id = current_user.id
     @flag = @item.save
 }
-debugger
 
     respond_to do |format|
       if @flag
