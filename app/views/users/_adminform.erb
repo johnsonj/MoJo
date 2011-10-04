@@ -32,6 +32,20 @@
       <%= f.text_field :sex %>
     </div>
     <div class="field">
+      <%= f.label :api_key %>
+      <br/>
+      <%= f.text_field :api_key %>
+    </div>
+    <div class="field">
+      <%= f.label :user_type %>
+      <br/>
+      <%= f.text_field :user_type %>
+    </div>
+    <div class="field">
+      <%= f.label :id %>
+      <p><%= @user.id %></p>
+    </div>
+    <div class="field">
       <%= f.label :password %>
       <br/>
       <%= f.password_field :password %>

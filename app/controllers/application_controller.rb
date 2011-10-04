@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def isAdmin?
-    current_user if current_user.type == :admin
+    current_user if current_user.user_type == :admin
   end
 
   def hasAccess(sym, key)
