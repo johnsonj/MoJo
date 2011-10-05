@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem "paperclip", "~> 2.4"
 gem 'aws-s3'
 gem 'geocoder'
+gem 'hike', '1.2.1'
 
 group :development do
   gem 'sqlite3'
