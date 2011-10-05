@@ -11,6 +11,7 @@ gem 'geocoder'
 gem 'hike', '1.2.1'
 
 group :development do
+  gem 'taps'
   gem 'sqlite3'
   gem 'rspec-rails', '2.6.1'
   gem 'annotate', '2.4.1.beta1'
