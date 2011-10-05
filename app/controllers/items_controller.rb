@@ -21,7 +21,6 @@ validates_numericality_of :latitude
     end
   end
 
-<<<<<<< HEAD
   #def multinew
    # puts "Testing"
    # @item = Item.new
@@ -32,8 +31,6 @@ validates_numericality_of :latitude
   #    format.json { render json: @item }
   #  end
   #end
-=======
->>>>>>> 1ca28445685b2a35bc3cdedb7105b51f79b733d5
 
   def backpack
     @items = current_user.items
