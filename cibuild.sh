@@ -1,5 +1,5 @@
 #!/bin/sh
 
-bundle update
-bundle exec rake db:migrate
-bundle exec rake
+nice bundle update
+nice bundle exec rake db:migrate
+nice bundle exec rake
