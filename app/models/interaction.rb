@@ -2,15 +2,15 @@
 #
 # Table name: interactions
 #
-#  id           :integer         not null, primary key
+#  id           :integer         primary key
 #  Loclatitude  :float
 #  loclongitude :float
 #  PersonA      :integer
 #  PersonB      :integer
-#  Timestamp    :datetime
-#  deltime      :datetime
-#  created_at   :datetime
-#  updated_at   :datetime
+#  Timestamp    :timestamp
+#  deltime      :timestamp
+#  created_at   :timestamp
+#  updated_at   :timestamp
 #
 
 class Interaction < ActiveRecord::Base

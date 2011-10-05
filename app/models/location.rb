@@ -2,13 +2,13 @@
 #
 # Table name: locations
 #
-#  id         :integer         not null, primary key
+#  id         :integer         primary key
 #  latitude   :float
 #  longitude  :float
-#  timestamp  :datetime
+#  timestamp  :timestamp
 #  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :timestamp
+#  updated_at :timestamp
 #
 
 class Location < ActiveRecord::Base
