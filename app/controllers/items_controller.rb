@@ -40,7 +40,7 @@ validates_numericality_of :latitude
   end
 
   def nearby
-    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
     @items = Item.near([params[:latitude].to_f, params[:longitude].to_f], Item.NEAR_BY_DISTANCE).where(:user_id => User.WORLD_USER_ID)
   
     respond_to do |format|
@@ -78,7 +78,7 @@ validates_numericality_of :latitude
 
   def pickup
     @item = Item.find(params[:id])
-    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
     valid = @item.user_id == User.WORLD_USER_ID
     
@@ -100,7 +100,7 @@ validates_numericality_of :latitude
 
   def drop
     @item = Item.find(params[:id])
-    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
     valid = @item.user_id == current_user.id
 
