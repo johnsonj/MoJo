@@ -1,6 +1,21 @@
 require "spec_helper"
 
 describe ItemsController do
+  describe "api routing" do
+    it "routes to pickupItem" do
+      get("/api/pickupItem").should route_to("items#pickup", :format => "json")
+    end
+    it "routes to dropItem" do
+      get("/api/dropItem").should route_to("items#drop", :format => "json")
+    end
+    it "routes to getBackpackItems" do
+      get("/api/getBackpackItems").should route_to("items#backpack", :format => "json")
+    end
+    it "routes to getItemsNearBy" do
+      get("/api/getItemsNearBy").should route_to("items#nearby", :format => "json")
+    end
+  end
+
   describe "routing" do
 
     it "routes to #index" do

@@ -1,6 +1,11 @@
 require "spec_helper"
 
 describe ItemHistoriesController do
+  describe "api routing" do
+    it "routes to get item details" do
+      get("/api/getItemDetails").should route_to("item_histories#itemDetails", :format => "json")
+    end
+  end
   describe "routing" do
 
     it "routes to #index" do
