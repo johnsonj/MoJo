@@ -85,7 +85,7 @@ class LocationsController < ApplicationController
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
         format.json { head :ok }
       else
-        foigned_in? mat.html { render :action => "edit" }
+        format.html { render :action => "edit" }
         format.json { render :json => @location.errors, :status => :unprocessable_entity }
       end
     end

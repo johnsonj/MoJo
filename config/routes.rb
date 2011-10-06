@@ -1,5 +1,7 @@
 Ipro369MoJo::Application.routes.draw do
 
+  resources :item_descriptions
+
   resources :item_histories
   resources :items
   resources :images
