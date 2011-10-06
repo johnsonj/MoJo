@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :items
 
   validates_presence_of :password, :on => :create
+  validates_presence_of :username, :age, :sex, :email, :on => :create
   validates_inclusion_of :user_type, :in => [:normal, :admin, :app, :interactions]
 
   def self.getByApiKey(key)
