@@ -6,7 +6,7 @@ Factory.define :user do |user|
   user.password "password"
 end
 Factory.define :location do |location|
-  location.latitude "2.0921"
-  location.longitude "1.2931"
+  location.latitude 2.0921
+  location.longitude 1.2931
   location.user_id "1"
 end
