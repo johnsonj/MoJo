@@ -21,7 +21,7 @@ class Location < ActiveRecord::Base
   def default_values
     self.timestamp = DateTime.current() if !self.timestamp 
   end
-  def self.ping(params={})
+  def self.record_location(params={})
     location = Location.new()
     location.user = params[:user]
     location.latitude = params[:latitude]
