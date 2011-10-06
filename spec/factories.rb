@@ -5,3 +5,8 @@ Factory.define :user do |user|
   user.email "example@example.com"
   user.password "password"
 end
+Factory.define :location do |location|
+  location.latitude "2.0921"
+  location.longitude "1.2931"
+  location.user_id "1"
+end

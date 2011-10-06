@@ -16,6 +16,7 @@ class Location < ActiveRecord::Base
 	validates :latitude, :presence => true
 	validates :longitude, :presence => true
 	validates :timestamp, :presence => true
+  validates :user_id, :presence => true
 
   after_initialize :default_values
   def default_values
