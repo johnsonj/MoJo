@@ -56,7 +56,9 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     if params[:appKey]
-      @user = User.new(params) if hasAccess(:app, params[:appKey])
+      if hasAccess(:app, params[:appKey]) or hasAccess(:interactions, params[:appKey])
+        @user = User.new(params)
+      end
     else
       @user = User.new(params[:user])
     end
@@ -65,7 +67,7 @@ class UsersController < ApplicationController
       if @user.save
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
         format.xml { render :xml => @user, :status => :created, :location => @user }
-        format.json { render :json => "User Created Successfully", :status => :ok } if hasAccess(:app, params[:appKey])
+        format.json { render :json => "User Created Successfully", :status => :ok }
       else
         format.html { render :action => "new" }
         format.xml { render :xml => @user.errors, :status => :unprocessable_entity }
