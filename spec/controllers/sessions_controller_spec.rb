@@ -43,6 +43,7 @@ describe SessionsController do
         @attr = {:username => @user.username, :password => @user.password}
       end
 
+      it "should return a valid API key"
 
       it "should sign the user in" do
         post :create, :session => @attr
