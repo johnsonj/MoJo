@@ -20,6 +20,11 @@ class Item < ActiveRecord::Base
   belongs_to :User
   has_many :ItemHistory, :order => "stamp DESC", :limit => 30
 
+
+validates :name, :length => { :minimum => 3 }
+validates_numericality_of :longitude
+validates_numericality_of :latitude
+
   def self.NEAR_BY_DISTANCE
     @NEAR_BY_DISTANCE = 0.1
   end
