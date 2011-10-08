@@ -14,29 +14,29 @@
 ActiveRecord::Schema.define(:version => 20111006033151) do
 
   create_table "bagtypes", :force => true do |t|
-    t.integer   "size"
-    t.string    "name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "size"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "images", :force => true do |t|
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "icon_file_name"
-    t.string    "icon_content_type"
-    t.integer   "icon_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
   end
 
   create_table "interactions", :force => true do |t|
-    t.float     "Loclatitude"
-    t.float     "loclongitude"
-    t.integer   "PersonA"
-    t.integer   "PersonB"
-    t.timestamp "Timestamp"
-    t.timestamp "deltime"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.float    "Loclatitude"
+    t.float    "loclongitude"
+    t.integer  "PersonA"
+    t.integer  "PersonB"
+    t.datetime "Timestamp"
+    t.datetime "deltime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "item_descriptions", :force => true do |t|
@@ -49,15 +49,15 @@ ActiveRecord::Schema.define(:version => 20111006033151) do
   end
 
   create_table "item_histories", :force => true do |t|
-    t.integer   "user_id"
-    t.integer   "item_id"
-    t.float     "latitude"
-    t.float     "longitude"
-    t.string    "signature"
-    t.timestamp "stamp"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.float     "runningdistance"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "signature"
+    t.datetime "stamp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "runningdistance"
   end
 
   create_table "items", :force => true do |t|
@@ -70,35 +70,35 @@ ActiveRecord::Schema.define(:version => 20111006033151) do
   end
 
   create_table "locations", :force => true do |t|
-    t.float     "latitude"
-    t.float     "longitude"
-    t.timestamp "timestamp"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "timestamp"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|
-    t.string    "session_id", :null => false
-    t.text      "data"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string    "username"
-    t.integer   "age"
-    t.integer   "sex"
-    t.string    "password_digest"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "email"
-    t.integer   "bagtype_id"
-    t.text      "api_key"
-    t.string    "user_type",       :default => "normal", :null => false
+    t.string   "username"
+    t.integer  "age"
+    t.integer  "sex"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+    t.integer  "bagtype_id"
+    t.text     "api_key"
+    t.string   "user_type",       :default => "normal", :null => false
   end
 
 end
