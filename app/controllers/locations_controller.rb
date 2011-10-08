@@ -75,6 +75,37 @@ class LocationsController < ApplicationController
     end
   end
 
+  def get_locations_for_range
+    starting = params[:start]
+    ending = params[:end]
+    respond_to do |format|
+      if starting and ending and hasAccess(:interactions, params[:appKey])
+        format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime) }
+      else
+        format.json { render :json => "Invalid Range or AppKey", :status => :not_acceptable }
+      end
+    end
+  end
+
+  def get_locations_for_range_in_area
+    starting = params[:start]
+    ending = params[:end]
+    startLat = params[:startingLatitude]
+    endLat = params[:endingLatitude]
+    startLon = params[:startingLongitude]
+    endLon = params[:endingLongitude]
+
+    respond_to do |format|
+      if starting and ending and hasAccess(:interactions, params[:appKey])
+        format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime,
+                                                     :longitude => startLon..endLon,
+                                                     :latitude => startLat..endLat) }
+      else
+        format.json { render :json => "Invalid Range or AppKey", :status => :not_acceptable }
+      end
+    end
+  end
+
   # PUT /locations/1
   # PUT /locations/1.xml
   def update

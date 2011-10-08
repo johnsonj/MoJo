@@ -6,7 +6,7 @@ class InteractionsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @interactions }
+      format.xml { render :xml => @interactions }
     end
   end
 
@@ -17,7 +17,7 @@ class InteractionsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @interaction }
+      format.xml { render :xml => @interaction }
     end
   end
 
@@ -28,7 +28,7 @@ class InteractionsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @interaction }
+      format.xml { render :xml => @interaction }
     end
   end
 
@@ -41,14 +41,17 @@ class InteractionsController < ApplicationController
   # POST /interactions.xml
   def create
     @interaction = Interaction.new(params[:interaction])
-
-    respond_to do |format|
-      if @interaction.save
-        format.html { redirect_to(@interaction, :notice => 'Interaction was successfully created.') }
-        format.xml  { render :xml => @interaction, :status => :created, :location => @interaction }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @interaction.errors, :status => :unprocessable_entity }
+    if hasAccess(:interactions, params[:appKey])
+      respond_to do |format|
+        if @interaction.save
+          format.html { redirect_to(@interaction, :notice => 'Interaction was successfully created.') }
+          format.xml { render :xml => @interaction, :status => :created, :location => @interaction }
+          format.json { render :json => "Success", :status => :ok }
+        else
+          format.html { render :action => "new" }
+          format.xml { render :xml => @interaction.errors, :status => :unprocessable_entity }
+          format.json { render :json => "Failure", :status => :unauthorized }
+        end
       end
     end
   end
@@ -61,10 +64,10 @@ class InteractionsController < ApplicationController
     respond_to do |format|
       if @interaction.update_attributes(params[:interaction])
         format.html { redirect_to(@interaction, :notice => 'Interaction was successfully updated.') }
-        format.xml  { head :ok }
+        format.xml { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @interaction.errors, :status => :unprocessable_entity }
+        format.xml { render :xml => @interaction.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -77,7 +80,7 @@ class InteractionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(interactions_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 end

@@ -11,10 +11,11 @@ Ipro369MoJo::Application.routes.draw do
   resources :interactions
   resources :sessions, :only => [:new, :create, :destroy]
 
+  root :to => "sessions#new", :as => "home_page"
+
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
-  root :to => "sessions#new", :as => "home_page"
 
   match '/items/new' => 'items#multinew'
   match '/backpack' => 'items#backpack'
@@ -33,6 +34,9 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/registerUser' => 'users#create', :format => 'json'
   match '/api/login' => 'sessions#create', :as => 'api_login', :format => 'json'
   match '/api/logout' => 'sessions#destroy', :as => 'api_logout', :format => 'json'
+  match '/api/getLocationsForRange' => 'locations#get_locations_for_range', :format => 'json'
+  match '/api/getLocationsForRangeInArea' => 'locations#get_locations_for_range_in_area', :format => 'json'
+  match '/api/writeInteraction' => 'interactions#create', :format => 'json'
 
 end
 

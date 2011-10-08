@@ -29,4 +29,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  def log_in_test(usr)
+    controller.log_in_user usr
+  end
 end
