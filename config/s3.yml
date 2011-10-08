@@ -7,3 +7,8 @@ development:
   access_key_id: AKIAJ4M5AND7IXLOPWVQ
   secret_access_key: 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
   bucket: MoJoIcons
+
+test:
+  access_key_id: AKIAJ4M5AND7IXLOPWVQ
+  secret_access_key: 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
+  bucket: MoJoIcons

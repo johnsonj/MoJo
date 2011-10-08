@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <b>Name:</b>
-  <%= @item.name %>
+  <b>Description ID:</b>
+  <%= @item.description_id %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%= @item.description %>
+  <%= @item.description_id %>
 </p>
 
 <p>
@@ -25,15 +25,6 @@
   <%= @item.longitude %>
 </p>
 
-<p>
-  <b>Image:</b>
-  <%= @item.image_id %>
-</p>
-
-<p>
-  <b>Rarity:</b>
-  <%= @item.rarity %>
-</p>
 
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

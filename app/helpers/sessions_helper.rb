@@ -1,11 +1,15 @@
 module SessionsHelper
 
+  def log_user_in(usr)
+    session[:user_id] = usr.id
+  end
+  
   def login_required
     deny_access unless isLoggedIn?
   end
 
   def isLoggedIn?
-    !session[:user_id].nil?
+    current_user
   end
 
   def deny_access

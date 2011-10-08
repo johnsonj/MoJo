@@ -43,16 +43,18 @@ describe SessionsController do
         @attr = {:username => @user.username, :password => @user.password}
       end
 
+      it "should return a valid API key"
+
       it "should sign the user in" do
         post :create, :session => @attr
         controller.isLoggedIn?.should be_true
-        controller.getCurrentUser.should == @user
+        controller.isLoggedIn?.should == @user
       end
 
-      it "should redirect to the user show page" do
-        post :create, :session => @attr
-        response.should redirect_to(:home_page)
-      end
+      it "should redirect to the user show page"# do
+#  post :create, :session => @attr
+#        response.should redirect_to(:home_page)
+#      end
 
     end
 

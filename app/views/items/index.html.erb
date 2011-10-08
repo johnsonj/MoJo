@@ -3,12 +3,10 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Name</th>
-    <th>Description</th>
+    <th>Description ID</th>
+    <th>Item Name</th>
     <th>Latitude</th>
     <th>Longitude</th>
-    <th>Image</th>
-    <th>Rarity</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,12 +15,11 @@
 <% @items.each do |item| %>
   <tr>
     <td><%= item.user_id %></td>
-    <td><%= item.name %></td>
-    <td><%= item.description %></td>
+    <td><%= item.description_id %></td>
+    <td><%= item.item_description.name if item.item_description %></td>
+
     <td><%= item.latitude %></td>
     <td><%= item.longitude %></td>
-    <td><%= item.image_id %></td>
-    <td><%= item.rarity %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>

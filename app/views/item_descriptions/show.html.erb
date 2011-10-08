@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @item_description.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @item_description.description %>
+</p>
+
+<p>
+  <b>Rarity:</b>
+  <%= @item_description.rarity %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @item_description.image_id %>
+</p>
+
+<%= link_to 'Edit', edit_item_description_path(@item_description) %> |
+<%= link_to 'Back', item_descriptions_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111002004928) do
+ActiveRecord::Schema.define(:version => 20111006033151) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer  "size"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(:version => 20111002004928) do
     t.datetime "updated_at"
   end
 
+  create_table "item_descriptions", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "rarity"
+    t.integer  "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "item_histories", :force => true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
@@ -53,14 +62,11 @@ ActiveRecord::Schema.define(:version => 20111002004928) do
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name"
-    t.text     "description"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "image_id"
-    t.integer  "rarity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "description_id"
   end
 
   create_table "locations", :force => true do |t|

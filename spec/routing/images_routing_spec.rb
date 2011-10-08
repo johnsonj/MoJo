@@ -1,6 +1,12 @@
 require "spec_helper"
 
 describe ImagesController do
+  describe "api routing" do
+    it "routes to image show" do
+        get("/api/getImage").should route_to("images#show", :format => "json")
+    end
+  end
+
   describe "routing" do
 
     it "routes to #index" do
