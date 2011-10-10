@@ -123,7 +123,7 @@ class ItemsController < ApplicationController
 
     @flag = true
     params[:number].to_i.times {
-    @item = Item.new( :description_id => params[:item_description_id]) 
+    @item = Item.new( :item_description_id => params[:item_description_id]) 
 
 if params[:longitudeoffset].to_i != 0
     @item.longitude = rand(params[:longitudeoffset].to_i-1) + rand + params[:longitude].to_i
