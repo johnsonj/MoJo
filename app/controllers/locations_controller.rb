@@ -80,7 +80,11 @@ class LocationsController < ApplicationController
     ending = params[:end]
     respond_to do |format|
       if starting and ending and hasAccess(:interactions, params[:appKey])
-        format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime) }
+        if params[:count]
+          format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime).count }
+        else
+          format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime) }
+        end
       else
         format.json { render :json => "Invalid Range or AppKey", :status => :not_acceptable }
       end
@@ -97,10 +101,16 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if starting and ending and hasAccess(:interactions, params[:appKey])
-        format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime,
+        if params[:count]
+          format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime,
+                                                     :longitude => startLon..endLon,
+                                                     :latitude => startLat..endLat).count }
+          else
+          format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime,
                                                      :longitude => startLon..endLon,
                                                      :latitude => startLat..endLat) }
-      else
+          end
+       else
         format.json { render :json => "Invalid Range or AppKey", :status => :not_acceptable }
       end
     end

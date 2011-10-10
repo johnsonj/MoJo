@@ -11,3 +11,4 @@ doc/
 .idea/
 *.iml
 coverage/
+/nbproject/private/
