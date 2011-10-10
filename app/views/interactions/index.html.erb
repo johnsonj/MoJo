@@ -17,8 +17,8 @@
   <tr>
     <td><%= interaction.Loclatitude %></td>
     <td><%= interaction.loclongitude %></td>
-    <td><a href="/users/<%= interaction.PersonA %>"><%= interaction.PersonA %></a> (<%=interaction.persona.username %>)</td>
-    <td><a href="/users/<%= interaction.PersonB %>"><%= interaction.PersonB %></a> (<%=interaction.personb.username %>)</td>
+    <td><a href="/users/<%= interaction.PersonA %>"><%= interaction.PersonA %></a> (<%=interaction.persona.username if interaction.persona %>)</td>
+    <td><a href="/users/<%= interaction.PersonB %>"><%= interaction.PersonB %></a> (<%=interaction.personb.username if interaction.personb %>)</td>
     <td><%= interaction.Timestamp %></td>
     <td><%= interaction.deltime %></td>
     <td><%= link_to 'Show', interaction %></td>

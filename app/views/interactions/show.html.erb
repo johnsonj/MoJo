@@ -12,12 +12,12 @@
 
 <p>
   <b>PersonA:</b>
-  <a href="/users/<%= @interaction.PersonA %>"><%= @interaction.PersonA %></a> (<%=@interaction.persona.username %>)
+  <a href="/users/<%= @interaction.PersonA %>"><%= @interaction.PersonA %></a> (<%=@interaction.persona.username if @interaction.persona %>)
 </p>
 
 <p>
   <b>PersonA:</b>
-  <a href="/users/<%= @interaction.PersonB %>"><%= @interaction.PersonB %></a> (<%=@interaction.personb.username %>)
+  <a href="/users/<%= @interaction.PersonB %>"><%= @interaction.PersonB %></a> (<%=@interaction.personb.username if @interaction.personb %>)
 </p>
 
 <p>
