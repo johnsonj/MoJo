@@ -1,28 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Loclatitude:</b>
+  <b>Latitude:</b>
   <%= @interaction.Loclatitude %>
 </p>
 
 <p>
-  <b>Loclongitude:</b>
+  <b>Longitude:</b>
   <%= @interaction.loclongitude %>
 </p>
 
 <p>
-  <b>Locationtype:</b>
-  <%= @interaction.LocationType %>
+  <b>PersonA:</b>
+  <a href="/users/<%= @interaction.PersonA %>"><%= @interaction.PersonA %></a> (<%=@interaction.persona.username %>)
 </p>
 
 <p>
-  <b>Persona:</b>
-  <%= @interaction.PersonA %>
-</p>
-
-<p>
-  <b>Personb:</b>
-  <%= @interaction.PersonB %>
+  <b>PersonA:</b>
+  <a href="/users/<%= @interaction.PersonB %>"><%= @interaction.PersonB %></a> (<%=@interaction.personb.username %>)
 </p>
 
 <p>
