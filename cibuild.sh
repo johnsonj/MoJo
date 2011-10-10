@@ -10,5 +10,7 @@ if [ $RESULT -ne 0 ]; then
 fi
 if [ -n "${CC_BUILD_ARTIFACTS+x}" ]; then
   mv coverage ${CC_BUILD_ARTIFACTS}/
+  git push heroku
+  exit $?
 fi
 exit $RESULT
