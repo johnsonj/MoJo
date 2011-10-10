@@ -16,6 +16,8 @@ Ipro369MoJo::Application.routes.draw do
   root :to => "sessions#new", :as => "home_page"
 
   match '/leaderboards' => 'pages#leaderboards'
+  match '/leaderboards/users' => 'pages#users', :as => :leaderboards_users_path
+  match '/leaderboards/items' => 'pages#items', :as => :leaderboards_items_path
 
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path

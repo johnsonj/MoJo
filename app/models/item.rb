@@ -21,7 +21,9 @@ class Item < ActiveRecord::Base
   belongs_to :item_description
   has_many :ItemHistory, :order => "stamp DESC", :limit => 30
 
-
+validates :description_id, :presence => true
+validates :latitude, :numericality => true
+validates :longitude, :numericality => true
 
   def self.NEAR_BY_DISTANCE
     @NEAR_BY_DISTANCE = 0.1

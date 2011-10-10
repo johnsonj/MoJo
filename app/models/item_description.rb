@@ -16,4 +16,9 @@ class ItemDescription < ActiveRecord::Base
   has_one :Image
   has_one :item
 
+validates :name, :uniqueness => true
+validates :description, :presence => true
+validates :rarity, :presence => true
+validates :image_id, :presence => true
+
 end
