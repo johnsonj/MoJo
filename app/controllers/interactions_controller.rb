@@ -40,7 +40,13 @@ class InteractionsController < ApplicationController
   # POST /interactions
   # POST /interactions.xml
   def create
-    @interaction = Interaction.new(params[:interaction])
+    @interaction = Interaction.new()
+    @interaction.Loclatitude = params[:Loclatitude]
+    @interaction.loclongitude = params[:loclongitude]
+    @interaction.PersonA = params[:PersonA]
+    @interaction.PersonB = params[:PersonB]
+    @interaction.Timestamp = params[:Timestamp]
+    @interaction.deltime = params[:deltime]
     if hasAccess(:interactions, params[:appKey])
       respond_to do |format|
         if @interaction.save
@@ -49,8 +55,8 @@ class InteractionsController < ApplicationController
           format.json { render :json => "Success", :status => :ok }
         else
           format.html { render :action => "new" }
-          format.xml { render :xml => @interaction.errors, :status => :unprocessable_entity }
-          format.json { render :json => "Failure", :status => :unauthorized }
+         # format.xml { render :xml => @interaction.errors, :status => :unprocessable_entity }
+          format.json { render :json => @interaction.errors, :status => :unauthorized }
         end
       end
     end
