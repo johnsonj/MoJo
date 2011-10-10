@@ -20,7 +20,14 @@ Factory.define :location do |location|
   location.longitude 1.2931
   location.user_id "1"
 end
-
+Factory.define :valid_interaction, :class => Interaction do |interaction|
+  interaction.Loclatitude 2.0921
+  interaction.loclongitude 1.2931
+  interaction.PersonA "1"
+  interaction.PersonB "3"
+  interaction.Timestamp "2010-01-01T10:00:00Z"
+  interaction.deltime "2010-01-01T11:00:00Z"
+end
 Factory.define :location_set_1, :class => Location do |location|
   location.latitude 5
   location.longitude 5
