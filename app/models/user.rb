@@ -2,13 +2,13 @@
 #
 # Table name: users
 #
-#  id              :integer         not null, primary key
+#  id              :integer         primary key
 #  username        :string(255)
 #  age             :integer
 #  sex             :integer
 #  password_digest :string(255)
-#  created_at      :datetime
-#  updated_at      :datetime
+#  created_at      :timestamp
+#  updated_at      :timestamp
 #  email           :string(255)
 #  bagtype_id      :integer
 #  api_key         :text
@@ -21,7 +21,9 @@ class User < ActiveRecord::Base
     @WORLD_USER_ID ||= 0
   end
 
-  attr_accessible :email, :username, :password, :password_confirmation, :sex, :age, :bagtype_id
+  attr_accessible :email,                 :username,  :password,
+                  :password_confirmation, :sex,       :age,
+                  :bagtype_id,            :user_type, :api_key
 
   has_secure_password
 
@@ -31,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :items
 
   validates_presence_of :password, :on => :create
+  validates_presence_of :username, :age, :sex, :email, :on => :create
   validates_inclusion_of :user_type, :in => [:normal, :admin, :app, :interactions]
 
   def self.getByApiKey(key)

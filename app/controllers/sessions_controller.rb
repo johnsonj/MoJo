@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       format.html {
         usr = User.find_by_username(params[:session][:username])
         if usr && usr.authenticate(params[:session][:password])
-          session[:user_id] = usr.id
+          log_user_in(usr)
           redirect_to :home_page, :notice => "Logged in!"
         else
           flash.now[:error] = "Invalid email or password"
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       format.json {
         usr = User.find_by_username(params[:username])
         puts 'Could not find Username' if !usr
-        if usr && usr.authenticate(params[:password]) #&& hasAccess(:app, params[:appKey])
+        if usr && usr.authenticate(params[:password]) && (hasAccess(:app, params[:appKey]) or hasAccess(:interactions, params[:appKey]))
           usr.api_key = Digest::SHA1.hexdigest(usr.email + usr.username + Time.now.to_s + Random.rand(1001).to_s)
           usr.save
           render :json => usr.api_key, :status => :ok

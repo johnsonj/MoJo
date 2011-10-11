@@ -8,12 +8,8 @@
    <%= number_field_tag "user_id", current_user.id %>
  </p>
  <p>
-   Item Name: <br />
-   <%= text_field_tag "name" %>
- </p>
- <p>
-   Description: <br />
-   <%= text_area_tag "description" %>
+   Item:<br />
+   <%= number_field_tag "item_description_id" %>
  </p>
  <p>
    Latitude: <br />
@@ -24,26 +20,18 @@
    <%= text_field_tag "longitude" %>
  </p>
  <p>
-   Image: <br />
-   <%= number_field_tag "iamge_id" %>
- </p>
- <p>
-   Rarity: <br />
-   <%= number_field_tag "rarity" %>
- </p>
-
- <p>
    Number of Items to Make: <br />
    <%= number_field_tag "number", 1 %>
- </p>
- <p>
-   Longitude Offset: <br />
-   <%= text_field_tag "longitudeoffset", 0 %>
  </p>
  <p>
    Latitude Offset: <br />
    <%= text_field_tag "latitudeoffset", 0 %>
  </p>
+ <p>
+   Longitude Offset: <br />
+   <%= text_field_tag "longitudeoffset", 0 %>
+ </p>
+
  <p>
    <%= submit_tag 'Create Multiple' %>
  </p>

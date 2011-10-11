@@ -5,10 +5,6 @@ class ItemsController < ApplicationController
 
   before_filter :ensure_permissions
 
-validates :name, :length => { :minimum => 3 }
-validates_numericality_of :longitude
-validates_numericality_of :latitude
-
 
   # GET /items
   # GET /items.json
@@ -21,19 +17,6 @@ validates_numericality_of :latitude
     end
   end
 
-<<<<<<< HEAD
-  #def multinew
-   # puts "Testing"
-   # @item = Item.new
-   # @item.user_id = current_user.id
-
-  #  respond_to do |format|
-  #    format.html # new.html.erb
-  #    format.json { render json: @item }
-  #  end
-  #end
-=======
->>>>>>> 1ca28445685b2a35bc3cdedb7105b51f79b733d5
 
   def backpack
     @items = current_user.items
@@ -43,7 +26,7 @@ validates_numericality_of :latitude
   end
 
   def nearby
-    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
     @items = Item.near([params[:latitude].to_f, params[:longitude].to_f], Item.NEAR_BY_DISTANCE).where(:user_id => User.WORLD_USER_ID)
   
     respond_to do |format|
@@ -81,7 +64,7 @@ validates_numericality_of :latitude
 
   def pickup
     @item = Item.find(params[:id])
-    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
     valid = @item.user_id == User.WORLD_USER_ID
     
@@ -103,7 +86,7 @@ validates_numericality_of :latitude
 
   def drop
     @item = Item.find(params[:id])
-    Location.ping(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
+    Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
     valid = @item.user_id == current_user.id
 
@@ -137,17 +120,21 @@ validates_numericality_of :latitude
   # POST /items
   # POST /items.json
   def create
-   
+
     @flag = true
     params[:number].to_i.times {
-    @item = Item.new( :name => params[:name], :description => params[:description], :image_id => params[:image_id], :rarity => params[:rarity] ) 
+    @item = Item.new( :item_description_id => params[:item_description_id]) 
 
 if params[:longitudeoffset].to_i != 0
     @item.longitude = rand(params[:longitudeoffset].to_i-1) + rand + params[:longitude].to_i
+else
+    @item.longitude = params[:longitude]
 end
 
 if params[:latitudeoffset].to_i != 0
     @item.latitude = rand(params[:latitudeoffset].to_i-1) + rand + params[:latitude].to_i
+else
+    @item.latitude = params[:latitude]
 end
 
     @item.user_id = current_user.id

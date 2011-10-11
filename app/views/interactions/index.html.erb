@@ -2,11 +2,10 @@
 
 <table>
   <tr>
-    <th>Loclatitude</th>
-    <th>Loclongitude</th>
-    <th>Locationtype</th>
-    <th>Persona</th>
-    <th>Personb</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>PersonA</th>
+    <th>PersonB</th>
     <th>Timestamp</th>
     <th>Deltime</th>
     <th></th>
@@ -18,9 +17,8 @@
   <tr>
     <td><%= interaction.Loclatitude %></td>
     <td><%= interaction.loclongitude %></td>
-    <td><%= interaction.LocationType %></td>
-    <td><%= interaction.PersonA %></td>
-    <td><%= interaction.PersonB %></td>
+    <td><a href="/users/<%= interaction.PersonA %>"><%= interaction.PersonA %></a> (<%=interaction.persona.username if interaction.persona %>)</td>
+    <td><a href="/users/<%= interaction.PersonB %>"><%= interaction.PersonB %></a> (<%=interaction.personb.username if interaction.personb %>)</td>
     <td><%= interaction.Timestamp %></td>
     <td><%= interaction.deltime %></td>
     <td><%= link_to 'Show', interaction %></td>

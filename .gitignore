@@ -10,3 +10,5 @@ doc/
 .DS_Store
 .idea/
 *.iml
+coverage/
+/nbproject/private/
