@@ -164,8 +164,8 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    turn (0.8.2)
-      ansi (>= 1.2.2)
+    turn (0.8.3)
+      ansi
     tzinfo (0.3.30)
     uglifier (1.0.3)
       execjs (>= 0.3.0)

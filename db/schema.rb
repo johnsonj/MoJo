@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009180154) do
+ActiveRecord::Schema.define(:version => 20111011065828) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer  "size"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(:version => 20111009180154) do
     t.integer  "PersonA"
     t.integer  "PersonB"
     t.datetime "Timestamp"
-    t.datetime "deltime"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "deltime"
   end
 
   create_table "item_descriptions", :force => true do |t|
