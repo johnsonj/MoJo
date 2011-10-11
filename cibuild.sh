@@ -11,6 +11,7 @@ fi
 if [ -n "${CC_BUILD_ARTIFACTS+x}" ]; then
   mv coverage ${CC_BUILD_ARTIFACTS}/
   git push heroku
+  heroku rake db:migrate 
   exit $?
 fi
 exit $RESULT
