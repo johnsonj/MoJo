@@ -1,0 +1,21 @@
+<h1>Leaderboards - Items</h1>
+
+Top Drops
+<table>
+  <tr>
+    <th>Item ID</th>
+    <th>Drops</th>
+    <th></th>
+  </tr>
+
+<% @TopItems.each do |item| %>
+  <tr>
+    <td><%= item.item_id %></td>
+    <td><%= item.item_count %></td>
+  </tr>
+<% end %>
+</table>
+<br/>
+
+
+
