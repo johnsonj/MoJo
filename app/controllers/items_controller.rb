@@ -1,9 +1,8 @@
-
 class ItemsController < ApplicationController
   include SessionsHelper
   include ActiveModel::Validations
 
-  before_filter :ensure_permissions
+  before_filter :login_required
 
 
   # GET /items
@@ -27,10 +26,10 @@ class ItemsController < ApplicationController
 
   def nearby
     Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
-    @items = Item.near([params[:latitude].to_f, params[:longitude].to_f], Item.NEAR_BY_DISTANCE).where(:user_id => User.WORLD_USER_ID)
-  
+    items = Item.near([params[:latitude].to_f, params[:longitude].to_f],  NEAR_BY_DISTANCE).where(:user_id => WORLD_USER_ID)
+
     respond_to do |format|
-      format.json { render json: @items.to_json(:only => [:description, :name, :rarity, :image_id, :distance ])  }
+      format.json { render json: items.to_json(:only => [:item_description_id, :id, :distance]) }
     end
   end
 
@@ -66,8 +65,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
-    valid = @item.user_id == User.WORLD_USER_ID
-    
+    valid = @item.user_id == WORLD_USER_ID
+
     if valid
       @item.user_id = current_user.id
       @item.latitude = params[:latitutde]
@@ -97,14 +96,14 @@ class ItemsController < ApplicationController
       valid = @item.save
     end
     if valid
-     history = ItemHistory.new()
-     history.user_id = current_user.id
-     history.item_id = params[:id]
-     history.latitude = params[:latitude]
-     history.longitude = params[:longitude]
-     history.signature = params[:signature]
-     valid = history.save()
-   end
+      history = ItemHistory.new()
+      history.user_id = current_user.id
+      history.item_id = params[:id]
+      history.latitude = params[:latitude]
+      history.longitude = params[:longitude]
+      history.signature = params[:signature]
+      valid = history.save()
+    end
 
     respond_to do |format|
       if valid
@@ -123,23 +122,23 @@ class ItemsController < ApplicationController
 
     @flag = true
     params[:number].to_i.times {
-    @item = Item.new( :item_description_id => params[:item_description_id]) 
+      @item = Item.new(:item_description_id => params[:item_description_id])
 
-if params[:longitudeoffset].to_i != 0
-    @item.longitude = rand(params[:longitudeoffset].to_i-1) + rand + params[:longitude].to_i
-else
-    @item.longitude = params[:longitude]
-end
+      if params[:longitudeoffset].to_i != 0
+        @item.longitude = rand(params[:longitudeoffset].to_i-1) + rand + params[:longitude].to_i
+      else
+        @item.longitude = params[:longitude]
+      end
 
-if params[:latitudeoffset].to_i != 0
-    @item.latitude = rand(params[:latitudeoffset].to_i-1) + rand + params[:latitude].to_i
-else
-    @item.latitude = params[:latitude]
-end
+      if params[:latitudeoffset].to_i != 0
+        @item.latitude = rand(params[:latitudeoffset].to_i-1) + rand + params[:latitude].to_i
+      else
+        @item.latitude = params[:latitude]
+      end
 
-    @item.user_id = current_user.id
-    @flag = @item.save
-}
+      @item.user_id = current_user.id
+      @flag = @item.save
+    }
 
     respond_to do |format|
       if @flag
@@ -179,10 +178,5 @@ end
       format.json { head :ok }
     end
   end
- 
-  private
-  def ensure_permissions
-    login_required
-  end
-  
+
 end

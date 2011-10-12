@@ -25,9 +25,6 @@ validates :item_description_id, :presence => true
 validates :latitude, :numericality => true
 validates :longitude, :numericality => true
 
-  def self.NEAR_BY_DISTANCE
-    @NEAR_BY_DISTANCE = 0.1
-  end
   reverse_geocoded_by :latitude, :longitude
 
 end

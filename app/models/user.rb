@@ -17,10 +17,6 @@
 
 class User < ActiveRecord::Base
 
-  def self.WORLD_USER_ID
-    @WORLD_USER_ID ||= 0
-  end
-
   attr_accessible :email,                 :username,  :password,
                   :password_confirmation, :sex,       :age,
                   :bagtype_id,            :user_type, :api_key
