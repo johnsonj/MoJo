@@ -24,5 +24,14 @@ class PagesController < ApplicationController
       format.html
     end
   end
+    
+    
+  def items2
+@TopItems2 = ItemHistory.find(:all, :select => "runningdistance, max{runningdistance} as item_distance", :group => "runningdistance", :order => "runningdistance DESC")
+        
+        respond_to do |format|
+         format.html
+      end 
+    end
 
 end

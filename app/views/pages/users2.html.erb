@@ -1,0 +1,18 @@
+<h1>Leaderboards - Users</h1>
+
+Top Locations
+<table>
+  <tr>
+    <th>User ID</th>
+    <th>Running Distance</th>
+    <th></th>
+  </tr>
+
+<% @TopUsers.each do |item| %>
+  <tr>
+    <td><%= user.user_id %></td>
+    <td><%= user.user_count%></td>
+  </tr>
+<% end %>
+</table>
+<br/>
