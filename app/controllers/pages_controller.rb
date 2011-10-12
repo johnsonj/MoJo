@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def users
-@TopUsers = Location.find(:all, :select => "user_id, count(id) as user_count", :group => "user_id", :order => "user_count DESC")
+@TopUsers = ItemHistory.find(:all, :select => "user_id, count(id) as user_count", :group => "user_id", :order => "user_count DESC")
 
     respond_to do |format|
       format.html
