@@ -10,10 +10,10 @@ if [ $RESULT -ne 0 ]; then
 fi
 if [ -n "${CC_BUILD_ARTIFACTS+x}" ]; then
   mv coverage ${CC_BUILD_ARTIFACTS}/
-  git push heroku
+#  git push heroku
   if [ $? -ne 0 ]; then
     exit -1
   fi
-  heroku rake db:migrate
+#  heroku rake db:migrate
   exit $?
 fi
