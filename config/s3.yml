@@ -1,14 +1,14 @@
 production:
-  access_key_id: AKIAJ4M5AND7IXLOPWVQ
-  secret_access_key: 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
-  bucket: Prod-Icons
+  access_key_id: AKIAJV7TZXSHUWIKGMRA
+  secret_access_key: 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
+  bucket: media.serendipity
 
 development:
-  access_key_id: AKIAJ4M5AND7IXLOPWVQ
-  secret_access_key: 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
-  bucket: MoJoIcons
+  access_key_id: AKIAJV7TZXSHUWIKGMRA
+  secret_access_key: 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
+  bucket: development.serendipity
 
 test:
-  access_key_id: AKIAJ4M5AND7IXLOPWVQ
-  secret_access_key: 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
-  bucket: MoJoIcons
+  access_key_id: AKIAJV7TZXSHUWIKGMRA
+  secret_access_key: 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
+  bucket: development.serendipity
