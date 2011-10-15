@@ -24,134 +24,138 @@ describe ItemHistoriesController do
   # ItemHistory. As you add validations to ItemHistory, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:latitude => 0, :longitude => 0}
+  end
+
+  before(:each) do
+    log_in_test(Factory(:admin))
   end
 
   describe "GET index" do
-it "assigns all item_histories as @item_histories"# do
-#     item_history = ItemHistory.create! valid_attributes
-#     get :index
-#     assigns(:item_histories).should eq([item_history])
-#   end
+    it "assigns all item_histories as @item_histories" do
+      item_history = ItemHistory.create! valid_attributes
+      get :index
+      assigns(:item_histories).should eq([item_history])
+    end
   end
 
   describe "GET show" do
-  it "assigns the requested item_history as @item_history" #do
-#    item_history = ItemHistory.create! valid_attributes
-#     get :show, :id => item_history.id.to_s
-#     assigns(:item_history).should eq(item_history)
-#   end
+    it "assigns the requested item_history as @item_history" do
+      item_history = ItemHistory.create! valid_attributes
+      get :show, :id => item_history.id.to_s
+      assigns(:item_history).should eq(item_history)
+    end
   end
 
   describe "GET new" do
-    it "assigns a new item_history as @item_history" #do
-#  get :new
-#      assigns(:item_history).should be_a_new(ItemHistory)
-#    end
+    it "assigns a new item_history as @item_history" do
+      get :new
+      assigns(:item_history).should be_a_new(ItemHistory)
+    end
   end
 
   describe "GET edit" do
-    it "assigns the requested item_history as @item_history" #do
-#   item_history = ItemHistory.create! valid_attributes
-#     get :edit, :id => item_history.id.to_s
-#     assigns(:item_history).should eq(item_history)
-#   end
+    it "assigns the requested item_history as @item_history" do
+      item_history = ItemHistory.create! valid_attributes
+      get :edit, :id => item_history.id.to_s
+      assigns(:item_history).should eq(item_history)
+    end
   end
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new ItemHistory"# do
-#  expect {
-#          post :create, :item_history => valid_attributes
-#        }.to change(ItemHistory, :count).by(1)
-#      end
+      it "creates a new ItemHistory" do
+        expect {
+          post :create, :item_history => valid_attributes
+        }.to change(ItemHistory, :count).by(1)
+      end
 
-      it "assigns a newly created item_history as @item_history" #do
-#       post :create, :item_history => valid_attributes
-#        assigns(:item_history).should be_a(ItemHistory)
-#        assigns(:item_history).should be_persisted
-#      end
+      it "assigns a newly created item_history as @item_history" do
+        post :create, :item_history => valid_attributes
+        assigns(:item_history).should be_a(ItemHistory)
+        assigns(:item_history).should be_persisted
+      end
 
-      it "redirects to the created item_history" #do
-#        post :create, :item_history => valid_attributes
-#        response.should redirect_to(ItemHistory.last)
-#      end
+      it "redirects to the created item_history" do
+        post :create, :item_history => valid_attributes
+        response.should redirect_to(ItemHistory.last)
+      end
     end
 
     describe "with invalid params" do
-     it "assigns a newly created but unsaved item_history as @item_history" #do
+      it "assigns a newly created but unsaved item_history as @item_history" do
         # Trigger the behavior that occurs when invalid params are submitted
-#   ItemHistory.any_instance.stub(:save).and_return(false)
-#        post :create, :item_history => {}
-#        assigns(:item_history).should be_a_new(ItemHistory)
-#      end
+        ItemHistory.any_instance.stub(:save).and_return(false)
+        post :create, :item_history => {}
+        assigns(:item_history).should be_a_new(ItemHistory)
+      end
 
-      it "re-renders the 'new' template" #do
+      it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-#  ItemHistory.any_instance.stub(:save).and_return(false)
-#        post :create, :item_history => {}
-#        response.should render_template("new")
-#      end
+        ItemHistory.any_instance.stub(:save).and_return(false)
+        post :create, :item_history => {}
+        response.should render_template("new")
+      end
     end
   end
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested item_history" #do
-#       item_history = ItemHistory.create! valid_attributes
+      it "updates the requested item_history" do
+        item_history = ItemHistory.create! valid_attributes
         # Assuming there are no other item_histories in the database, this
         # specifies that the ItemHistory created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-#       ItemHistory.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-#       put :update, :id => item_history.id, :item_history => {'these' => 'params'}
-#     end
+        ItemHistory.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, :id => item_history.id, :item_history => {'these' => 'params'}
+      end
 
-      it "assigns the requested item_history as @item_history" #do
-#        item_history = ItemHistory.create! valid_attributes
-#       put :update, :id => item_history.id, :item_history => valid_attributes
-#       assigns(:item_history).should eq(item_history)
-#      end
+      it "assigns the requested item_history as @item_history" do
+        item_history = ItemHistory.create! valid_attributes
+        put :update, :id => item_history.id, :item_history => valid_attributes
+        assigns(:item_history).should eq(item_history)
+      end
 
-      it "redirects to the item_history" #do
-#       item_history = ItemHistory.create! valid_attributes
-#        put :update, :id => item_history.id, :item_history => valid_attributes
-#       response.should redirect_to(item_history)
-#      end
+      it "redirects to the item_history" do
+        item_history = ItemHistory.create! valid_attributes
+        put :update, :id => item_history.id, :item_history => valid_attributes
+        response.should redirect_to(item_history)
+      end
     end
 
     describe "with invalid params" do
-      it "assigns the item_history as @item_history" #do
-#  item_history = ItemHistory.create! valid_attributes
+      it "assigns the item_history as @item_history" do
+        item_history = ItemHistory.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-#        ItemHistory.any_instance.stub(:save).and_return(false)
-#       put :update, :id => item_history.id.to_s, :item_history => {}
-#       assigns(:item_history).should eq(item_history)
-#     end
+        ItemHistory.any_instance.stub(:save).and_return(false)
+        put :update, :id => item_history.id.to_s, :item_history => {}
+        assigns(:item_history).should eq(item_history)
+      end
 
-      it "re-renders the 'edit' template" #do
-#       item_history = ItemHistory.create! valid_attributes
-#       # Trigger the behavior that occurs when invalid params are submitted
-#       ItemHistory.any_instance.stub(:save).and_return(false)
-#       put :update, :id => item_history.id.to_s, :item_history => {}
-#       response.should render_template("edit")
-#     end
+      it "re-renders the 'edit' template" do
+        item_history = ItemHistory.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        ItemHistory.any_instance.stub(:save).and_return(false)
+        put :update, :id => item_history.id.to_s, :item_history => {}
+        response.should render_template("edit")
+      end
     end
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested item_history" #do
-#item_history = ItemHistory.create! valid_attributes
-#     expect {
-#       delete :destroy, :id => item_history.id.to_s
-#     }.to change(ItemHistory, :count).by(-1)
-#   end
+    it "destroys the requested item_history" do
+      item_history = ItemHistory.create! valid_attributes
+      expect {
+        delete :destroy, :id => item_history.id.to_s
+      }.to change(ItemHistory, :count).by(-1)
+    end
 
-    it "redirects to the item_histories list" #do
-#     item_history = ItemHistory.create! valid_attributes
-#  delete :destroy, :id => item_history.id.to_s
-#     response.should redirect_to(item_histories_url)
-#   end
+    it "redirects to the item_histories list" do
+      item_history = ItemHistory.create! valid_attributes
+      delete :destroy, :id => item_history.id.to_s
+      response.should redirect_to(item_histories_url)
+    end
   end
 
 end

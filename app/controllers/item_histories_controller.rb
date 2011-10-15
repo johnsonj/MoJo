@@ -1,7 +1,7 @@
 class ItemHistoriesController < ApplicationController
   include SessionsHelper
 
-  before_filter :ensure_permissions
+  before_filter :admin_login_required
 
   # GET /item_histories
   # GET /item_histories.json
@@ -94,9 +94,5 @@ class ItemHistoriesController < ApplicationController
       format.json { head :ok }
     end
   end
-  
-  private 
-  def ensure_permissions
-    login_required
-  end
+
 end
