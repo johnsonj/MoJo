@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: interactions
+#
+#  id           :integer         primary key
+#  Loclatitude  :float
+#  loclongitude :float
+#  PersonA      :integer
+#  PersonB      :integer
+#  Timestamp    :timestamp
+#  created_at   :timestamp
+#  updated_at   :timestamp
+#  deltime      :integer
+#
+
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 

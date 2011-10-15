@@ -8,9 +8,9 @@
 #  PersonA      :integer
 #  PersonB      :integer
 #  Timestamp    :timestamp
-#  deltime      :timestamp
 #  created_at   :timestamp
 #  updated_at   :timestamp
+#  deltime      :integer
 #
 
 class Interaction < ActiveRecord::Base

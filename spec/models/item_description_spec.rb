@@ -2,13 +2,13 @@
 #
 # Table name: item_descriptions
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  name        :string(255)
 #  description :text
 #  rarity      :string(255)
 #  image_id    :integer
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #
 
 require 'spec_helper'

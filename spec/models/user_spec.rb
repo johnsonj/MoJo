@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer         primary key
+#  username        :string(255)
+#  age             :integer
+#  sex             :integer
+#  password_digest :string(255)
+#  created_at      :timestamp
+#  updated_at      :timestamp
+#  email           :string(255)
+#  bagtype_id      :integer
+#  api_key         :text
+#  user_type       :string(255)     default("normal"), not null
+#
+
 require 'spec_helper'
 
 describe User do

@@ -2,13 +2,13 @@
 #
 # Table name: items
 #
-#  id             :integer         not null, primary key
-#  user_id        :integer
-#  latitude       :float
-#  longitude      :float
-#  created_at     :datetime
-#  updated_at     :datetime
-#  description_id :integer
+#  id                  :integer         primary key
+#  user_id             :integer
+#  latitude            :float
+#  longitude           :float
+#  created_at          :timestamp
+#  updated_at          :timestamp
+#  item_description_id :integer
 #
 
 require 'spec_helper'

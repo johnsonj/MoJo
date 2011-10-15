@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: locations
+#
+#  id         :integer         primary key
+#  latitude   :float
+#  longitude  :float
+#  timestamp  :timestamp
+#  user_id    :integer
+#  created_at :timestamp
+#  updated_at :timestamp
+#
+
 require 'spec_helper'
 
 describe Location do
