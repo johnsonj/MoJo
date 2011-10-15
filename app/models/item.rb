@@ -21,9 +21,9 @@ class Item < ActiveRecord::Base
   belongs_to :item_description, :foreign_key => "item_description_id"
   has_many :ItemHistory, :order => "stamp DESC", :limit => 30
 
-validates :item_description_id, :presence => true
-validates :latitude, :numericality => true
-validates :longitude, :numericality => true
+  validates :item_description_id, :presence => true
+  validates_numericality_of :latitude, :less_than => 90, :greater_than => -90
+  validates_numericality_of :longitude, :less_than => 180, :greater_than => -180
 
   reverse_geocoded_by :latitude, :longitude
 
