@@ -24,6 +24,15 @@ Factory.define :user_app_interactions, :class => User do |user|
   user.api_key "interactions_key"
   user.user_type "interactions"
 end
+Factory.define :Iphone, :class => User do |user|
+  user.username "Iphone"
+  user.age "0"
+  user.sex "1"
+  user.email "antypdet@gmail.com"
+  user.password "password"
+  user.api_key "key"
+  user.user_type "app"
+end
 Factory.define :location do |location|
   location.latitude 2.0921
   location.longitude 1.2931
