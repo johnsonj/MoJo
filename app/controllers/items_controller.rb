@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   include SessionsHelper
   include ActiveModel::Validations
 
-  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit]
+  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multiNew, :multi_create]
   before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
 
   # GET /items
@@ -43,7 +43,10 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
-    @item.user_id = current_user.id
+    @item.user_id = 0
+  end
+
+  def multiNew
   end
 
   # GET /items/1/edit
@@ -108,7 +111,15 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    @item = Item.new(params[:item])
+    if @item.save
+      redirect_to @item, notice: 'Item was successfully created.'
+    else
+      render action: "new"
+    end
+  end
 
+  def multi_create
     @flag = true
     params[:number].to_i.times {
       @item = Item.new(:item_description_id => params[:item_description_id])

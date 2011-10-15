@@ -23,7 +23,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
 
-  match '/items/new' => 'items#multinew'
+  match '/items/multinew' => 'items#multiNew'
   match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
