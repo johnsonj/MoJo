@@ -3,11 +3,6 @@ require 'spec_helper'
 describe SessionsController do
   render_views
 
-  def valid_attributes
-    usr = Factory[:user]
-    {:username => usr.username, :password => usr.password, :password_confirmation => usr.password}
-  end
-
   describe "GET 'new'" do
 
     it "should be successful" do
