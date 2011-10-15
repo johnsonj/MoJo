@@ -2,18 +2,13 @@ class ItemsController < ApplicationController
   include SessionsHelper
   include ActiveModel::Validations
 
-  before_filter :login_required
-
+  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit]
+  before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
 
   # GET /items
   # GET /items.json
   def index
     @items = Item.all
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @items }
-    end
   end
 
 
@@ -26,7 +21,7 @@ class ItemsController < ApplicationController
 
   def nearby
     Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
-    items = Item.near([params[:latitude].to_f, params[:longitude].to_f],  NEAR_BY_DISTANCE).where(:user_id => WORLD_USER_ID)
+    items = Item.near([params[:latitude].to_f, params[:longitude].to_f], NEAR_BY_DISTANCE).where(:user_id => WORLD_USER_ID)
 
     respond_to do |format|
       format.json { render json: items.to_json(:only => [:item_description_id, :id, :distance]) }
@@ -49,11 +44,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.user_id = current_user.id
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item }
-    end
   end
 
   # GET /items/1/edit
@@ -107,7 +97,6 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if valid
-        format.html # show.html.erb
         format.json { render :json => 1 }
       else
         format.json { render :json => 0, :status => :unprocessable_entry }
@@ -143,10 +132,8 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @flag
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -172,11 +159,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-
-    respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :ok }
-    end
+    redirect_to items_url
   end
 
 end
