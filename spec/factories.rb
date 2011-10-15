@@ -6,6 +6,15 @@ Factory.define :user do |user|
   user.password "password"
   user.api_key "fake_key"
 end
+Factory.define :admin, :class => User do |user|
+  user.username "Stormagedon"
+  user.age "2"
+  user.sex "1"
+  user.email "example@example.com"
+  user.password "password"
+  user.api_key "fake_key"
+  user.user_type 'admin'
+end
 Factory.define :user_app_interactions, :class => User do |user|
   user.username "Interactions"
   user.age "0"

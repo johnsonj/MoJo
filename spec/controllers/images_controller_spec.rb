@@ -27,6 +27,10 @@ describe ImagesController do
     {}
   end
 
+  before(:each) do
+    log_in_test(Factory(:admin))
+  end
+
   describe "GET index" do
     it "assigns all images as @images" do
       image = Image.create! valid_attributes

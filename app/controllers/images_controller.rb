@@ -1,4 +1,8 @@
 class ImagesController < ApplicationController
+  include SessionsHelper
+
+  before_filter :admin_login_required
+
   # GET /images
   # GET /images.json
   def index
