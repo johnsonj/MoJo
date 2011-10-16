@@ -19,17 +19,6 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
     @image = Image.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json {
-        if current_user
-          render :json => @image.icon.url
-        else
-          render :json => "Unauthorized Access", :status => :unauthorized
-        end
-      }
-    end
   end
 
   # GET /images/new
@@ -99,7 +88,7 @@ class ImagesController < ApplicationController
       if @image
         format.json { render :json => @image.icon.url }
       else
-        format.json { render :json => @image.errors, :status => :not_found }
+        format.json { render :json => "Not Found", :status => :not_found }
       end
     end
   end

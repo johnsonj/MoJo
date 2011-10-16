@@ -12,7 +12,7 @@ describe "API" do
     img = Factory(:image)
 
     get '/api/getImage', valid_api_params.merge(:id => img.id)
-    response.body.should == ""
+    response.body.should == "/icons/original/missing.png"
   end
 
   it 'getImage without appKey should fail' do
