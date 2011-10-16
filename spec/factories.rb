@@ -88,3 +88,5 @@ Factory.define :item_description do |desc|
   desc.rarity 'awesome'
   desc.image_id 1
 end
+Factory.define :image do |desc|
+end
