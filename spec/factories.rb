@@ -30,7 +30,7 @@ Factory.define :Iphone, :class => User do |user|
   user.sex "1"
   user.email "antypdet@gmail.com"
   user.password "password"
-  user.api_key "key"
+  user.api_key "app_key"
   user.user_type "app"
 end
 Factory.define :location do |location|
@@ -81,4 +81,12 @@ Factory.define :location_set_6, :class => Location do |location|
   location.longitude 53
   location.user_id 1
   location.timestamp "2010-01-01T15:00:00Z"
+end
+Factory.define :item_description do |desc|
+  desc.name 'Test'
+  desc.description 'something'
+  desc.rarity 'awesome'
+  desc.image_id 1
+end
+Factory.define :image do |desc|
 end

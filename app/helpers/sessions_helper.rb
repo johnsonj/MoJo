@@ -5,14 +5,30 @@ module SessionsHelper
   end
 
   def login_required
-    deny_access unless isLoggedIn?
+    deny_access unless is_logged_in
   end
 
   def admin_login_required
-    deny_access unless isLoggedIn? && isAdmin?
+    deny_access unless is_logged_in && isAdmin?
   end
 
-  def isLoggedIn?
+  def admin_or_app_required
+    deny_access unless hasAccess(:app, params[:appKey]) or isAdmin?
+  end
+
+  def admin_or_app_login_required
+    deny_access unless (hasAccess(:app, params[:appKey]) or isAdmin?) and is_logged_in
+  end
+
+  def admin_or_interactions_required
+    deny_access unless hasAccess(:interactions, params[:appKey]) or isAdmin?
+  end
+
+  def admin_or_api_required
+    deny_access unless ((hasAccess(:app, params[:appKey]) or hasAccess(:interactions, params[:appKey])) or isAdmin?)
+  end
+
+  def is_logged_in
     current_user
   end
 

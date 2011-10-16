@@ -20,15 +20,16 @@ require 'spec_helper'
 
 describe ItemDescriptionsController do
 
-  before(:each) do
-    log_in_test(Factory(:user))
-  end
 
   # This should return the minimal set of attributes required to create a valid
   # ItemDescription. As you add validations to ItemDescription, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
     {:name => 'Test Item Description', :description => 'Some stuff', :rarity => 'rare', :image_id => 1}
+  end
+
+  before(:each) do
+    log_in_test(Factory(:admin))
   end
 
   describe "GET index" do

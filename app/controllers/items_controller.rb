@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
 
     if valid
       @item.user_id = current_user.id
-      @item.latitude = params[:latitutde]
+      @item.latitude = params[:latitude]
       @item.longitude = params[:longitude]
       valid = @item.save
     end

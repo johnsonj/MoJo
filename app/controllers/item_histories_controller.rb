@@ -1,7 +1,8 @@
 class ItemHistoriesController < ApplicationController
   include SessionsHelper
 
-  before_filter :admin_login_required
+  before_filter :admin_login_required, :except => :itemDetails
+  before_filter :app_required, :only => :itemDetails
 
   # GET /item_histories
   # GET /item_histories.json
@@ -13,6 +14,7 @@ class ItemHistoriesController < ApplicationController
       format.json { render json: @item_histories }
     end
   end
+
   def itemDetails
     @item = Item.find(params[:id])
     @item_histories = @item.ItemHistory if @item
@@ -36,14 +38,8 @@ class ItemHistoriesController < ApplicationController
   end
 
   # GET /item_histories/new
-  # GET /item_histories/new.json
   def new
     @item_history = ItemHistory.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item_history }
-    end
   end
 
   # GET /item_histories/1/edit
