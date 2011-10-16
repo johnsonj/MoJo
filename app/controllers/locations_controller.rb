@@ -94,21 +94,21 @@ class LocationsController < ApplicationController
   def get_locations_for_range_in_area
     starting = params[:start]
     ending = params[:end]
-    startLat = params[:startingLatitude]
-    endLat = params[:endingLatitude]
-    startLon = params[:startingLongitude]
-    endLon = params[:endingLongitude]
+    start_lat = params[:startingLatitude]
+    end_lat = params[:endingLatitude]
+    start_lon = params[:startingLongitude]
+    end_lon = params[:endingLongitude]
 
     respond_to do |format|
       if starting and ending and hasAccess(:interactions, params[:appKey])
         if params[:count]
           format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime,
-                                                     :longitude => startLon..endLon,
-                                                     :latitude => startLat..endLat).count }
+                                                     :longitude => start_lon..end_lon,
+                                                     :latitude => start_lat..end_lat).count }
           else
           format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime,
-                                                     :longitude => startLon..endLon,
-                                                     :latitude => startLat..endLat) }
+                                                     :longitude => start_lon..end_lon,
+                                                     :latitude => start_lat..end_lat) }
           end
        else
         format.json { render :json => "Invalid Range or AppKey", :status => :not_acceptable }
@@ -146,7 +146,7 @@ class LocationsController < ApplicationController
 
   private
   def login_and_access
-    unless ((hasAccess(:app, params[:appKey]) or hasAccess(:interactions, params[:appKey])) and isLoggedIn?)
+    unless ((hasAccess(:app, params[:appKey]) or hasAccess(:interactions, params[:appKey])) and is_logged_in)
       false
     end
   end

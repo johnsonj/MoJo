@@ -1,4 +1,8 @@
 class BagtypesController < ApplicationController
+  include SessionsHelper
+
+  before_filter :admin_login_required
+
   # GET /bagtypes
   # GET /bagtypes.json
   def index

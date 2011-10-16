@@ -18,11 +18,15 @@ class ApplicationController < ActionController::Base
 
   def hasAccess(sym, key)
     usr = User.getByApiKey(key)
-    if usr && usr.user_type == sym
+    if usr && usr.user_type == sym && key
       usr
     else
-      puts 'Key : ' + key + ' does not have access to ' + sym.to_s
+      puts "Key : #{(key if key)} does not have access to #{sym.to_s}"
     end
+  end
+
+  def app_required
+    deny_access unless hasAccess(:app, params[:appKey])
   end
 
   helper_method :current_user

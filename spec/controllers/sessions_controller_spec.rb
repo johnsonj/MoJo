@@ -41,8 +41,8 @@ describe SessionsController do
 
       it "should sign the user in" do
         post :create, :session => @attr
-        controller.isLoggedIn?.should be_true
-        controller.isLoggedIn?.should == @user
+        controller.is_logged_in.should be_true
+        controller.is_logged_in.should == @user
       end
 
       it "should redirect to the user show page" do

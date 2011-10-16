@@ -3,7 +3,8 @@ require 'sessions_helper'
 class ItemDescriptionsController < ApplicationController
   include SessionsHelper
 
-  before_filter :login_required
+  before_filter :admin_login_required, :except => [:show]
+  before_filter :admin_or_app_required, :only => [:show]
 
   # GET /item_descriptions
   # GET /item_descriptions.json
@@ -19,11 +20,17 @@ class ItemDescriptionsController < ApplicationController
   # GET /item_descriptions/1
   # GET /item_descriptions/1.json
   def show
-    @item_description = ItemDescription.find(params[:id])
+    @item_description = ItemDescription.find(params[:id]) if ItemDescription.exists?(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @item_description }
+      format.json do
+        if @item_description
+          render json: @item_description, :status => :ok
+        else
+          render json: "None Found", :status => :not_found
+        end
+      end
     end
   end
 

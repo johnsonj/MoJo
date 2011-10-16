@@ -1,7 +1,8 @@
 class ImagesController < ApplicationController
   include SessionsHelper
 
-  before_filter :admin_login_required
+  before_filter :admin_login_required, :except => :getImage
+  before_filter :app_required, :only => :getImage
 
   # GET /images
   # GET /images.json

@@ -27,6 +27,10 @@ describe BagtypesController do
     {}
   end
 
+  before(:each) do
+    log_in_test Factory(:admin)
+  end
+
   describe "GET index" do
     it "assigns all bagtypes as @bagtypes" do
       bagtype = Bagtype.create! valid_attributes
