@@ -164,8 +164,15 @@ describe ItemsController do
 
     describe "with valid params" do
       it "creates new Items" do  
-	    post :multi_create, { :item => valid_attributes,  :item.number => "3" }    
-           response.to change(Item, :count).by(3)
+        expect {
+		get 'multi_create', {"user_id" => 0, "item_description_id" => 0, "latitude" => 0, "longitude" => 0, "number" => 3, "latitudeoffset" => 0, "longitudeoffset" => 0}
+         }.to change(Item, :count).by(3)
+      end
+
+      it "creates new Items" do  
+        expect {
+		get 'multi_create', {"user_id" => 0, "item_description_id" => 0, "latitude" => 0, "longitude" => 0, "number" => 3, "latitudeoffset" => 99999, "longitudeoffset" => 99999}
+         }.to change(Item, :count).by(3)
       end
 
       it "redirects to item list" do
