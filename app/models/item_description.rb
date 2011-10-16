@@ -13,7 +13,7 @@
 
 class ItemDescription < ActiveRecord::Base
 
-  has_one :Image
+  belongs_to :image
   has_one :item
 
 validates :name, :uniqueness => true

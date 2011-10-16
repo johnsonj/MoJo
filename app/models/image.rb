@@ -12,6 +12,7 @@
 
 class Image < ActiveRecord::Base
 
+  has_one :item_description
   # Paperclip
   has_attached_file :icon,
                     :styles =>{
