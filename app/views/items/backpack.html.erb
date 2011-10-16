@@ -6,7 +6,7 @@
 
 <% @items.each do |item| %>
   <tr>
-    <td><%= item.item_description.image.icon_file_name if item.item_description.image %></td>
+    <td><%= item.item_description.image.icon_file_name if item.item_description.image if item.item_description %></td>
     <td><a href="/items/<%= item.id %>"><%= image_tag item.item_description.name if item.item_description %></a></td>
   </tr>
 <% end %>

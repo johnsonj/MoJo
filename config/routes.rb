@@ -37,7 +37,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/getBackpackItems' => 'items#backpack', :format => 'json'
   match '/api/getItemsNearBy' => 'items#nearby', :format => 'json'
   match '/api/recordLocation' => 'locations#record_location', :format => 'json'
-  match '/api/getImage' => 'images#show', :format => 'json'
+  match '/api/getImage' => 'images#getImage', :format => 'json'
   match '/api/locationPing/:latitude/:longitude/:timestamp' => 'locations#record_location', :format => 'json'
   match '/api/registerUser' => 'users#create', :format => 'json'
   match '/api/login' => 'sessions#create', :as => 'api_login', :format => 'json'
