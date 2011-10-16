@@ -160,4 +160,22 @@ describe ItemsController do
     end
   end
 
+  describe "POST multi_create" do
+
+    describe "with valid params" do
+      it "creates new Items" do  
+		post :multi_create, { :item_description_id => "0", :longitute => "0", :latitude => "0", :number => "3" }    
+           response.to change(Item, :count).by(3)
+      end
+
+      it "redirects to item list" do
+        post :multi_create, :item => valid_attributes
+        response.should redirect_to(items_path)
+      end
+      
+    end
+  end
+
+
+
 end

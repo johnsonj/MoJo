@@ -2,7 +2,7 @@
 
 
 
-<%= form_tag(:action => :multi_create, :method => "POST") do %>
+<%= form_tag('/items/multi_create') do %>
  <p>
    User:<br />
    <%= number_field_tag "user_id", current_user.id %>

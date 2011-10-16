@@ -2,6 +2,9 @@ Ipro369MoJo::Application.routes.draw do
 
   get "pages/leaderboards"
 
+
+  match '/items/multiNew' => 'items#multiNew', :as => :items_multinew_path
+  match '/items/multi_create' => 'items#multi_create', :via => :post
   resources :item_descriptions
 
   resources :item_histories
@@ -23,7 +26,6 @@ Ipro369MoJo::Application.routes.draw do
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
 
-  match '/items/multinew' => 'items#multiNew'
   match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 

@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   def backpack
     @items = current_user.items
     respond_to do |format|
+	 format.html
       format.json { render json: @items.to_json(:only => [:description, :id, :image_id, :latitude, :longitude, :name, :rarity]) }
     end
   end
@@ -39,14 +40,19 @@ class ItemsController < ApplicationController
     end
   end
 
+  def multiNew
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @item }
+    end
+  end
+
+
   # GET /items/new
   # GET /items/new.json
   def new
     @item = Item.new
     @item.user_id = 0
-  end
-
-  def multiNew
   end
 
   # GET /items/1/edit
@@ -119,19 +125,38 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
   def multi_create
     @flag = true
     params[:number].to_i.times {
       @item = Item.new(:item_description_id => params[:item_description_id])
 
       if params[:longitudeoffset].to_i != 0
-        @item.longitude = rand(params[:longitudeoffset].to_i-1) + rand + params[:longitude].to_i
+        @item.longitude = rand((params[:longitudeoffset].to_i-1) * 2) - params[:longitudeoffset].to_i-1 + rand + params[:longitude].to_i
+
+		if @item.longitude < -180
+			@item.longitude = -179.9
+		end
+		if @item.longitude > 180
+			@item.longitude = 179.9
+		end
+		
+
       else
         @item.longitude = params[:longitude]
       end
 
       if params[:latitudeoffset].to_i != 0
-        @item.latitude = rand(params[:latitudeoffset].to_i-1) + rand + params[:latitude].to_i
+        @item.latitude = rand((params[:latitudeoffset].to_i-1) * 2) - params[:latitudeoffset].to_i-1 + rand + params[:latitude].to_i
+
+		if @item.latitude < -90
+			@item.latitude = -89.9
+		end
+		if @item.latitude > 90
+			@item.latitude = 89.9
+		end
+
       else
         @item.latitude = params[:latitude]
       end
@@ -140,13 +165,13 @@ class ItemsController < ApplicationController
       @flag = @item.save
     }
 
-    respond_to do |format|
+
       if @flag
-        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
+        redirect_to items_path, notice: 'Item was successfully created.' 
       else
         format.html { render action: "new" }
       end
-    end
+
   end
 
   # PUT /items/1
