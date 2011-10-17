@@ -3,8 +3,9 @@ require 'sessions_helper'
 class ItemDescriptionsController < ApplicationController
   include SessionsHelper
 
-  before_filter :admin_login_required, :except => [:show]
-  before_filter :admin_or_app_required, :only => [:show]
+  before_filter :admin_login_required, :except => [:show, :get_description_updates]
+  before_filter :admin_or_app_required, :only => :show
+  before_filter :app_required, :only => :get_description_updates
 
   # GET /item_descriptions
   # GET /item_descriptions.json
@@ -91,6 +92,19 @@ class ItemDescriptionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to item_descriptions_url }
       format.json { head :ok }
+    end
+  end
+
+  def get_description_updates
+    if params[:dateTime].blank?
+      render :json => ItemDescription.all, :status => :ok
+    else
+      descriptions = ItemDescription.where("updated_at > ?", params[:dateTime].to_datetime.to_s(:db))
+      if descriptions.first
+        render :json => descriptions, :status => :ok
+      else
+        render :json => "No Updates Found", :status => :ok
+      end
     end
   end
 end
