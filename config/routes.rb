@@ -46,6 +46,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/getLocationsForRangeInArea' => 'locations#get_locations_for_range_in_area', :format => 'json'
   match '/api/writeInteraction' => 'interactions#create', :format => 'json'
   match '/api/getItemDescription' => 'item_descriptions#show', :format => 'json'
+  match '/api/getDescriptionUpdates' => 'item_descriptions#get_description_updates', :format => 'json'
 
 end
 
