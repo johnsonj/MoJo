@@ -1,4 +1,4 @@
-<h1>Showing the backpack for <%= current_user.username %></h1>
+<h1>Your Items <%= current_user.username %></h1>
 
 
 <table>
@@ -6,7 +6,7 @@
 
 <% @items.each do |item| %>
   <tr>
-    <td><%= image_tag item.item_description.image.icon_file_name if item.item_description.image if item.item_description %></td>
+    <td><%= image_tag item.item_description.image.icon.url(:thumb) if item.item_description.image if item.item_description %></td>
     <td><a href="/items/<%= item.id %>"><%= item.item_description.name if item.item_description %></a></td>
   </tr>
 <% end %>
