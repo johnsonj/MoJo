@@ -30,9 +30,10 @@ a:visited{
 	color: #000000;
 }
 a:hover{
+	color: #000000;
 	font-weight: bold;
 	text-decoration: none;
-	color: #000000;
+
 }
 a:active{
 	font-weight: bold;
