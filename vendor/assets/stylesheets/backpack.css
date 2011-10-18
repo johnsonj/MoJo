@@ -93,58 +93,58 @@ a:active{
 
 #item1 {
 	position: absolute;
-	left: 115px;
-	top: 180px;
+	left: 130px;
+	top: 200px;
 	z-index: 4;
 }
 
 #item2 {
 	position: absolute;
-	left: 295px;
-	top: 180px;
-	z-index: 2;
+	left: 310px;
+	top: 200px;
+	z-index: 4;
 }
 
 #item3 {
 	position: absolute;
-	left: 475px;
-	top: 180px;
-	z-index: 2;
+	left: 490px;
+	top: 200px;
+	z-index: 4;
 }
 
 #item4 {
 	position: absolute;
-	left: 655px;
-	top: 180px;
-	z-index: 2;
+	left: 670px;
+	top: 200px;
+	z-index: 4;
 }
 
 #item5 {
 	position: absolute;
-	left: 115px;
-	top: 380px;
-	z-index: 2;
+	left: 130px;
+	top: 400px;
+	z-index: 4;
 }
 
 #item6 {
 	position: absolute;
-	left: 295px;
-	top: 380px;
-	z-index: 2;
+	left: 310px;
+	top: 400px;
+	z-index: 4;
 }
 
 #item7 {
 	position: absolute;
-	left: 475px;
-	top: 380px;
-	z-index: 2;
+	left: 490px;
+	top: 400px;
+	z-index: 4;
 }
 
 #item8 {
 	position: absolute;
-	left: 655px;
-	top: 380px;
-	z-index: 2;
+	left: 670px;
+	top: 400px;
+	z-index: 4;
 }
 
 
