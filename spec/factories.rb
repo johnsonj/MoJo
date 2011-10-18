@@ -96,3 +96,18 @@ Factory.define :item_description2, :class => ItemDescription do |desc|
 end
 Factory.define :image do |desc|
 end
+Factory.define :item_global_1, :class => Item do |item|
+  item.user_id 0
+  item.latitude 1
+  item.longitude 1
+end
+Factory.define :item_global_2, :class => Item do |item|
+  item.user_id 0
+  item.latitude 1.001
+  item.longitude 1.001
+end
+Factory.define :item_owned_1, :class => Item do |item|
+  item.user_id 1
+  item.latitude 1
+  item.longitude 1
+end
