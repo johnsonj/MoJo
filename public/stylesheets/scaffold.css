@@ -1,6 +1,17 @@
-body { background-color: #000; color: #fff; }
+body { 
+	background-color: #000; 
+	color: #fff;
+  font-family: verdana, arial, helvetica, sans-serif;
+	background-image: url(../../app/assets/images/bkgrnd1.png);
+	text-align: center;
+	padding: 50px;
+	margin-left: 6in;
+	margin-top: 6in;
+}
 
 body, p, ol, ul, td {
+  padding:  20px,50px,20px,50px;
+  background-image: url('bkgrnd1.jpeg');
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;

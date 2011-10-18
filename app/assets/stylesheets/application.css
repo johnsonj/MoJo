@@ -5,3 +5,14 @@
  *= require_self
  *= require_tree . 
 */
+
+body { 
+	background-color: #000; 
+	color: #fff;
+  font-family: verdana, arial, helvetica, sans-serif;
+	background-image: url(../../app/assets/images/bkgrnd1.png);
+	text-align: center;
+	padding: 50px;
+	margin-left: 6in;
+	margin-top: 6in;
+}
