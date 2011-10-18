@@ -100,14 +100,17 @@ Factory.define :item_global_1, :class => Item do |item|
   item.user_id 0
   item.latitude 1
   item.longitude 1
+  item.item_description_id 1
 end
 Factory.define :item_global_2, :class => Item do |item|
   item.user_id 0
   item.latitude 1.001
   item.longitude 1.001
+  item.item_description_id 1
 end
 Factory.define :item_owned_1, :class => Item do |item|
   item.user_id 1
   item.latitude 1
   item.longitude 1
+  item.item_description_id 1
 end
