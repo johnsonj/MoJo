@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
     Location.record_location(:user => current_user, :latitude => params[:latitude], :longitude => params[:longitude], :timestamp => params[:timestamp])
 
     valid = @item.user_id == WORLD_USER_ID
-
+    valid = valid && (@item.distance_to([params[:latitude].to_f, params[:longitude].to_f]) <= NEAR_BY_DISTANCE)
     if valid
       @item.user_id = current_user.id
       @item.latitude = params[:latitude]
