@@ -1,9 +1,10 @@
 body { 
 	background-color: #000; 
-	color: #fff; 
+	color: #fff;
 	padding:  20px,50px,20px,50px;
-  background-image: url('bkgrnd1.jpeg');
-  font-family: verdana, arial, helvetica, sans-serif;}
+  font-family: verdana, arial, helvetica, sans-serif;
+	background-image: url(../../app/assets/images/bkgrnd1.png);
+}
 
 body, p, ol, ul, td {
   padding:  20px,50px,20px,50px;
