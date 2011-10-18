@@ -1,12 +1,32 @@
 body { background-color: #fff; color: #000; }
 
+a span {
+	display: none;
+}
 
+a:hover span {
+	display: block;
+   	position: absolute;
+}
 
-a:link {color:#FF0000;}    
-a:visited {color:#00FF00;} 
-a:hover {color:#000000;}   
-a:active {color:#0000FF;}  
-
+a:link{
+	text-decoration: none;
+	color: #000000;
+}
+a:visited{
+	text-decoration: none;
+	color: #000000;
+}
+a:hover{
+	font-weight: bold;
+	text-decoration: none;
+	color: #2B2B2B;
+}
+a:active{
+	font-weight: bold;
+	text-decoration: none;
+	color: #2B2B2B;
+}
 
 #header1 {
 	position: absolute;
