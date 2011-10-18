@@ -1,17 +1,5 @@
 body { background-color: #fff; color: #000; }
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
 a span {
 	display: none;
 }
@@ -21,64 +9,11 @@ a:hover span {
    	position: absolute;
 }
 
-a:link{
-	text-decoration: none;
-	color: #000000;
-}
-a:visited{
-	text-decoration: none;
-	color: #000000;
-}
-a:hover{
-	color: #000000;
-	font-weight: bold;
-	text-decoration: none;
+a:link {color:#FF0000;}    /* unvisited link */
+a:visited {color:#00FF00;} /* visited link */
+a:hover {color:#FF00FF;}   /* mouse over link */
+a:active {color:#0000FF;}  /* selected link */
 
-}
-a:active{
-	font-weight: bold;
-	text-decoration: none;
-	color: #D1D1D1;
-}
-
-div.field, div.actions {
-  margin-bottom: 10px;
-}
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-}
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square;
-}
 
 #header1 {
 	position: absolute;
@@ -198,11 +133,5 @@ div.field, div.actions {
 	top: 380px;
 	z-index: 2;
 }
-
-.ToolText{position:relative; } 
-.ToolTextHover{position:relative;} 
-.ToolText span{display: none;} 
-
-
 
 
