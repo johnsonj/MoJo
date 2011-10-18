@@ -12,6 +12,15 @@ pre {
   font-size: 11px;
 }
 
+a span {
+	display: none;
+}
+
+a:hover span {
+	display: block;
+   	position: absolute;
+}
+
 a:link{
 	text-decoration: none;
 	color: #000000;
@@ -188,5 +197,11 @@ div.field, div.actions {
 	top: 380px;
 	z-index: 2;
 }
+
+.ToolText{position:relative; } 
+.ToolTextHover{position:relative;} 
+.ToolText span{display: none;} 
+
+
 
 
