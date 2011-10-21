@@ -20,8 +20,28 @@ require 'spec_helper'
 describe User do
   before (:each) do
     @valid_user = Factory(:user)
-    @attr = {:username => @valid_user.username, :age => @valid_user.age, :sex => @valid_user.sex, :email => @valid_user.email, :password => @valid_user.password, :api_key => @valid_user.api_key }
+    @attr = {:username => @valid_user.username, :age => @valid_user.age,
+             :sex => @valid_user.sex, :email => @valid_user.email,
+             :password => @valid_user.password, :api_key => @valid_user.api_key }
+    @valid_user.destroy
   end
+
+  it "should fail create a new instance given duplicate username" do
+    Factory(:user)
+    User.new(@attr.merge(:email => "unique@email.com")).should_not be_valid
+  end
+
+  it "should fail create a new instance given duplicate email" do
+    Factory(:user)
+    User.new(@attr.merge(:username => "uniqueUsername")).should_not be_valid
+  end
+
+  it "should reject email addresses identical up to case" do
+    upcased_email = @attr[:email].upcase
+    User.create!(@attr.merge(:email => upcased_email))
+    User.new(@attr).should_not be_valid
+  end
+
 
   it "should create a new instance given valid attributes" do
     User.create!(@attr)
@@ -50,6 +70,7 @@ describe User do
   
   it "should return a valid user by APIKey" do
     @usr = User.new(@attr)
+    @usr.save
     @search = User.getByApiKey(@attr[:api_key])
     @search.username.should == @usr.username
     @search.email.should == @usr.email
