@@ -28,8 +28,24 @@ class User < ActiveRecord::Base
   has_many :interaction
   has_many :items
 
-  validates_presence_of :password, :on => :create
-  validates_presence_of :username, :age, :sex, :email, :on => :create
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :username,
+            :presence => true,
+            :length => {:maximum => 40},
+            :uniqueness => { :case_sensitive => false }
+
+  validates :email,
+            :presence => true,
+            :uniqueness => { :case_sensitive => false },
+            :format => {:with => email_regex}
+
+  validates :password,
+            :presence => true,
+            :confirmation => true,
+            :length => {:within => 6..40}
+
+  validates_presence_of :age, :sex, :on => :create
   validates_inclusion_of :user_type, :in => [:normal, :admin, :app, :interactions]
 
   def self.getByApiKey(key)
