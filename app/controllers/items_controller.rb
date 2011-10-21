@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     @items = current_user.items
     respond_to do |format|
 	 format.html
-      format.json { render json: @items.to_json(:only => [:description, :id, :image_id, :latitude, :longitude, :name, :rarity]) }
+      format.json { render json: @items.to_json(:only => [:item_description_id, :id, :latitude, :longitude]) }
     end
   end
 

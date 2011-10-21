@@ -171,5 +171,16 @@ describe "API" do
       end
     end
   end
+
+  describe "get backpack items" do
+    it "should return the users items" do
+      item1 = Factory(:item_owned_1, :user_id => @usr.id)
+      item2 = Factory(:item_owned_1, :user_id => @usr.id)
+      item3 = Factory(:item_owned_1, :user_id => @usr.id)
+      get "/api/getBackpackItems", @valid_api_params
+      response.body.should == [item1,item2,item3].to_json(:only => [:item_description_id, :id, :latitude, :longitude])
+    end
+  end
+
 end
 
