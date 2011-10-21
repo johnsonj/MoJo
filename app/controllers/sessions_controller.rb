@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         usr = User.find_by_username(params[:session][:username])
         if usr && usr.authenticate(params[:session][:password])
           log_user_in(usr)
-          redirect_to :home_page, :notice => "Logged in!"
+          redirect_back_or :home_page
         else
           flash.now[:error] = "Invalid email or password"
           render "new"
