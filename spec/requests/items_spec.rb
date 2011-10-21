@@ -87,7 +87,6 @@ describe "API" do
              search.should exist
              search.first[:user_id].should == @usr.id
            end
-           it "should create item history"
          end
        end
        describe "with a user owned item" do
