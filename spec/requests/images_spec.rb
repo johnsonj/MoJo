@@ -22,7 +22,7 @@ describe "API" do
     response.status.should be 302
   end
 
-  it 'get description by an invalid id should return an item description' do
+  it 'get description by an invalid id should not return an item description' do
     get '/api/getImage', @valid_api_params.merge(:id => 100)
     response.status.should be 404
   end

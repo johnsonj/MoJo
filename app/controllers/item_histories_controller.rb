@@ -16,13 +16,13 @@ class ItemHistoriesController < ApplicationController
   end
 
   def itemDetails
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:id]) if Item.exists?(params[:id])
     @item_histories = @item.ItemHistory if @item
     respond_to do |format|
       if @item_histories
         format.json { render json: @item_histories.to_json(:only => [:id, :item_id, :latitude, :longitude, :runningdistance, :signature, :stamp, :user_id]) }
       else
-        format.json { render json: 0, status: :unprocessable_entity } 
+        format.json { render json: 0, status: :not_found }
       end
     end
   end 

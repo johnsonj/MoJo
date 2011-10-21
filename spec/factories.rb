@@ -114,3 +114,11 @@ Factory.define :item_owned_1, :class => Item do |item|
   item.longitude 1
   item.item_description_id 1
 end
+Factory.define :item_history do |history|
+  history.user_id 1
+  history.item_id 1
+  history.latitude 0
+  history.longitude 0
+  history.signature "HI"
+  history.stamp DateTime.now
+end

@@ -63,4 +63,19 @@ describe "API" do
     end
 
   end
+
+  describe "getItemDetails" do
+    it "should fail for an invalid item" do
+      get "/api/getItemDetails", @valid_api_params.merge(:id => 200)
+      response.status.should == 404
+    end
+
+    it "should return an item when passed a valid id" do
+      item = Factory(:item_global_1)
+      hist = Factory(:item_history, :item_id => item.id)
+      get "/api/getItemDetails", @valid_api_params.merge(:id => item.id)
+      response.body.should == [hist].to_json(:only => [:id, :item_id, :latitude, :longitude, :runningdistance, :signature, :stamp, :user_id])
+    end
+    end
+
 end
