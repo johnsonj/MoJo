@@ -7,7 +7,7 @@ Factory.define :user do |user|
   user.api_key "fake_key"
 end
 Factory.define :admin, :class => User do |user|
-  user.username "Stormagedon"
+  user.username "StormagedonAdmin"
   user.age "2"
   user.sex "1"
   user.email "example@example.com"

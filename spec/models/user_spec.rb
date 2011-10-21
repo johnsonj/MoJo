@@ -70,7 +70,7 @@ describe User do
   
   it "should return a valid user by APIKey" do
     @usr = User.new(@attr)
-    @usr.save
+    @usr.save.should == true
     @search = User.getByApiKey(@attr[:api_key])
     @search.username.should == @usr.username
     @search.email.should == @usr.email
