@@ -106,7 +106,30 @@ describe "API" do
         @item_global_2 = Factory(:item_global_2)
         @item_owned_1 = Factory(:item_owned_1, :user_id => @usr.id) 
      end
-    describe "with valid coordinates" do
+     describe "with invalid coordinates" do
+      def coordinates
+        {:latitude => 200, :longitude => 200}
+      end
+        describe "with a valid, user owned item" do
+        def params
+          @valid_api_params.merge(coordinates).merge(:id => @item_owned_1.id, :signature => "Hey there")
+        end
+        before (:each) do
+          get '/api/dropItem', params
+        end
+        it "should not be sucessful" do
+          response.body.should == "0"
+        end
+        it "should not create item history" do
+          history = ItemHistory.where(:item_id => @item_owned_1.id).first
+          history.should == nil
+        end
+        it "should maintain the ownership" do
+          Item.where(:id => @item_owned_1).first.user_id.should == @usr.id
+        end
+      end
+     end
+     describe "with valid coordinates" do
       def coordinates
         {:latitude => 1, :longitude => 1}
       end
@@ -133,8 +156,19 @@ describe "API" do
         it "should create item history with a valid distance traveled"
       end
       describe "with a world owned item" do
-        it "should not return sucessful"
-        it "should not create item history"
+      def params
+        @valid_api_params.merge(coordinates).merge(:id => @item_global_1.id, :signature => "Hey there")
+      end
+        before (:each) do
+          get '/api/dropItem', params        
+        end
+        it "should not return sucessful" do
+          response.body.should == "0"
+        end
+        it "should not create item history" do
+          history = ItemHistory.where(:item_id => @item_owned_1.id).first
+          history.should == nil
+        end
       end
     end
   end
