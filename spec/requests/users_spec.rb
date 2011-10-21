@@ -24,6 +24,26 @@ describe "API" do
             result.should == User.where(:id => @usr.id).first.api_key
           end
       end
+      define "with invalid credentials" do
+        it "should not succeed" 
+      end
+    end
+    describe "when logging in with an invalid app key" do
+      def app_params
+        {:appKey => "invalid!" }
+      end
+      describe "with valid credentials" do
+        it "should not succeed" do
+          get '/api/login', app_params.merge(:username => @usr.username, :password => @usr.password)
+          response.status.should_not be :ok
+          end
+      end
+      describe "invalid credentials" do
+        it "should not succeed" do
+          get '/api/login', app_params.merge(:username => "blah", :password => "no")
+          response.status.should_not be :ok
+        end
+      end
     end
   end
 
