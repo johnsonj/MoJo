@@ -1,31 +1,19 @@
-<h1 id="header1">Your Backpack</h1>
+
 
 <%= stylesheet_link_tag "backpack" %>
 
-<%= image_tag "Backpack/Backround1.gif" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot1" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot2" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot3" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot4" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot5" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot6" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot7" %>
-<%= image_tag "Backpack/slot1.gif", :id => "slot8" %>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <div id = "items">
+<h1 id="header1">Your Backpack</h1>
+
 <% @items.first(8).each_with_index do |item, index| %>
+<div id = "slot<%= index + 1 %>">
   <div id = "item<%= index + 1 %>">
     <a href="/items/<%= item.id %>"><%= image_tag item.item_description.image.icon.url(:thumb) if item.item_description.image if item.item_description %>
 <span><%= item.item_description.name if item.item_description %></span>
  </a>
   </div>
+</div>
 <% end %>
 </div>
 

@@ -9,10 +9,9 @@
 body { 
 	background-color: #000; 
 	color: #fff;
-  font-family: verdana, arial, helvetica, sans-serif;
-	background-image: url(../../app/assets/images/bkgrnd1.png);
+	font-family: verdana, arial, helvetica, sans-serif;
+	background-image: url('bkgrnd1.png');
+	font-size: 12px;
 	text-align: center;
-	padding: 50px;
-	margin-left: 6in;
-	margin-top: 6in;
+	padding: 10px;
 }
