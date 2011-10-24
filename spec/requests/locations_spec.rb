@@ -59,7 +59,7 @@ describe "API" do
    describe "getLocationsForRangeInArea" do
        describe "with valid parameters" do
           before(:each) do
-            @start_end = {:start => "2010-01-01T11:00:00Z", :end => "2010-01-01T13:00:00Z", :startingLongitude => "5", startingLatitude => "4", endingLongitude => "6", endingLatitude => "5"}
+            @start_end = {:start => "2010-01-01T11:00:00Z", :end => "2010-01-01T13:00:00Z", :startingLongitude => "5", :startingLatitude => "4", :endingLongitude => "6", :endingLatitude => "5"}
             @valid_params = @start_end.merge(@valid_api_key)
           end
           describe "locations within coordinates and time range" do
@@ -90,7 +90,7 @@ describe "API" do
           describe "invalid range" do
     
              it "should return empty list" do
-            @start_end = {:start => "2010-01-01T11:00:00Z", :end => "2010-01-01T13:00:00Z", :startingLongitude => "8", startingLatitude => "40", endingLongitude => "6", endingLatitude => "5"}
+            @start_end = {:start => "2010-01-01T11:00:00Z", :end => "2010-01-01T13:00:00Z", :startingLongitude => "8", :startingLatitude => "40", :endingLongitude => "6", :endingLatitude => "5"}
                 @valid_params = @start_end.merge(@valid_api_key)
                 get 'api/getLocationsForRangeInArea', @valid_params.merge(:count => "false")
                 JSON.parse(response.body).should be == []
