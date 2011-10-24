@@ -80,7 +80,8 @@ class LocationsController < ApplicationController
     ending = params[:end]
     respond_to do |format|
       if starting and ending and hasAccess(:interactions, params[:appKey])
-        if params[:count]
+
+        if params[:count] == "true"
           format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime).count }
         else
           format.json { render :json => Location.where(:timestamp => starting.to_datetime..ending.to_datetime) }

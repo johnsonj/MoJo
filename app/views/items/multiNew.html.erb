@@ -1,41 +1,86 @@
-<h1>New item</h1>
 
+<body onload="initialize()">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    
+    <div id="wrapper">
+        <script type="text/javascript">
+        var map;
 
+        function initialize() {
 
-<%= form_tag('/items/multi_create') do %>
- <p>
-   User:<br />
-   <%= number_field_tag "user_id", current_user.id %>
- </p>
- <p>
-   Item:<br />
-   <%= number_field_tag "item_description_id" %>
- </p>
- <p>
-   Latitude: <br />
-   <%= text_field_tag "latitude" %>
- </p>
- <p>
-   Longitude: <br />
-   <%= text_field_tag "longitude" %>
- </p>
- <p>
-   Number of Items to Make: <br />
-   <%= number_field_tag "number", 1 %>
- </p>
- <p>
-   Latitude Offset: <br />
-   <%= text_field_tag "latitudeoffset", 0 %>
- </p>
- <p>
-   Longitude Offset: <br />
-   <%= text_field_tag "longitudeoffset", 0 %>
- </p>
+          var myOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(41.83872375564222,-87.62723207473755),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
 
- <p>
-   <%= submit_tag 'Create Multiple' %>
- </p>
-<% end %>
+          map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-<%= link_to 'Back', items_path %>
+          google.maps.event.addListener(map, 'click', function(event) {
+              var position = event.latLng;
+              placeMarker(position);
+              console.log(position.lat());
+              console.log(position.lng());
+              // PUT URL here if you want 
+              $.get("?latitude="+position.lat()+"longitude="+position.lng(), function (response) {
+                  console.log(response);
+              });
+          });
+
+          function placeMarker(location) {
+                var marker = new google.maps.Marker({
+                    position: location, 
+                    map: map,
+                    animation: google.maps.Animation.DROP
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                  map.setZoom(8);
+                });
+            }
+        }
+
+        </script>
+        <div id="map_canvas" style="width:100%; height:100%" style="background-color: #FFF ; border: 1px solid #000; padding: 5px;margin-right: 15px"></div>
+        <div>
+            <h1>New item</h1>
+            <%= form_tag('/items/multi_create') do %>
+             <p>
+               User:<br />
+               <%= number_field_tag "user_id", current_user.id %>
+             </p>
+             <p>
+               Item:<br />
+               <%= number_field_tag "item_description_id" %>
+             </p>
+             <p>
+               Latitude: <br />
+               <%= text_field_tag "latitude" %>
+             </p>
+             <p>
+               Longitude: <br />
+               <%= text_field_tag "longitude" %>
+             </p>
+             <p>
+               Number of Items to Make: <br />
+               <%= number_field_tag "number", 1 %>
+             </p>
+             <p>
+               Latitude Offset: <br />
+               <%= text_field_tag "latitudeoffset", 0 %>
+             </p>
+             <p>
+               Longitude Offset: <br />
+               <%= text_field_tag "longitudeoffset", 0 %>
+             </p>
+
+             <p>
+               <%= submit_tag 'Create Multiple' %>
+             </p>
+            <% end %>
+
+            <%= link_to 'Back', items_path %>
+            </div>
+    </div>
+</body>
 
