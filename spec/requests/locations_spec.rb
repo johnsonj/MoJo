@@ -8,6 +8,8 @@ describe "API" do
 	@location4 = Factory(:location_set_4)
 	@location5 = Factory(:location_set_5)
 	@location6 = Factory(:location_set_6)
+	@usr = Factory(:user)
+	@valid_api = {:apiKey => @usr.api_key}
 	@interaction_usr = Factory(:user_app_interactions)
 	@valid_api_key = {:appKey => @interaction_usr.api_key}
   end
@@ -97,5 +99,19 @@ describe "API" do
              end
           end
        end
+   end
+
+
+   describe "record_location" do
+     before(:each) do
+        @valid_params = {:longitude => "2", :latitude => "2", timestamp => "2010-01-01T11:00:00Z"}
+     end
+     describe "with valid parameters" do
+       get 'api/recordLocation', @valid_params.merge(:apiKey => @usr.api_key)
+       Location.where(@valid_params).should exist
+     end
+     describe "with invalid parameters" do
+
+     end
    end
 end
