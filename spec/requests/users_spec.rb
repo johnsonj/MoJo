@@ -82,7 +82,10 @@ describe "API" do
           end
       end
       define "with invalid credentials" do
-        it "should not succeed" 
+        it "should not succeed" do
+          get '/api/login', app_params.merge(:username => "Invalid", :password => "Invalid")
+          response.should_not be_sucessful
+        end
       end
     end
     describe "when logging in with an invalid app key" do
