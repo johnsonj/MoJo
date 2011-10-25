@@ -1,7 +1,7 @@
 <body>
 
     
-    <div id="wrapper">
+    <div id="wrapper" "style = width: 1230px; margin:0 auto;">
         <script type="text/javascript">
         var map;
 
@@ -39,11 +39,11 @@
         }
 
         </script>
-        <div style="width:500px; height:500px" style="background-color: #FFF ; float: left; border: 1px solid #000; padding: 5px;margin-right: 15px">
-            
-        <div id="map_canvas" style="width:100%; height:100%"></div>
+        <div style="width:500px; height:500px;float:right;">
+            <div id="map_canvas" style="width:100%; height:100%"></div>
         </div>
-        <div>
+        
+        <div style = "width:500px;">
             <h1>New item</h1>
             <%= form_tag('/items/multi_create') do %>
              <p>
