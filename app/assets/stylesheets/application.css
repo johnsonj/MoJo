@@ -30,9 +30,10 @@ body {
 	line-height: normal;
 }
 
-#menu li {
+#menu ul li {
 	display: block;
 	float: left;
+	list-style: none;
 }
 
 #menu a {
