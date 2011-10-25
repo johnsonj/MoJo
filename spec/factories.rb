@@ -10,7 +10,7 @@ Factory.define :admin, :class => User do |user|
   user.username "StormagedonAdmin"
   user.age "2"
   user.sex "1"
-  user.email "example@example.com"
+  user.email "example2@example.com"
   user.password "password"
   user.api_key "fake_key"
   user.user_type 'admin'
@@ -19,7 +19,7 @@ Factory.define :user_app_interactions, :class => User do |user|
   user.username "Interactions"
   user.age "0"
   user.sex "1"
-  user.email "antypdet@gmail.com"
+  user.email "test2@gmail.com"
   user.password "password"
   user.api_key "interactions_key"
   user.user_type "interactions"
@@ -28,7 +28,7 @@ Factory.define :Iphone, :class => User do |user|
   user.username "Iphone"
   user.age "0"
   user.sex "1"
-  user.email "antypdet@gmail.com"
+  user.email "test1@gmail.com"
   user.password "password"
   user.api_key "app_key"
   user.user_type "app"
@@ -44,7 +44,7 @@ Factory.define :valid_interaction, :class => Interaction do |interaction|
   interaction.PersonA "1"
   interaction.PersonB "3"
   interaction.Timestamp "2010-01-01T10:00:00Z"
-  interaction.deltime "2010-01-01T11:00:00Z"
+  interaction.deltime "12"
 end
 Factory.define :location_set_1, :class => Location do |location|
   location.latitude 5

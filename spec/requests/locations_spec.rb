@@ -104,14 +104,28 @@ describe "API" do
 
    describe "record_location" do
      before(:each) do
-        @valid_params = {:longitude => "2", :latitude => "2", timestamp => "2010-01-01T11:00:00Z"}
+        @valid_location = {:longitude => "77.7", :latitude => "77.7", :timestamp => "2010-01-01T11:00:00Z"}
+        @valid_params = @valid_location.merge(@valid_api)
      end
      describe "with valid parameters" do
-       get 'api/recordLocation', @valid_params.merge(:apiKey => @usr.api_key)
-       Location.where(@valid_params).should exist
+       it "should succeed" do
+          get 'api/recordLocation', @valid_params
+          Location.where(:longitude => "77.7", :latitude => "77.7").should exist
+       end
      end
      describe "with invalid parameters" do
-
+       it "latitude should fail" do
+          get 'api/recordLocation', @valid_params.merge(:latitude => "200")
+          Location.where(:latitude => "200").should_not exist
+       end
+       it "longitude should fail" do
+          get 'api/recordLocation', @valid_params.merge(:longitude => "200")
+          Location.where(:longitude => "200").should_not exist
+       end
+       it "API key should fail" do
+          get 'api/recordLocation', @valid_params.merge(:apiKey => "asdf")
+          Location.where(:longitude => "77.7", :latitude => "77.7").should_not exist
+       end
      end
    end
 end
