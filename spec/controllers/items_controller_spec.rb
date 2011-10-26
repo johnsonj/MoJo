@@ -81,7 +81,7 @@ describe ItemsController do
         post :create, :item => valid_attributes
         response.should redirect_to(Item.last)
       end
-      
+
     end
 
     describe "with invalid params" do
@@ -163,26 +163,25 @@ describe ItemsController do
   describe "POST multi_create" do
 
     describe "with valid params" do
-      it "creates new Items" do  
+      it "creates new Items" do
         expect {
-		get 'multi_create', {"user_id" => 0, "item_description_id" => 0, "latitude" => 0, "longitude" => 0, "number" => 3, "latitudeoffset" => 0, "longitudeoffset" => 0}
-         }.to change(Item, :count).by(3)
+          get :multi_create_scatter, {"user_id" => 0, "item_description_id" => 0, "latitude" => 0, "longitude" => 0, "number" => 3, "latitudeoffset" => 0, "longitudeoffset" => 0}
+        }.to change(Item, :count).by(3)
       end
 
-      it "creates new Items" do  
+      it "creates new Items" do
         expect {
-		get 'multi_create', {"user_id" => 0, "item_description_id" => 0, "latitude" => 0, "longitude" => 0, "number" => 3, "latitudeoffset" => 99999, "longitudeoffset" => 99999}
-         }.to change(Item, :count).by(3)
+          get :multi_create_scatter, {"user_id" => 0, "item_description_id" => 0, "latitude" => 0, "longitude" => 0, "number" => 3, "latitudeoffset" => 99999, "longitudeoffset" => 99999}
+        }.to change(Item, :count).by(3)
       end
 
       it "redirects to item list" do
         post :multi_create_scatter, :item => valid_attributes
         response.should redirect_to(items_path)
       end
-      
+
     end
   end
-
 
 
 end
