@@ -17,7 +17,7 @@
 
           google.maps.event.addListener(map, 'click', function(event) {
               var position = event.latLng;
-              arrayPoint.push(position);
+              arrayPoints.push(position);
               placeMarker(position);
               console.log(position.lat());
               console.log(position.lng());
