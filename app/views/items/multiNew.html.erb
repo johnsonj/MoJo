@@ -1,10 +1,10 @@
 <body>
 
     
-    <div id="wrapper" "style = width: 1230px; margin:0 auto;">
+    <div id="wrapper" style = "width: 1230px; margin:0 auto;">
         <script type="text/javascript">
         var map;
-
+        var arrayPoints =[];
         function initialize() {
 
           var myOptions = {
@@ -17,13 +17,14 @@
 
           google.maps.event.addListener(map, 'click', function(event) {
               var position = event.latLng;
+              arrayPoint.push(position);
               placeMarker(position);
               console.log(position.lat());
               console.log(position.lng());
-              // PUT URL here if you want 
-              $.get("?latitude="+position.lat()+"longitude="+position.lng(), function (response) {
-                  console.log(response);
-              });
+              $("#latitude").val(position.lat());
+              $("#longitude").val(position.lng());
+              
+              
           });
 
           function placeMarker(location) {
