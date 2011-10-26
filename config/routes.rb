@@ -4,7 +4,9 @@ Ipro369MoJo::Application.routes.draw do
 
 
   match '/items/multiNew' => 'items#multiNew', :as => :items_multinew_path
-  match '/items/multi_create' => 'items#multi_create', :via => :post
+  match '/items/multi_create' => 'items#multi_create_scatter', :via => :post
+  post '/items/mn_specific' => 'items#multi_create_specific', :as => :mn_specific_path
+  match '/items/multiNewSpecific' => 'items#multi_new_specific'
   resources :item_descriptions
 
   resources :item_histories

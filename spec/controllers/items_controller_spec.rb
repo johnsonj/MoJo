@@ -176,7 +176,7 @@ describe ItemsController do
       end
 
       it "redirects to item list" do
-        post :multi_create, :item => valid_attributes
+        post :multi_create_scatter, :item => valid_attributes
         response.should redirect_to(items_path)
       end
       
