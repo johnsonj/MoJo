@@ -10,7 +10,7 @@ class ItemDescriptionsController < ApplicationController
   # GET /item_descriptions
   # GET /item_descriptions.json
   def index
-    @item_descriptions = ItemDescription.all
+    @item_descriptions = ItemDescription.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
