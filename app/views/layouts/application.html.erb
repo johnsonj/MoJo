@@ -13,24 +13,25 @@
 </head>
 <body>
 
+<%= yield %>
 <div id="wrapper">
 	<div id="header">
 		<div id="menu">
 			<ul>
 				<li class="current_page_item first"><span><a href="#">Home</a></span></li>
-				<li><a href="<%= users_path=%>">USERS</a></li>
-				<li><a href="<%= items_path=%>">ITEMS</a></li>
-				<li><a href="<%= item_histories_path=%>">ITEM HISTORIES</a></li>
-				<li><a href="<%= :backpack_path=%>">BACKPACK</a></li>
-				<li><a href="<%= :leaderboards_users_path %>">LEADERBOARDS</a></li>
+				<li><a href="http://severe-samurai.heroku.com/users">USERS</a></li>
+				<li><a href="http://severe-samurai.heroku.com/items">ITEMS</a></li>
+				<li><a href="http://severe-samurai.heroku.com/item_histories">ITEM HISTORIES</a></li>
+				<li><a href="http://severe-samurai.heroku.com/backpack">BACKPACK</a></li>
+				<li><a href="http://severe-samurai.heroku.com/leaderboards">LEADERBOARDS</a></li>
 
             </ul>
 		</div>
 		<!-- end #menu -->
 
-	<%= yield %>
 
-		</div>
+		<div style="clear: both;">&nbsp;</div>
+	</div>
 	<!-- end #page -->
 	<div id="footer">
 		<p>Copyright (c) 2011 IPRO 369. All rights reserved.</p>

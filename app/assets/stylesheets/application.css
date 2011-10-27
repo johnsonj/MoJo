@@ -6,11 +6,6 @@
  *= require_tree . 
 */
 
-li{
-	list-style: none;
-	float: left;
-}
-
 body { 
 	background-color: #000; 
 	color: #fff;

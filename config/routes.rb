@@ -26,7 +26,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
 
-    match '/backpack' => 'items#backpack', :as => :backpack_path
+  match '/backpack' => 'items#backpack'
   match '/itemDetails/:id' => 'item_histories#itemDetails'
 
   ### API Methods ###
