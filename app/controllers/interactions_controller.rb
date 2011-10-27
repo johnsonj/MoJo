@@ -6,7 +6,7 @@ class InteractionsController < ApplicationController
   # GET /interactions
   # GET /interactions.xml
   def index
-    @interactions = Interaction.all
+    @interactions = Interaction.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

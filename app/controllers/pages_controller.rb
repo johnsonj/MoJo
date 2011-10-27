@@ -1,6 +1,22 @@
 class PagesController < ApplicationController
   include SessionsHelper
 
+  before_filter :admin_login_required, :only => :admin
+
+  def home
+    if current_user
+      if isAdmin?
+        redirect_to :admin_portal_path
+      else
+        redirect_to :backpack_path
+      end
+    else
+      redirect_to :login_path
+    end
+  end
+
+  def admin
+  end
 
   def leaderboards
 

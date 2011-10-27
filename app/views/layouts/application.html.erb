@@ -1,46 +1,23 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-
   <title>MoJo</title>
-
-   <%= stylesheet_link_tag :application %>
-  <%= javascript_include_tag :application %>
-  <%= csrf_meta_tag %>
+    <%= javascript_include_tag :application %>
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
 </head>
 <body>
-
-<%= yield %>
-<div id="wrapper">
-	<div id="header">
-		<div id="menu">
-			<ul>
-				<li class="current_page_item first"><span><a href="#">Home</a></span></li>
-				<li><a href="http://severe-samurai.heroku.com/users">USERS</a></li>
-				<li><a href="http://severe-samurai.heroku.com/items">ITEMS</a></li>
-				<li><a href="http://severe-samurai.heroku.com/item_histories">ITEM HISTORIES</a></li>
-				<li><a href="http://severe-samurai.heroku.com/backpack">BACKPACK</a></li>
-				<li><a href="http://severe-samurai.heroku.com/leaderboards">LEADERBOARDS</a></li>
-
-            </ul>
-		</div>
-		<!-- end #menu -->
-
-
-		<div style="clear: both;">&nbsp;</div>
-	</div>
-	<!-- end #page -->
-	<div id="footer">
-		<p>Copyright (c) 2011 IPRO 369. All rights reserved.</p>
-	</div>
-	<!-- end #footer -->
-</div>
-
-
-</body>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<div class="container">
+      <%= render 'layouts/header' %>
+      <div style="clear: both"></div>
+      <section class="round">
+        <% flash.each do |key, value| %>
+            <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+        <%= yield %>
+      </section>
+    </div>
+    <%= render 'layouts/footer' %></body>
 </html>
-
-

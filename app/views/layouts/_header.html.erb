@@ -1,0 +1,30 @@
+<div id="header">
+  <div id="menu">
+    <ul>
+      <% if current_user %>
+          <li class="current_page_item first">
+            <%= link_to "Backpack", :backpack_path %>
+          </li>
+          <li>
+            <%= link_to "LeaderBoards", leaderboards_path %>
+          </li>
+          <% if isAdmin? %>
+              <li>
+                <%= link_to "Admin", :admin_portal_path %>
+              </li>
+          <% end %>
+          <li>
+            <%= link_to "Log Out", :logout_path %>
+          </li>
+      <% else %>
+          <li>
+            <%= link_to "Log In", :login_path %>
+          </li>
+          <li>
+            <%= link_to "Sign Up", :signup_path %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <div style="clear: both;">&nbsp;</div>
+</div>

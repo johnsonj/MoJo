@@ -29,5 +29,5 @@ class ApplicationController < ActionController::Base
     deny_access unless hasAccess(:app, params[:appKey])
   end
 
-  helper_method :current_user
+  helper_method :current_user, :isAdmin?, :hasAccess
 end

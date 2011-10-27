@@ -2,13 +2,13 @@ class ItemsController < ApplicationController
   include SessionsHelper
   include ActiveModel::Validations
 
-  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multiNew, :multi_create]
+  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multiNew, :multi_create_scatter]
   before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
 
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.paginate(:page => params[:page])
   end
 
 
@@ -45,6 +45,9 @@ class ItemsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @item }
     end
+  end
+
+  def multi_new_specific
   end
 
 
@@ -126,8 +129,7 @@ class ItemsController < ApplicationController
   end
 
 
-
-  def multi_create
+  def multi_create_scatter
     @flag = true
     params[:number].to_i.times {
       @item = Item.new(:item_description_id => params[:item_description_id])
@@ -135,13 +137,13 @@ class ItemsController < ApplicationController
       if params[:longitudeoffset].to_i != 0
         @item.longitude = rand((params[:longitudeoffset].to_i-1) * 2) - params[:longitudeoffset].to_i-1 + rand + params[:longitude].to_i
 
-		if @item.longitude < -180
-			@item.longitude = -179.9
-		end
-		if @item.longitude > 180
-			@item.longitude = 179.9
-		end
-		
+        if @item.longitude < -180
+          @item.longitude = -179.9
+        end
+        if @item.longitude > 180
+          @item.longitude = 179.9
+        end
+
 
       else
         @item.longitude = params[:longitude]
@@ -150,12 +152,12 @@ class ItemsController < ApplicationController
       if params[:latitudeoffset].to_i != 0
         @item.latitude = rand((params[:latitudeoffset].to_i-1) * 2) - params[:latitudeoffset].to_i-1 + rand + params[:latitude].to_i
 
-		if @item.latitude < -90
-			@item.latitude = -89.9
-		end
-		if @item.latitude > 90
-			@item.latitude = 89.9
-		end
+        if @item.latitude < -90
+          @item.latitude = -89.9
+        end
+        if @item.latitude > 90
+          @item.latitude = 89.9
+        end
 
       else
         @item.latitude = params[:latitude]
@@ -166,11 +168,15 @@ class ItemsController < ApplicationController
     }
 
 
-      if @flag
-        redirect_to items_path, notice: 'Item was successfully created.' 
-      else
-        format.html { render action: "new" }
-      end
+    if @flag
+      redirect_to items_path, notice: 'Item was successfully created.'
+    else
+      format.html { render action: "new" }
+    end
+
+  end
+
+  def multi_create_specific
 
   end
 

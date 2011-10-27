@@ -1,12 +1,6 @@
 Ipro369MoJo::Application.routes.draw do
 
-  get "pages/leaderboards"
-
-
-  match '/items/multiNew' => 'items#multiNew', :as => :items_multinew_path
-  match '/items/multi_create' => 'items#multi_create', :via => :post
   resources :item_descriptions
-
   resources :item_histories
   resources :items
   resources :images
@@ -16,18 +10,22 @@ Ipro369MoJo::Application.routes.draw do
   resources :interactions
   resources :sessions, :only => [:new, :create, :destroy]
 
-  root :to => "sessions#new", :as => "home_page"
+  root :to => "pages#home", :as => "home_page"
 
   match '/leaderboards' => 'pages#leaderboards'
   match '/leaderboards/users' => 'pages#users', :as => :leaderboards_users_path
   match '/leaderboards/items' => 'pages#items', :as => :leaderboards_items_path
-
+  get "pages/leaderboards"
+  match '/items/multiNew' => 'items#multiNew', :as => :items_multinew_path
+  match '/items/multi_create' => 'items#multi_create_scatter', :via => :post
+  post '/items/mn_specific' => 'items#multi_create_specific', :as => :mn_specific_path
+  match '/items/multiNewSpecific' => 'items#multi_new_specific'
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
-
-  match '/backpack' => 'items#backpack'
+  match '/backpack' => 'items#backpack', :as => :backpack_path
   match '/itemDetails/:id' => 'item_histories#itemDetails'
+  match '/admin' => 'pages#admin', :as => :admin_portal_path
 
   ### API Methods ###
   match '/api/pickupItem' => 'items#pickup', :format => 'json'

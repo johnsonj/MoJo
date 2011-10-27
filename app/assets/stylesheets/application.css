@@ -3,88 +3,85 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree . 
+ *= require_tree ./include_in_application.css/
 */
 
-body { 
-	background-color: #000; 
-	color: #fff;
-	font-family: verdana, arial, helvetica, sans-serif;
-	background-image: url('bkgrnd1.png');
-	font-size: 12px;
-	text-align: center;
-	padding: 10px;
+body {
+    background-color: #fff;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
 }
-/* Menu */
 
+/* Menu */
 #menu {
-	width: 950px;
-	height: 64px;
-	margin: 0px auto;
+    width: 950px;
+    height: 64px;
+    margin: 0px auto;
 }
 
 #menu ul {
-	margin: 0;
-	padding: 0px;
-	list-style: none;
-	line-height: normal;
+    margin: 0;
+    padding: 0px;
+    list-style: none;
+    line-height: normal;
 }
 
 #menu ul li {
-	display: block;
-	float: left;
-	list-style: none;
+    display: block;
+    float: left;
+    list-style: none;
 }
 
 #menu a {
-	display: block;
-	float: left;
-	height: 20px;
-	margin-right: 3px;
-	padding: 28px 25px 15px 25px;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 16px;
-	font-weight: bold;
-	color: #551300;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-right: 3px;
+    padding: 28px 25px 15px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #551300;
 }
 
-#menu a:hover {
-	text-decoration: none;
-	background: #551300;
-	color: #FFFFFF;
+#menu a: hover {
+    text-decoration: none;
+    background: #551300;
+    color: #FFFFFF;
 }
 
-#menu .current_page_item a {
-	background: #551300;
-	height: 20px;
-	color: #FFFFFF;
+#menu . current_page_item a {
+    background: #551300;
+    -height: 20px;
+    -color: #FFFFFF;
 }
 
-#menu .first {
-	background: none;
+#menu . first {
+    background: none;
 }
+
 /* Footer */
-
 #footer {
-	width: 1000px;
-	height: 95px;
-	margin: 0 auto;
-	padding: 0;
-	
+    width: 1000px;
+    height: 95px;
+    margin: 0 auto;
+    padding: 0;
 }
 
 #footer p {
-	margin: 0;
-	padding: 56px 0;
-	text-align: center;
-	line-height: normal;
-	text-transform: uppercase;
-	font-size: 10px;
-	color: #66665E;
+    margin: 0;
+    padding: 56px 0;
+    text-align: center;
+    line-height: normal;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #66665E;
 }
 
 #footer a {
-	color: #000000;
+    color: #000000;
 }

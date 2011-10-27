@@ -7,7 +7,7 @@ class ItemHistoriesController < ApplicationController
   # GET /item_histories
   # GET /item_histories.json
   def index
-    @item_histories = ItemHistory.all
+    @item_histories = ItemHistory.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
