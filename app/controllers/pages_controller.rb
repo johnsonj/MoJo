@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   include SessionsHelper
 
+  before_filter :admin_login_required, :only => :admin
+
   def home
     if current_user
       if isAdmin?
