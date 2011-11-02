@@ -16,10 +16,10 @@ Ipro369MoJo::Application.routes.draw do
   match '/leaderboards/users' => 'pages#users', :as => :leaderboards_users_path
   match '/leaderboards/items' => 'pages#items', :as => :leaderboards_items_path
   get "pages/leaderboards"
-  match '/items/multiNew' => 'items#multiNew', :as => :items_multinew_path
-  match '/items/multi_create' => 'items#multi_create_scatter', :via => :post
-  post '/items/mn_specific' => 'items#multi_create_specific', :as => :mn_specific_path
-  match '/items/multiNewSpecific' => 'items#multi_new_specific'
+  match '/items_admin/multiNew' => 'items#multiNew', :as => :items_multinew_path
+  match '/items_admin/multi_create' => 'items#multi_create_scatter', :via => :post
+  post '/items_admin/mn_specific' => 'items#multi_create_specific', :as => :mn_specific_path
+  match '/items_admin/multiNewSpecific' => 'items#multi_new_specific', :as => :items_multinew_specific
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
