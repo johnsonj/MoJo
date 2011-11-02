@@ -1,5 +1,14 @@
 <h1>Listing items</h1>
 
+
+<br />
+
+<%= link_to 'New Item', new_item_path %>
+<%= link_to 'Create Multiple Random', :items_multinew_path %>
+<%= link_to 'Create Multiple Specific', :items_multinew_specific %>
+
+<br />
+
 <%= will_paginate %>
 
 <table>
@@ -30,7 +39,3 @@
 </table>
 
 <%= will_paginate %>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>
