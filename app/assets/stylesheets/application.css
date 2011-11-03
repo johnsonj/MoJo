@@ -47,6 +47,7 @@ body {
     color: #FFFFFF;
     border-bottom-color: green;
     border-bottom-style: solid;
+    border-bottom-width: 5px;
 }
 
 #menu . current_page_item a {
