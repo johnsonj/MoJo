@@ -45,15 +45,12 @@ body {
     text-decoration: none;
     background: #551300;
     color: #FFFFFF;
-    border-bottom-color: green;
-    border-bottom-style: solid;
-    border-bottom-width: 5px;
 }
 
 #menu . current_page_item a {
     background: #551300;
-    -height: 20px;
-    -color: #FFFFFF;
+    height: 20px;
+    color: #FFFFFF;
 }
 
 #menu . first {
