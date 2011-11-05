@@ -41,10 +41,6 @@ class ItemsController < ApplicationController
   end
 
   def multiNew
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @item }
-    end
   end
 
   def multi_new_specific
@@ -131,41 +127,37 @@ class ItemsController < ApplicationController
 
   def multi_create_scatter
     @flag = true
-    params[:number].to_i.times {
-      @item = Item.new(:item_description_id => params[:item_description_id])
-
-      if params[:longitudeoffset].to_i != 0
-        @item.longitude = rand((params[:longitudeoffset].to_i-1) * 2) - params[:longitudeoffset].to_i-1 + rand + params[:longitude].to_i
-
+    params[:number].to_i.times do
+      @item = Item.new({:item_description_id => params[:item_description_id], :user_id => 0})
+      lon_off = params[:longitudeoffset].to_f
+      if lon_off != 0
+        lon = params[:longitude].to_f
+        @item.longitude = rand * ((lon + lon_off) - (lon - lon_off)) + (lon - lon_off)
         if @item.longitude < -180
           @item.longitude = -179.9
         end
         if @item.longitude > 180
           @item.longitude = 179.9
         end
-
-
       else
         @item.longitude = params[:longitude]
       end
 
-      if params[:latitudeoffset].to_i != 0
-        @item.latitude = rand((params[:latitudeoffset].to_i-1) * 2) - params[:latitudeoffset].to_i-1 + rand + params[:latitude].to_i
-
+      lat_off = params[:latitudeoffset].to_f
+      if lat_off != 0
+        lat = params[:latitude].to_f
+        @item.latitude = rand * ((lat + lat_off) - (lat - lat_off)) + (lat - lat_off)
         if @item.latitude < -90
           @item.latitude = -89.9
         end
         if @item.latitude > 90
           @item.latitude = 89.9
         end
-
       else
         @item.latitude = params[:latitude]
       end
-
-      @item.user_id = current_user.id
       @flag = @item.save
-    }
+    end
 
 
     if @flag

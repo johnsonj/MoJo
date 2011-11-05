@@ -45,12 +45,7 @@
     <h1>New item</h1>
     <%= form_tag('/items_admin/multi_create') do %>
         <p>
-          User:<br/>
-          <%= number_field_tag "user_id", current_user.id %>
-        </p>
-
-        <p>
-          Item:<br/>
+          Item Description ID:<br/>
           <%= number_field_tag "item_description_id" %>
         </p>
 
