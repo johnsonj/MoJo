@@ -1,3 +1,7 @@
+body{
+	//background-color: #00d9fc;
+	background-color: white;
+}
 
 #menu ul{
 	color: #808080;
@@ -18,16 +22,20 @@
 
 #menu ul li a:hover {
     display: block;
-    padding-bottom: 3px;
+    padding-bottom: 10px;
     border-bottom-color: green;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
 
 #menu ul li a:active {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
+    text-decoration: none;  border-bottom-color: green;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+}
+
+#menu ul li a:active {
+    text-decoration: none; 
 }
 
 
@@ -245,206 +253,4 @@
     z-index: 4;
 }
 
-
-=======
-=======
->>>>>>> 252de43c0e4e9ecc2fcdf3aa1bdb70d10ca06dc5
-a span {
-    display: none;
-}
-
-a:hover span {
-    display: block;
-    position: absolute;
-}
-
-a:link {
-    text-decoration: none;
-    color: #000000;
-}
-
-a:visited {
-    text-decoration: none;
-    color: #000000;
-}
-
-a:hover {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
-}
-
-a:active {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
-}
-
-#items {
-    position: relative;
-    width: 926px;
-    height: 609px;
-    background-image: url('Backpack/Backround1.gif');
-}
-
-#header1 {
-    position: absolute;
-    left: 600px;
-    top: 30px;
-    z-index: 2;
-    font-size: 30px;
-    color: #000000;
-}
-
-#slot1 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 110px;
-    top: 180px;
-    z-index: 2;
-}
-
-#slot2 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 290px;
-    top: 180px;
-    z-index: 2;
-}
-
-#slot3 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 470px;
-    top: 180px;
-    z-index: 2;
-}
-
-#slot4 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 650px;
-    top: 180px;
-    z-index: 2;
-}
-
-#slot5 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 110px;
-    top: 380px;
-    z-index: 2;
-}
-
-#slot6 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 290px;
-    top: 380px;
-    z-index: 2;
-}
-
-#slot7 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 470px;
-    top: 380px;
-    z-index: 2;
-}
-
-#slot8 {
-    position: absolute;
-    background-image: url('Backpack/slot1.gif');
-    width: 152px;
-    height: 149px;
-    left: 650px;
-    top: 380px;
-    z-index: 2;
-}
-
-#item1 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item2 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item3 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item4 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item5 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item6 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item7 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
-#item8 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
 
