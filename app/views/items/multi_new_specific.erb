@@ -1,17 +1,14 @@
-<body>
-
-
-    <div id="wrapper" style = "width: 1230px; margin:0 auto;">
-        <script type="text/javascript">
-        var map;
-        var lats =[];
-        var longs = [];
-        function initialize() {
+<div id="wrapper" style="width: 1230px; margin:0 auto;">
+  <script type="text/javascript">
+      var map;
+      var lats = [];
+      var longs = [];
+      function initialize() {
 
           var myOptions = {
-            zoom: 8,
-            center: new google.maps.LatLng(41.83872375564222,-87.62723207473755),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+              zoom: 8,
+              center: new google.maps.LatLng(41.83872375564222, -87.62723207473755),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
           }
 
           map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -28,52 +25,53 @@
           });
 
           function placeMarker(location) {
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
-                    animation: google.maps.Animation.DROP
-                });
-                google.maps.event.addListener(marker, 'click', function() {
+              var marker = new google.maps.Marker({
+                  position: location,
+                  map: map,
+                  animation: google.maps.Animation.DROP
+              });
+              google.maps.event.addListener(marker, 'click', function() {
                   map.setZoom(8);
-                });
-            }
-        }
+              });
+          }
+      }
 
-        function send_all() {
-            $.post("<%= :mn_specific_path %>" , { user_id: $("#user_id").text, item_description_id: $("#item_description_id"), latitudes: lats, longitudes: longs })
-        }
+      function send_all() {
+          console.log("Posting Locations");
+          $.post("/items_admin/mn_specific", {
+                      "item_description_id": $("#item_description_id").val(),
+                      "latitudes[]": lats,
+                      "longitudes[]": longs },
+                      function() {
+                          window.location.href = "/items";
+                      });
+          console.log($("#item_description_id").val());
+      }
 
-        </script>
-        <div style="width:500px; height:500px;float:right;">
-            <div id="map_canvas" style="width:100%; height:100%"></div>
-        </div>
+  </script>
+  <div style="width:500px; height:500px;float:right;">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </div>
 
-        <div style = "width:500px;">
-            <h1>New item</h1>
-            <%= form_tag('/items/mn_specific') do %>
-             <p>
-               User:<br />
-               <%= number_field_tag "user_id", current_user.id %>
-             </p>
-             <p>
-               Item:<br />
-               <%= number_field_tag "item_description_id" %>
-             </p>
-             <p>
-               <input type="button" onclick="send_all()"/>
-             </p>
-            <% end %>
+  <div style="width:500px;">
+    <h1>New item</h1>
+    <%= form_tag('/items/mn_specific') do %>
+        <p>
+          Item:<br/>
+          <%= text_field_tag :item_description_id %>
+        </p>
 
-            <%= link_to 'Back', items_path %>
-            </div>
-    </div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript">
+        <p>
+          <input type="button" onclick="send_all()" value="Submit"/>
+        </p>
+    <% end %>
+
+    <%= link_to 'Back', items_path %>
+  </div>
+</div>
+<script type="text/javascript">
     $(document).ready(function () {
         console.log("loaded dom");
         initialize();
     });
-    </script>
-</body>
-
+</script>
