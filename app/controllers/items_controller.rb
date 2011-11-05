@@ -177,7 +177,23 @@ class ItemsController < ApplicationController
   end
 
   def multi_create_specific
+    lats = params[:latitudes]
+    longs = params[:longitudes]
+    descriptionID = params[:item_description_id]
 
+    (0..lats.size).each do |i|
+      item = Item.new({:item_description_id => descriptionID,
+                      :user_id => 0,
+                      :latitude => lats[i],
+                      :longitude => longs[i]})
+      if item.save
+        flash[:success] = "#{lats.size} items successfully created"
+      else
+        flash[:error] = "ERROR"
+      end
+    end
+
+    redirect_to items_path
   end
 
   # PUT /items/1
