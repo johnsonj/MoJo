@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #menu ul{
 	color: #808080;
 }
@@ -78,6 +79,8 @@
 	background-color:#00ba2b;
 }
 
+=======
+>>>>>>> 1b687c2db0f23e7ee38eea1fe4d23723c24a0595
 a span {
     display: none;
 }
@@ -275,4 +278,10 @@ a:active {
     top: 25px;
     left: 25px;
     z-index: 4;
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> 1b687c2db0f23e7ee38eea1fe4d23723c24a0595
