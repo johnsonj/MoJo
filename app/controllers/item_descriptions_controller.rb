@@ -27,7 +27,7 @@ class ItemDescriptionsController < ApplicationController
 
     Item.find_all_by_item_description_id(@item_description.id).each do |item|
       @lat_longs << {:lat => item.latitude, :lon => item.longitude}
-    end
+    end if @item_description
 
     respond_to do |format|
       format.html # show.html.erb
