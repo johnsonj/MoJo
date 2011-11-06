@@ -30,7 +30,7 @@ body {
 }
 
 #menu ul li {
-    display: block;
+    display: inline;
     float: left;
     list-style: none;
 }
