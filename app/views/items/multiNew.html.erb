@@ -43,14 +43,9 @@
 
   <div style="width:500px;">
     <h1>New item</h1>
-    <%= form_tag('/items/multi_create') do %>
+    <%= form_tag('/items_admin/multi_create') do %>
         <p>
-          User:<br/>
-          <%= number_field_tag "user_id", current_user.id %>
-        </p>
-
-        <p>
-          Item:<br/>
+          Item Description ID:<br/>
           <%= number_field_tag "item_description_id" %>
         </p>
 
@@ -87,8 +82,6 @@
     <%= link_to 'Back', items_path %>
   </div>
 </div>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         console.log("loaded dom");
