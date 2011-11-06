@@ -1,8 +1,3 @@
-body{
-	//background-color: #00d9fc;
-	background-color: white;
-}
-
 #menu ul{
 	color: #808080;
 }
@@ -37,8 +32,6 @@ body{
 #menu ul li a:active {
     text-decoration: none; 
 }
-
-
 
 .round{
 	-moz-box-shadow: 0 0 5px #888;
@@ -253,4 +246,49 @@ body{
     z-index: 4;
 }
 
+a span {
+    display: none;
+}
 
+a:hover span {
+    display: block;
+    position: absolute;
+}
+
+a:link {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover {
+    font-weight: bold;
+    text-decoration: none;
+    color: #2B2B2B;
+}
+
+a:active {
+    font-weight: bold;
+    text-decoration: none;
+    color: #2B2B2B;
+}
+
+#items {
+    position: relative;
+    width: 926px;
+    height: 609px;
+    background-image: url('Backpack/Backround1.gif');
+}
+
+#header1 {
+    position: absolute;
+    left: 600px;
+    top: 30px;
+    z-index: 2;
+    font-size: 30px;
+    color: #000000;
+}
