@@ -1,5 +1,7 @@
 #menu ul{
 	color: #808080;
+	display: block;
+	display: inline;
 }
 
 #menu ul li{
