@@ -27,3 +27,47 @@
 
 <%= link_to 'Edit', edit_item_description_path(@item_description) %> |
 <%= link_to 'Back', item_descriptions_path %>
+
+<script type="text/javascript">
+    var map;
+      var lons = [];
+      var lats = [];
+      <% @lat_longs.each do |latLon| %>
+        lons.push(<%= latLon[:lon] %>);
+        lats.push(<%= latLon[:lat] %>);
+      <% end %>
+    function initialize() {
+
+        var myOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(41.83872375564222, -87.62723207473755),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        for(var i=0; i<lons.length; i++) {
+            placeMarker(new google.maps.LatLng(lats[i], lons[i]));
+        }
+
+        function placeMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                map.setZoom(8);
+            });
+        }
+    }
+
+    $(document).ready(function () {
+        console.log("loaded dom");
+        initialize();
+    });
+
+</script>
+<div style="width:500px; height:500px;">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+</div>
