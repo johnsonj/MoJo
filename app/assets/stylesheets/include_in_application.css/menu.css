@@ -1,5 +1,5 @@
 #menu ul{
-	color: #808080;
+	color: #56c7fc;
 	overflow: hidden;
 	display: inline;
 }
@@ -9,18 +9,19 @@
 	font-size: 25px;
 	font-family: sans-serif;
 	list-style: none;
-	color: black;
+	color: #56c7fc;
 	display: inline;
 }
 
 #menu ul li a{
+	color: #56c7fc;
 	text-decoration: none;
 	display: block;
 }
 
 #menu ul li a:hover {
     padding-bottom: 10px;
-    border-bottom-color: green;
+    border-bottom-color: #56c7fc;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
