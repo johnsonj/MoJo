@@ -1,5 +1,8 @@
-<div class="login">
-<h1>Welcome to Serendipity</h1>
+
+
+
+<div class="login">	
+<span id="login_title">Log into Serendipity</span>
 <% if flash[:warning] or flash[:notice] %>
   <div id="notice" <% if flash[:warning] %>class="warning"<% end %>>
     <%= flash[:warning] || flash[:notice] %>

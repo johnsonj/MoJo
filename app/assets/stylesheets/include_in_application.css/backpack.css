@@ -39,6 +39,7 @@
 }
 
 .actions input{
+	margin-top: 20px;
 	border: solid;
 	border-color: green;
 	border-radius: 5px;
@@ -50,42 +51,7 @@
 	font-size: 15px;
 }
 
-/*
-.actions input: hover{
-	background-color:#00ba2b;
-}
 
-a span {
-    display: none;
-}
-
-a:hover span {
-    display: block;
-    position: absolute;
-}
-
-a:link {
-    text-decoration: none;
-    color: #000000;
-}
-
-a:visited {
-    text-decoration: none;
-    color: #000000;
-}
-
-a:hover {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
-}
-
-a:active {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
-}
-*/
 #items {
     position: relative;
     width: 926px;
