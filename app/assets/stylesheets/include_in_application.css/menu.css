@@ -1,6 +1,6 @@
 #menu ul{
 	color: #808080;
-	display: block;
+	overflow: hidden;
 	display: inline;
 }
 
@@ -15,10 +15,10 @@
 
 #menu ul li a{
 	text-decoration: none;
+	display: block;
 }
 
 #menu ul li a:hover {
-    display: block;
     padding-bottom: 10px;
     border-bottom-color: green;
     border-bottom-style: solid;
