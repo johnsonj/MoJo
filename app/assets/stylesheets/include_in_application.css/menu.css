@@ -6,7 +6,7 @@
 
 #menu ul li{
 	width: 100px;
-	font-size: 25px;
+	font-size: 20px;
 	font-family: sans-serif;
 	list-style: none;
 	color: #56c7fc;
@@ -17,6 +17,7 @@
 	color: #56c7fc;
 	text-decoration: none;
 	display: block;
+	margin-right: 10px;
 }
 
 #menu ul li a:hover {
@@ -28,7 +29,8 @@
 
 #menu ul li a:active {
     text-decoration: none;
- 	border-bottom-color: green;
+    padding-bottom: 10px;
+ 	border-bottom-color: #56c7fc;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
