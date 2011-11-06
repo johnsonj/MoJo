@@ -8,7 +8,7 @@
 	font-family: sans-serif;
 	list-style: none;
 	color: black;
-	
+	display: inline;
 }
 
 #menu ul li a{
