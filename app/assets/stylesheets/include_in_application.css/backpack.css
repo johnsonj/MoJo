@@ -24,13 +24,15 @@
 }
 
 #menu ul li a:active {
-    text-decoration: none;  border-bottom-color: green;
+    text-decoration: none;
+  border-bottom-color: green;
     border-bottom-style: solid;
     border-bottom-width: 5px;
 }
 
 #menu ul li a:active {
-    text-decoration: none; 
+    text-decoration: none;
+ 
 }
 
 .round{
