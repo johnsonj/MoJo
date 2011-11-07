@@ -1,6 +1,7 @@
 <div id="wrapper" style="width: 1230px; margin:0 auto;">
   <script type="text/javascript">
       var map;
+      var marker;
       var arrayPoints = [];
       function initialize() {
 
@@ -25,13 +26,11 @@
           });
 
           function placeMarker(location) {
-              var marker = new google.maps.Marker({
+              marker.setMap(null);
+              marker = new google.maps.Marker({
                   position: location,
                   map: map,
                   animation: google.maps.Animation.DROP
-              });
-              google.maps.event.addListener(marker, 'click', function() {
-                  map.setZoom(8);
               });
           }
       }
