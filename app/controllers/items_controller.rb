@@ -76,7 +76,7 @@ class ItemsController < ApplicationController
       if valid
         format.json { render :json => 1 }
       else
-        format.json { render :json => -1 }
+        format.json { render :json => -1, :status => :unprocessable_entry  }
       end
     end
   end
