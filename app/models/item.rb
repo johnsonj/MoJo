@@ -12,8 +12,6 @@
 #
 
 class Item < ActiveRecord::Base
-
-
   belongs_to :User
   belongs_to :item_description, :foreign_key => "item_description_id"
   has_many :ItemHistory, :order => "stamp DESC", :limit => 30
@@ -23,7 +21,19 @@ class Item < ActiveRecord::Base
   validates_numericality_of :longitude, :less_than => 180, :greater_than => -180
 
   reverse_geocoded_by :latitude, :longitude
-
+  
+  validates_each :user_id do |model, attr, value|
+    if (model.changed_attributes["user_id"] != nil)
+      last_history = model.ItemHistory.last
+     # hlist = ItemHistory.where(:item_id => model.id)
+    #  last_history = hlist.last
+      if (last_history != nil)
+       if (last_history.user_id == value)
+           model.errors.add(attr, "A user can not pick up this item until someone else has")
+        end
+      end
+    end
+  end
 end
 
 

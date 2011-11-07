@@ -1,33 +1,56 @@
-a span {
-    display: none;
+
+.round{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 15px;
+	padding: 20px;
+	//background-color: #e8e8e8;
 }
 
-a:hover span {
-    display: block;
-    position: absolute;
+.login{
+	width: 500px;	
+	background-color: red;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 15px;
+	padding: 20px;
+	background-color: #e8e8e8;
 }
 
-a:link {
-    text-decoration: none;
-    color: #000000;
+.field input{
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+	border-radius: 5px;
+	width: 250px;
+	height: 20px;
+	padding: 3px;
+	
+	font-size: 15px;
+	color: #808080;
+	font-family: sans-serif;
+	text-indent: 10px;
 }
 
-a:visited {
-    text-decoration: none;
-    color: #000000;
+.actions input{
+	margin-top: 20px;
+	border: solid;
+	border-color: green;
+	border-radius: 5px;
+	width: 100px;
+	height: 30px;
+	font-family: sans-serif;
+	background: green;	
+	color: white;
+	font-size: 15px;
 }
 
-a:hover {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
-}
-
-a:active {
-    font-weight: bold;
-    text-decoration: none;
-    color: #2B2B2B;
-}
 
 #items {
     position: relative;
@@ -187,14 +210,4 @@ a:active {
     left: 25px;
     z-index: 4;
 }
-
-#item8 {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    top: 25px;
-    left: 25px;
-    z-index: 4;
-}
-
 

@@ -4,7 +4,9 @@ describe "API" do
   before(:each) do
     @app_usr = Factory(:Iphone)
     @usr = Factory(:user)
+    @usr2 = Factory(:user2)
     @valid_api_params = {:appKey => @app_usr.api_key, :apiKey => @usr.api_key}
+    @valid_api_params2 = {:appKey => @app_usr.api_key, :apiKey => @usr2.api_key}
   end
   
   describe "getItemsNearBy" do
@@ -46,6 +48,47 @@ describe "API" do
    end
   end
   
+  describe "pickupItem " do
+     before (:each) do
+        @coordinates = {:latitude => 1, :longitude => 1}
+        itemdesc = Factory(:item_description)
+        @item1 = Factory(:item_global_1)
+        @item2 = Factory(:item_global_2)
+        @item3 = Factory(:item_owned_1)
+      end
+      
+      describe "with valid coordinates" do
+            def params
+              @valid_api_params.merge(@coordinates).merge(:id => @item1.id)
+            end
+            def params2
+              @valid_api_params2.merge(@coordinates).merge(:id => @item1.id)
+            end
+          it "should not allow us to pick up an item after we just picked it up" do
+            get '/api/pickupItem', params 
+            response.status.should == 200
+            get '/api/dropItem', params
+            response.status.should == 200
+            get '/api/pickupItem', params 
+            response.status.should >= 500
+          end
+          it "shoud allow us to pick up an item we've owned that someone else has picked up and dropped" do
+            get '/api/pickupItem', params 
+            response.status.should == 200
+            get '/api/dropItem', params
+            response.status.should == 200
+            get '/api/pickupItem', params2 
+            response.status.should == 200
+            get '/api/dropItem', params2
+            response.status.should == 200   
+            get '/api/pickupItem', params 
+            response.status.should == 200
+            get '/api/dropItem', params
+            response.status.should == 200         
+          end
+        end
+  end
+
   describe "pickupItem" do
      before (:each) do
         @coordinates = {:latitude => 1, :longitude => 1}

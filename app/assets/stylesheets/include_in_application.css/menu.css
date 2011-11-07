@@ -1,0 +1,40 @@
+#menu ul{
+	color: #56c7fc;
+	overflow: hidden;
+	display: inline;
+}
+
+#menu ul li{
+	width: 100px;
+	font-size: 20px;
+	font-family: sans-serif;
+	list-style: none;
+	color: #56c7fc;
+	display: inline;
+}
+
+#menu ul li a{
+	color: #56c7fc;
+	text-decoration: none;
+	display: block;
+	margin-right: 10px;
+}
+
+#menu ul li a:hover {
+    padding-bottom: 10px;
+    border-bottom-color: #56c7fc;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+}
+
+#menu ul li a:active {
+    text-decoration: none;
+    padding-bottom: 10px;
+ 	border-bottom-color: #56c7fc;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+}
+
+.logout{
+	float: right;
+}
