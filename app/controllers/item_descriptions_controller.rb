@@ -22,11 +22,13 @@ class ItemDescriptionsController < ApplicationController
   # GET /item_descriptions/1.json
   def show
     @item_description = ItemDescription.find(params[:id]) if ItemDescription.exists?(params[:id])
-    @lat_longs = []
+    @lats = []
+    @longs = []
 
 
     Item.find_all_by_item_description_id(@item_description.id).each do |item|
-      @lat_longs << {:lat => item.latitude, :lon => item.longitude}
+      @lats << item.latitude
+      @longs << item.longitude
     end if @item_description
 
     respond_to do |format|

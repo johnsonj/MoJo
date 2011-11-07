@@ -30,12 +30,8 @@
 
 <script type="text/javascript">
     var map;
-      var lons = [];
-      var lats = [];
-      <% @lat_longs.each do |latLon| %>
-        lons.push(<%= latLon[:lon] %>);
-        lats.push(<%= latLon[:lat] %>);
-      <% end %>
+      var lons = <%= @longs.as_json %>;
+      var lats = <%= @lats.as_json %>;
     function initialize() {
 
         var myOptions = {
