@@ -56,11 +56,11 @@
   <div style="width:500px;">
     <span class="title2">New Specific</span>
     <%= form_tag('/items/mn_specific') do %>
-        <p>
-          Item:<br/>
+    	<br>    
+          <span class="title2">Item:<br/></span>
           <span class="rounda"><%= text_field_tag :item_description_id %></span>
-        </p>
-
+        
+		<br>
         <p>
           <input type="button" onclick="send_all()" value="Submit"/>
         </p>
