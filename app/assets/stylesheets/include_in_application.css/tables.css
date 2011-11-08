@@ -36,14 +36,20 @@ th{
 	float: right;
 }
 
+.multi_new{
+	background-color: red;
+}
+
+
 
 .label{
 	color: white;
 	font: 12 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
 
-.inputbox{
+.input_box{
 	float: left;
+	text-align: left;
 }
 
 
