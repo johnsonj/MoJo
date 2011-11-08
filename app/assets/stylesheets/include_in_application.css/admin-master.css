@@ -1,3 +1,21 @@
+.title{
+	color: #56c7fc;
+	float: left;
+	font-size: 15px;
+}
+
 .admin_etable{
 	font-size:15px;
+	list-style: none;
+}
+
+.admin_etable tbody tr td a{
+	font-size:15px;
+	list-style: none;
+}
+
+.admin_etable tbody tr td a: hover{
+	font-size:15px;
+	background-color: yellow;
+	
 }
