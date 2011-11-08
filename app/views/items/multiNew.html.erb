@@ -22,36 +22,26 @@
   </div>
 	<div align="left">
     <%= form_tag('/items_admin/multi_create') do %>
-        <p>
-          Item Description ID:<br/>
-          <%= number_field_tag "item_description_id" %>
-        </p>
-
-        <p>
-          Latitude: <br/>
-          <%= text_field_tag "latitude" %>
-        </p>
-
-        <p>
-          Longitude: <br/>
-          <%= text_field_tag "longitude" %>
-        </p>
-
-        <p>
-          Number of Items to Make: <br/>
-          <%= number_field_tag "number", 1 %>
-        </p>
-
-        <p>
-          Latitude Offset: <br/>
-          <%= text_field_tag "latitudeoffset", 0 %>
-        </p>
-
-        <p>
-          Longitude Offset: <br/>
-          <%= text_field_tag "longitudeoffset", 0 %>
-        </p>
-
+        <table>
+          <tr><td>Item Description ID: </td>
+              <td><%= number_field_tag "item_description_id" %></td>
+		   </tr>
+          <tr><td>Latitude: </td>
+          	  <td><%= text_field_tag "latitude" %></td>
+		   </tr>
+          <tr><td>Longitude: </td>
+              <td><%= text_field_tag "longitude" %></td>
+		   </tr>
+          <tr><td>Number of Items to Make: </td>
+              <td><%= number_field_tag "number", 1 %></td>
+		   </tr>
+          <tr><td>Latitude Offset: </td>
+              <td><%= text_field_tag "latitudeoffset", 0 %></td>
+		   </tr>
+          <tr><td>Longitude Offset: </td>
+              <td><%= text_field_tag "longitudeoffset", 0 %></td>
+		   </tr>
+        </table>
         <p>
           <%= submit_tag 'Create Multiple' %>
         </p>
