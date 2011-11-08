@@ -1,4 +1,7 @@
-<h1>Listing images</h1>
+<span class="title2">Listing images</span>
+<br><br><br>
+
+
 
 <%= will_paginate %>
 
@@ -10,9 +13,12 @@
     <th></th>
   </tr>
 
+<%# I want to see the description ID for all items%>
+<%# I want to be able to sort through the images%>
+
 <% @images.each do |image| %>
   <tr>
-    <td><%= image_tag image.icon.url(:thumb) %></td>
+    <td align="center"><%= image_tag image.icon.url(:thumb) %></td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
     <td><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></td>
