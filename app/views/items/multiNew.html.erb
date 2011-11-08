@@ -3,30 +3,32 @@
 		Scattering Random Items
 	</div>
 	<br><br>
-	<div>
-    <%= form_tag('/items_admin/multi_create') do %>
-        <div class="multi_new">
-			<div class="label">Item Description ID:</div>
-            <div class="input_box"><%= number_field_tag "item_description_id" %><div>
+	<div class="multi_new">
+	    <%= form_tag('/items_admin/multi_create') do %>
+
+				<div class="label">Item Description ID:</div>
+	            <div class="input_box"><%= number_field_tag "item_description_id" %><div>
      		
-			<div class="label">Latitude: </div>
-          	<div class="input_box"><%= text_field_tag "latitude" %></div>
+				<div class="label">Latitude: </div>
+	          	<div class="input_box"><%= text_field_tag "latitude" %></div>
 	
-            <div class="label">Longitude: </div>
-            <div class="input_box"><%= text_field_tag "longitude" %></div>
+	            <div class="label">Longitude: </div>
+	            <div class="input_box"><%= text_field_tag "longitude" %></div>
 
-          	<div class="label">Number of Items to Make: </div>
-            <div class="input_box"><%= number_field_tag "number", 1 %></div>
+	          	<div class="label">Number of Items to Make: </div>
+	            <div class="input_box"><%= number_field_tag "number", 1 %></div>
 
-          	<div class="label">Latitude Offset: </div>
-            <div class="input_box"><%= text_field_tag "latitudeoffset", 0 %></div>
+	          	<div class="label">Latitude Offset: </div>
+	            <div class="input_box"><%= text_field_tag "latitudeoffset", 0 %></div>
 
-          	<div class="label">Longitude Offset: </div>
-            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
-        <p>
-          <%= submit_tag 'Create Multiple' %>
-        </p>
-    <% end %>
+	          	<div class="label">Longitude Offset: </div>
+	            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
+	    
+	    		<p>
+		          <%= submit_tag 'Create Multiple' %>
+		        </p>
+		
+	    <% end %>
 	</div>
 	
 	<div style="width:500px; height:500px;">

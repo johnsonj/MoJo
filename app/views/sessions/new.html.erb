@@ -1,8 +1,10 @@
 
-
+	<%= image_tag "logo_64.png", :alt => 'logo' %>
+	<br>
+<span id="login_title">Log into Serendipity</span>
 
 <div class="login">	
-<span id="login_title">Log into Serendipity</span>
+
 <% if flash[:warning] or flash[:notice] %>
   <div id="notice" <% if flash[:warning] %>class="warning"<% end %>>
     <%= flash[:warning] || flash[:notice] %>
@@ -12,17 +14,17 @@
   </script>
 <% end %>
 <%= form_for(:session, :url => sessions_path) do |f| %>
-  <br>
+
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>
-  <br>
+
   <div class="field">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
-  <br>
+
   <div class="actions">
     <%= f.submit "Sign in" %>
   </div>
