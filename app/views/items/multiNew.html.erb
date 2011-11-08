@@ -1,25 +1,26 @@
 <div class="white" id="wrapper" style="margin:0px auto;">
-  <div style="width:350px;">
+  <div style="width:300px;">
     <div class="title2">
-		New Random? item
+		Scattering a bunch of random Items
+	</div>
 		<br><br><br>
 	<div class="title2">
 		Instructions:
 	</div>
 	<br>
-	<div class="white">
+	<div class="white instruction" align="left">
 	* Select Create multiple random at the top of the page<br>
-  * enter in user 0 (working to remove this)<br>
-  * select the center of the scatter that you want on the map<br>
-  * It will use the last marker that you select as the center, Working on removing old markers<br>
-  * enter in the item description id for item, the number of them you want to make<br>
-  * lat and long offsets are based around the the center point(working on showing a ring in the map)<br>
-  * hit save and assume they were scattered well<br>
-  * you're done!<br>
+  	* enter in user 0 (working to remove this)<br>
+  	* select the center of the scatter that you want on the map<br>
+  	* It will use the last marker that you select as the center, Working on removing old markers<br>
+  	* enter in the item description id for item, the number of them you want to make<br>
+  	* lat and long offsets are based around the the center point(working on showing a ring in the map)<br>
+  	* hit save and assume they were scattered well<br>
+  	* you're done!<br>
 	</div>
 	<br>
-
-
+  </div>
+	<div align="left">
     <%= form_tag('/items_admin/multi_create') do %>
         <p>
           Item Description ID:<br/>
@@ -55,7 +56,7 @@
           <%= submit_tag 'Create Multiple' %>
         </p>
     <% end %>
-
+	</div>
     <%= link_to 'Back', items_path %>
   </div>
 </div>
