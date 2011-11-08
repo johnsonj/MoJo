@@ -1,5 +1,5 @@
 <div class="white" id="wrapper" style="margin:0px auto;">
-  <div style="width:300px;">
+  <div style="width:400px;">
     <div class="title2">
 		Scattering a bunch of random Items
 	</div>
@@ -7,7 +7,7 @@
 	<div class="title2">
 		Instructions:
 	</div>
-	<br>
+	<br><br>
 	<div class="white instruction" align="left">
 	* Select Create multiple random at the top of the page<br>
   	* enter in user 0 (working to remove this)<br>
@@ -22,26 +22,24 @@
   </div>
 	<div align="left">
     <%= form_tag('/items_admin/multi_create') do %>
-        <table>
-          <tr><td>Item Description ID: </td>
-              <td><%= number_field_tag "item_description_id" %></td>
-		   </tr>
-          <tr><td>Latitude: </td>
-          	  <td><%= text_field_tag "latitude" %></td>
-		   </tr>
-          <tr><td>Longitude: </td>
-              <td><%= text_field_tag "longitude" %></td>
-		   </tr>
-          <tr><td>Number of Items to Make: </td>
-              <td><%= number_field_tag "number", 1 %></td>
-		   </tr>
-          <tr><td>Latitude Offset: </td>
-              <td><%= text_field_tag "latitudeoffset", 0 %></td>
-		   </tr>
-          <tr><td>Longitude Offset: </td>
-              <td><%= text_field_tag "longitudeoffset", 0 %></td>
-		   </tr>
-        </table>
+        <div class="multi_new">
+			<div class="label">Item Description ID:</div>
+            <div class="input_box"><%= number_field_tag "item_description_id" %><div>
+     		
+			<div class="label">Latitude: </div>
+          	<div class="input_box"><%= text_field_tag "latitude" %></div>
+	
+            <div class="label">Longitude: </div>
+              <div class="input_box"><%= text_field_tag "longitude" %></div>
+
+          	<div class="label">Number of Items to Make: </div>
+            <div class="input_box"><%= number_field_tag "number", 1 %></div>
+
+          	<div class="label">Latitude Offset: </div>
+            <div class="input_box"><%= text_field_tag "latitudeoffset", 0 %></div>
+
+          	<div class="label">Longitude Offset: </div>
+            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
         <p>
           <%= submit_tag 'Create Multiple' %>
         </p>
