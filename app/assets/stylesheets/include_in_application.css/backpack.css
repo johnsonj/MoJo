@@ -58,6 +58,19 @@
 	font-size: 15px;
 }
 
+.actions input: hover{
+	margin-top: 20px;
+	border: solid;
+	border-color: green;
+	border-radius: 5px;
+	width: 100px;
+	height: 30px;
+	font-family: sans-serif;
+	background: green;	
+	color: white;
+	font-size: 15px;
+}
+
 
 #items {
     position: relative;
