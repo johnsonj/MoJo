@@ -1,67 +1,3 @@
-<div class="white" id="wrapper" style="margin:0px auto;">
-    <div class="title2">
-		Scattering Random Items
-	</div>
-
-	<br><br><br>
-	
-	
-	    <%= form_tag('/items_admin/multi_create') do %>
-			<div class="multi_new">
-					<div class="label">Item Description ID:</div>
-		            <div class="input_box"><%= number_field_tag "item_description_id" %></div>
-     			
-					<div class="label">Latitude: </div>
-		          	<div class="input_box"><%= text_field_tag "latitude" %></div>
-	
-		            <div class="label">Longitude: </div>
-		            <div class="input_box"><%= text_field_tag "longitude" %></div>
-
-		          	<div class="label">Number of Items to Make: </div>
-		            <div class="input_box"><%= number_field_tag "number", 1 %></div>
-
-		          	<div class="label">Latitude Offset: </div>
-		            <div class="input_box"><%= text_field_tag "latitudeoffset", 0 %></div>
-
-		          	<div class="label">Longitude Offset: </div>
-		            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
-	    
-		    		<p>
-			          <%= submit_tag 'Create Multiple' %>
-			        </p>
-			</div>		
-	    <% end %>
-
-	
-	<div style="width:500px; float:right; height:500px;">
-	  <div id="map_canvas" style="width:100%; height:100%"></div>
-	</div>
-
-
-	<br><br><br>
-	
-	<div>
-		<div class="title2">
-			Instructions:
-		</div>
-		<br><br>
-		<div class="white instruction" align="left">
-		* Select Create multiple random at the top of the page<br>
-	  	* enter in user 0 (working to remove this)<br>
-	  	* select the center of the scatter that you want on the map<br>
-	  	* It will use the last marker that you select as the center, Working on removing old markers<br>
-	  	* enter in the item description id for item, the number of them you want to make<br>
-	  	* lat and long offsets are based around the the center point(working on showing a ring in the map)<br>
-	  	* hit save and assume they were scattered well<br>
-	  	* you're done!<br>
-		</div>
-	</div>
-	<br>
-
-	
-    <%= link_to 'Back', items_path %>
-  
-</div>
 <script type="text/javascript">
     var map;
     var marker;
@@ -140,3 +76,73 @@
         initialize();
     });
 </script>
+
+
+<div class="white" id="wrapper" style="margin:0px auto;">
+    <div class="title2">
+		Scattering Random Items
+	</div>
+
+	<br><br><br>
+	
+	<div>
+	    <%= form_tag('/items_admin/multi_create') do %>
+			<div class="multi_new">
+					<div class="label">Item Description ID:</div>
+		            <div class="input_box"><%= number_field_tag "item_description_id" %></div>
+     			
+					<div class="label">Latitude: </div>
+		          	<div class="input_box"><%= text_field_tag "latitude" %></div>
+	
+		            <div class="label">Longitude: </div>
+		            <div class="input_box"><%= text_field_tag "longitude" %></div>
+
+		          	<div class="label">Number of Items to Make: </div>
+		            <div class="input_box"><%= number_field_tag "number", 1 %></div>
+
+		          	<div class="label">Latitude Offset: </div>
+		            <div class="input_box"><%= text_field_tag "latitudeoffset", 0 %></div>
+
+		          	<div class="label">Longitude Offset: </div>
+		            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
+	    
+		    		<p>
+			          <%= submit_tag 'Create Multiple' %>
+			        </p>
+			</div>		
+	    <% end %>
+
+	
+	<div style="width:500px; float:right; height:500px;">
+	  <div id="map_canvas" style="width:100%; height:100%"></div>
+	</div>
+	</div>
+
+	<br><br><br>
+	
+	<div>
+		<div class="title2">
+			Instructions:
+		</div>
+		<br><br>
+		<div class="white instruction" align="left">
+		* Select Create multiple random at the top of the page<br>
+	  	* enter in user 0 (working to remove this)<br>
+	  	* select the center of the scatter that you want on the map<br>
+	  	* It will use the last marker that you select as the center, Working on removing old markers<br>
+	  	* enter in the item description id for item, the number of them you want to make<br>
+	  	* lat and long offsets are based around the the center point(working on showing a ring in the map)<br>
+	  	* hit save and assume they were scattered well<br>
+	  	* you're done!<br>
+		</div>
+	</div>
+	<br>
+
+	
+
+  
+</div>
+
+
+
+    <%= link_to 'Back', items_path %>
