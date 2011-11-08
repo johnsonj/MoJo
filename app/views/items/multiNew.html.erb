@@ -85,7 +85,7 @@
 
 	<br><br><br>
 	
-	<div style="float: left;">
+	<div>
 	    <%= form_tag('/items_admin/multi_create') do %>
 			<div class="multi_new">
 					<div class="label">Item Description ID:</div>
@@ -113,14 +113,14 @@
 	    <% end %>
 
 	
-		<div style="width:600px; float:right; height:500px;">
+		<div style="width:650px; float:right; height:500px;">
 	  <div id="map_canvas" style="width:100%; height:100%"></div>
 	</div>
 	</div>
 
 	<br><br><br>
 	
-	<div style="margin-top:30px;">
+	<div style="margin-top:30px; float: left;">
 		<div class="title2">
 			Instructions:
 		</div>
@@ -143,6 +143,7 @@
   
 </div>
 
-
-
+<br>
+<div style="margin-top:30px; float: left;">
     <%= link_to 'Back', items_path %>
+</div>
