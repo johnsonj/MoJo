@@ -17,12 +17,18 @@
 	margin-bottom: 10px;
 }
 
-/*COLORS*/
+/*COLORS && TEXT */
+
+h1{
+	color: white;
+}
 
 .white{
 	color: white;
+	text-align: left;
 }
 
 .white a{
 	color: white;
 }
+

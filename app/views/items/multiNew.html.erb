@@ -1,6 +1,24 @@
 <div id="wrapper" style="margin:0px auto;">
   <div style="width:500px;">
-    <span class="title2">New Random? item</span>
+    <span class="title2">
+		New Random? item
+		<br><br><br>
+		Instructions:
+	</span>
+	<br>
+	<span class="white">
+	* Select Create multiple random at the top of the page<br>
+  * enter in user 0 (working to remove this)<br>
+  * select the center of the scatter that you want on the map<br>
+  * It will use the last marker that you select as the center, Working on removing old markers<br>
+  * enter in the item description id for item, the number of them you want to make<br>
+  * lat and long offsets are based around the the center point(working on showing a ring in the map)<br>
+  * hit save and assume they were scattered well<br>
+  * you're done!<br>
+	</span>
+	<br>
+
+
     <%= form_tag('/items_admin/multi_create') do %>
         <p>
           Item Description ID:<br/>
