@@ -85,7 +85,7 @@
 
 	<br><br><br>
 	
-	<div>
+	<div style="float: left;">
 	    <%= form_tag('/items_admin/multi_create') do %>
 			<div class="multi_new">
 					<div class="label">Item Description ID:</div>
@@ -105,7 +105,7 @@
 
 		          	<div class="label">Longitude Offset: </div>
 		            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
-	    
+	    			<br><br>
 		    		<p>
 			          <%= submit_tag 'Create Multiple' %>
 			        </p>
@@ -113,14 +113,14 @@
 	    <% end %>
 
 	
-	<div style="width:500px; float:right; height:500px;">
+		<div style="width:600px; float:right; height:500px;">
 	  <div id="map_canvas" style="width:100%; height:100%"></div>
 	</div>
 	</div>
 
 	<br><br><br>
 	
-	<div>
+	<div style="margin-top:30px;">
 		<div class="title2">
 			Instructions:
 		</div>
