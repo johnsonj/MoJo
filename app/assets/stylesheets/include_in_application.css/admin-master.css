@@ -1,3 +1,33 @@
-.admin_etable{
-	font-size:15px;
+.title{
+	color: #3b8eb5;
+	float: left;
+	font-size: 20px;
 }
+
+.title2{
+	//color: #56c7fc;
+	color: white;
+	float: left;
+	font-size: 20px;
+}
+
+.instruction{
+	font-size: 12px;
+	float: left;
+	text-align:left;
+}
+
+
+.admin_etable{
+	margin-top: 30px;
+	font-size:15px;
+	list-style: none;
+	background-color: white;
+}
+
+.admin_etable tbody tr td a{
+	font-size:15px;
+	list-style: none;
+	text-decoration: none;
+}
+

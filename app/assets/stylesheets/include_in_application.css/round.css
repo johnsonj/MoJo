@@ -1,0 +1,10 @@
+#item_description_id
+,#latitude
+,#longitude
+,#number
+,#latitudeoffset
+,#longitudeoffset{
+	border-radius: 5px;
+	width: 100px;
+	height: 20px;
+}

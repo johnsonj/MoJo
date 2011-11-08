@@ -1,4 +1,4 @@
-<div id="wrapper" style="width: 1230px; margin:0 auto;">
+<div id="wrapper" style="margin:0 auto;">
   <script type="text/javascript">
       var map;
       var lats = [];
@@ -53,20 +53,34 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
   </div>
 
-  <div style="width:500px;">
-    <h1>New item</h1>
-    <%= form_tag('/items/mn_specific') do %>
-        <p>
-          Item:<br/>
-          <%= text_field_tag :item_description_id %>
-        </p>
+  <div style="width:300px;">
+    <div class="title2">Creating Multiple Items at Specific Locations</div>
+	<br><br><br><br>
+	<div class="title2">Instructions:</div>
+	<br><br>
+	<div class="white instruction">
+		  * Select Multi multiple Specific<br>
+		  * Enter the item description id you want to make<br>
+		  * drop some markers on the map and hit save<br>
+		  * Your items will be created there<br>
+		  * You cannot remove markers at the moment so be careful<br>
+		  * you're done!<br>
+	</div>
+	<br><br>
+    
 
+	<%= form_tag('/items/mn_specific') do %>
+    	<br>    
+          <span class="title2">Item:<br/></span>
+          <%= text_field_tag :item_description_id %>
+        
+		<br><br>
         <p>
           <input type="button" onclick="send_all()" value="Submit"/>
         </p>
     <% end %>
 
-    <%= link_to 'Back', items_path %>
+    <span class="white"><%= link_to 'Back', items_path %></span>
   </div>
 </div>
 <script type="text/javascript">

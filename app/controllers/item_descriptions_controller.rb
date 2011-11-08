@@ -22,12 +22,14 @@ class ItemDescriptionsController < ApplicationController
   # GET /item_descriptions/1.json
   def show
     @item_description = ItemDescription.find(params[:id]) if ItemDescription.exists?(params[:id])
-    @lat_longs = []
+    @lats = []
+    @longs = []
+    @item_descriptions = Item.find_all_by_item_description_id(@item_description.id).paginate(:page => params[:page]) if @item_description
 
-
-    Item.find_all_by_item_description_id(@item_description.id).each do |item|
-      @lat_longs << {:lat => item.latitude, :lon => item.longitude}
-    end if @item_description
+    @item_descriptions.each do |item|
+      @lats << item.latitude
+      @longs << item.longitude
+    end if @item_descriptions
 
     respond_to do |format|
       format.html # show.html.erb

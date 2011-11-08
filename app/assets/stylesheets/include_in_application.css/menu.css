@@ -14,7 +14,8 @@
 }
 
 #menu ul li a{
-	color: #56c7fc;
+	//color: #56c7fc;
+	color: white;
 	text-decoration: none;
 	display: block;
 	margin-right: 10px;
@@ -38,3 +39,11 @@
 .logout{
 	float: right;
 }
+
+
+
+
+#footer p{
+	color: white;
+}
+

@@ -1,8 +1,11 @@
-<h1>Listing locations</h1>
-
+<h1>>Listing locations</h1>
+<br>
+<br>
 <%= will_paginate %>
 
-<table>
+<br>
+
+<table class="ll_table">
   <tr>
     <th>Latitude</th>
     <th>Longitude</th>
@@ -12,6 +15,8 @@
     <th></th>
     <th></th>
   </tr>
+
+
 
 <% @locations.each do |location| %>
   <tr>

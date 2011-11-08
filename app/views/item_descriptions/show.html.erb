@@ -30,12 +30,8 @@
 
 <script type="text/javascript">
     var map;
-      var lons = [];
-      var lats = [];
-      <% @lat_longs.each do |latLon| %>
-        lons.push(<%= latLon[:lon] %>);
-        lats.push(<%= latLon[:lat] %>);
-      <% end %>
+      var lons = <%= @longs.as_json %>;
+      var lats = <%= @lats.as_json %>;
     function initialize() {
 
         var myOptions = {
@@ -68,6 +64,11 @@
     });
 
 </script>
+
+<%= will_paginate %>
+
 <div style="width:500px; height:500px;">
   <div id="map_canvas" style="width:100%; height:100%"></div>
 </div>
+
+<%= will_paginate %>
