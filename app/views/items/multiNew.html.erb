@@ -1,47 +1,4 @@
 <div id="wrapper" style="width: 123px; margin:0px auto;">
-  <script type="text/javascript">
-      var map;
-      var marker;
-      var arrayPoints = [];
-      function initialize() {
-
-          var myOptions = {
-              zoom: 8,
-              center: new google.maps.LatLng(41.83872375564222, -87.62723207473755),
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-          }
-
-          map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-          google.maps.event.addListener(map, 'click', function(event) {
-              var position = event.latLng;
-              arrayPoints.push(position);
-              placeMarker(position);
-              console.log(position.lat());
-              console.log(position.lng());
-              $("#latitude").val(position.lat());
-              $("#longitude").val(position.lng());
-
-
-          });
-
-          function placeMarker(location) {
-              if (marker != null) {
-                  marker.setMap(null);
-              }
-              marker = new google.maps.Marker({
-                  position: location,
-                  map: map,
-                  animation: google.maps.Animation.DROP
-              });
-          }
-      }
-
-  </script>
-  <div style="width:500px; height:500px;float:right;">
-    <div id="map_canvas" style="width:100%; height:100%"></div>
-  </div>
-
   <div style="width:500px;">
     <h1>New item</h1>
     <%= form_tag('/items_admin/multi_create') do %>
@@ -84,8 +41,83 @@
   </div>
 </div>
 <script type="text/javascript">
+    var map;
+    var marker;
+    var circle;
+    var arrayPoints = [];
+    function initialize() {
+
+        var myOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(41.83872375564222, -87.62723207473755),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        google.maps.event.addListener(map, 'click', function(event) {
+            var position = event.latLng;
+            arrayPoints.push(position);
+            placeMarker(position);
+            console.log(position.lat());
+            console.log(position.lng());
+            $("#latitude").val(position.lat());
+            $("#longitude").val(position.lng());
+
+
+        });
+
+        function placeMarker(location) {
+            if (marker != null) {
+                marker.setMap(null);
+            }
+            marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+            if(($("#latitudeoffset").val() != 0) && ($("#longitudeoffset").val() != 0)) {
+                // Add circle overlay and bind to marker
+                var rad = haversine(location.lat(), location.lat() + parseFloat($("#latitudeoffset").val()),
+                        location.lng(), location.lng() + parseFloat($("#longitudeoffset").val()));
+                if(circle != null) {
+                    circle.setMap(null);
+                }
+                circle = new google.maps.Circle({
+                    center: location,
+                    clickable: false,
+                    fillColor: 'blue',
+                    fillOpacity: 0.5,
+                    map: map,
+                    radius: rad
+                });
+            }
+        }
+    }
+
+    function toRad(Value) {
+        /** Converts numeric degrees to radians */
+        return Value * Math.PI / 180;
+    }
+
+    function haversine(lat1, lat2, lon1, lon2) {
+        var R = 6371 * 1000; // meters
+        var dLat = toRad(lat2 - lat1);
+        var dLon = toRad(lon2 - lon1);
+        lat1 = toRad(lat1);
+        lat2 = toRad(lat2);
+
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
     $(document).ready(function () {
         console.log("loaded dom");
         initialize();
     });
 </script>
+<div style="width:500px; height:500px;">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+</div>
