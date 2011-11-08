@@ -53,14 +53,15 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
   </div>
 
-  <div style="width:500px;">
+  <div class="specific_item" style="width:300px;">
     <span class="title2">New Specific</span>
+	<br><br>
     <%= form_tag('/items/mn_specific') do %>
     	<br>    
           <span class="title2">Item:<br/></span>
-          <span class="rounda"><%= text_field_tag :item_description_id %></span>
+          <%= text_field_tag :item_description_id %>
         
-		<br>
+		<br><br>
         <p>
           <input type="button" onclick="send_all()" value="Submit"/>
         </p>
