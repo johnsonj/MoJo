@@ -23,11 +23,5 @@
 	font-size:15px;
 	list-style: none;
 	text-decoration: none;
-	background-color: white;
 }
 
-.admin_etable tbody tr td a: hover{
-	font-size:15px;
-	background-color: yellow;
-	
-}
