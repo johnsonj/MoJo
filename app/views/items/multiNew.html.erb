@@ -9,7 +9,7 @@
 	    <%= form_tag('/items_admin/multi_create') do %>
 			<div class="multi_new">
 					<div class="label">Item Description ID:</div>
-		            <div class="input_box"><%= number_field_tag "item_description_id" %><div>
+		            <div class="input_box"><%= number_field_tag "item_description_id" %></div>
      			
 					<div class="label">Latitude: </div>
 		          	<div class="input_box"><%= text_field_tag "latitude" %></div>
@@ -36,7 +36,8 @@
 	<div style="width:500px; float:right; height:500px;">
 	  <div id="map_canvas" style="width:100%; height:100%"></div>
 	</div>
-	
+
+
 	<br><br><br>
 	
 	<div>
@@ -56,6 +57,7 @@
 		</div>
 	</div>
 	<br>
+
 	
     <%= link_to 'Back', items_path %>
   
