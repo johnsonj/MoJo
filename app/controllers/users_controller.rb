@@ -3,7 +3,8 @@ require 'sessions_helper'
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_filter :login_required, :only => [:index, :edit, :update, :destroy]
+  before_filter :current_user_unless_admin, :only => [:edit, :update, :destroy]
+  before_filter :admin_login_required, :only => :index
 
   # GET /users
   # GET /users.xml

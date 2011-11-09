@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   include SessionsHelper
 
   before_filter :admin_login_required, :only => :admin
+  before_filter :login_required, :only => [:leaderboards, :users, :items, :items2]
 
   def home
     if current_user
