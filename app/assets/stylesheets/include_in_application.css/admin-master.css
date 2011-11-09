@@ -11,6 +11,12 @@
 	font-size: 20px;
 }
 
+.instruction{
+	font-size: 12px;
+	float: left;
+	text-align:left;
+}
+
 
 .admin_etable{
 	margin-top: 30px;

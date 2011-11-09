@@ -18,3 +18,50 @@ th{
 	font-style: normal;
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 }
+
+
+
+
+/*
+
+~~~MULTINEW RANDOM TABLE
+
+*/
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.multi_new{
+	//background-color: red;
+	width: 300px;
+	float: left;
+}
+
+
+
+.label{
+	color: white;
+	font: 12 "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+.input_box{
+	
+}
+
+
+
+
+
+
+
+
+/*
+
+~~~END MULTINEW RANDOM TABLE
+
+*/

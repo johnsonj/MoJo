@@ -53,10 +53,23 @@
     <div id="map_canvas" style="width:100%; height:100%"></div>
   </div>
 
-  <div class="specific_item" style="width:300px;">
-    <span class="title2">New Specific</span>
+  <div style="width:300px;">
+    <div class="title2">Creating Multiple Items at Specific Locations</div>
+	<br><br><br><br>
+	<div class="title2">Instructions:</div>
 	<br><br>
-    <%= form_tag('/items/mn_specific') do %>
+	<div class="white instruction">
+		  * Select Multi multiple Specific<br>
+		  * Enter the item description id you want to make<br>
+		  * drop some markers on the map and hit save<br>
+		  * Your items will be created there<br>
+		  * You cannot remove markers at the moment so be careful<br>
+		  * you're done!<br>
+	</div>
+	<br><br>
+    
+
+	<%= form_tag('/items/mn_specific') do %>
     	<br>    
           <span class="title2">Item:<br/></span>
           <%= text_field_tag :item_description_id %>
@@ -67,7 +80,7 @@
         </p>
     <% end %>
 
-    <%= link_to 'Back', items_path %>
+    <span class="white"><%= link_to 'Back', items_path %></span>
   </div>
 </div>
 <script type="text/javascript">

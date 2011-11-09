@@ -51,4 +51,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def mapanimation
+    respond_to do |format|
+      format.html
+     end
+  end
+
 end

@@ -16,3 +16,22 @@
 	height: 15px;
 	margin-bottom: 10px;
 }
+
+/*COLORS && TEXT */
+
+p{
+	color: white;
+}
+
+h1{
+	color: white;
+}
+
+.white{
+	color: white;
+}
+
+.white a{
+	color: white;
+}
+
