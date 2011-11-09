@@ -27,11 +27,15 @@
           function placeMarker(location) {
               var marker = new google.maps.Marker({
                   position: location,
+                  clickable: true,
                   map: map,
                   animation: google.maps.Animation.DROP
               });
               google.maps.event.addListener(marker, 'click', function() {
-                  map.setZoom(8);
+                  mk = marker;
+                  lats.splice(lats.indexOf(mk.position.lat()), 1);
+                  longs.splice(longs.indexOf(mk.position.lng()), 1);
+                  mk.setMap(null);
               });
           }
       }
@@ -39,7 +43,7 @@
       function send_all() {
           console.log("Posting Locations");
           $.post("/items_admin/mn_specific", {
-                      "item_description_id": $("#item_description_id").val(),
+                      "item_description_id": $("#form_item_description_id").val(),
                       "latitudes[]": lats,
                       "longitudes[]": longs },
                       function() {
@@ -63,7 +67,6 @@
 		  * Enter the item description id you want to make<br>
 		  * drop some markers on the map and hit save<br>
 		  * Your items will be created there<br>
-		  * You cannot remove markers at the moment so be careful<br>
 		  * you're done!<br>
 	</div>
 	<br><br>
@@ -72,7 +75,7 @@
 	<%= form_tag('/items/mn_specific') do %>
     	<br>    
           <span class="title2">Item:<br/></span>
-          <%= text_field_tag :item_description_id %>
+          <%= select(:form, :item_description_id, ItemDescription.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select Item To Make'}) %>
         
 		<br><br>
         <p>

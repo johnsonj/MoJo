@@ -89,7 +89,7 @@
 	    <%= form_tag('/items_admin/multi_create') do %>
 			<div class="multi_new">
 					<div class="label">Item Description ID:</div>
-		            <div class="input_box"><%= number_field_tag "item_description_id" %></div>
+		            <div class="input_box"><%= select_tag(:item_description_id, options_from_collection_for_select(ItemDescription.all, "id", "name"), :prompt => 'Select Item To Make') %></div>
      			
 					<div class="label">Latitude: </div>
 		          	<div class="input_box"><%= text_field_tag "latitude" %></div>
