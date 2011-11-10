@@ -56,4 +56,9 @@ class PagesController < ApplicationController
      end
   end
 
+  def canvasmap 
+    respond_to do |format|
+      format.html
+     end
+  end
 end
