@@ -13,13 +13,13 @@ Ipro369MoJo::Application.routes.draw do
   root :to => "pages#home", :as => "home_page"
 
   match '/leaderboards' => 'pages#leaderboards'
-  match '/leaderboards/users' => 'pages#users', :as => :leaderboards_users_path
-  match '/leaderboards/items' => 'pages#items', :as => :leaderboards_items_path
-  get "pages/leaderboards"
+  match '/leaderboards/users' => 'pages#top_hops_by_user', :as => :leaderboards_users_path
+  match '/leaderboards/items' => 'pages#top_hops_by_item', :as => :leaderboards_items_path
   match '/items_admin/multiNew' => 'items#multiNew', :as => :items_multinew_path
   match '/items_admin/multi_create' => 'items#multi_create_scatter', :via => :post
   post '/items_admin/mn_specific' => 'items#multi_create_specific', :as => :mn_specific_path
   match '/items_admin/multiNewSpecific' => 'items#multi_new_specific', :as => :items_multinew_specific
+  match '/items_admin/master_map' => 'items#master_map', :as => :master_map_path
   match '/signup' => 'users#new', :as => :signup_path
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
@@ -27,8 +27,8 @@ Ipro369MoJo::Application.routes.draw do
   match '/itemDetails/:id' => 'item_histories#itemDetails'
   match '/admin' => 'pages#admin', :as => :admin_portal_path
 
+  match '/demo/mapanimation' => 'pages#map_animation'
   match '/demo/canvasmap' => 'pages#canvasmap'
-  match '/demo/mapanimation/' => 'pages#mapanimation'
   ### API Methods ###
   match '/api/pickupItem' => 'items#pickup', :format => 'json'
   match '/api/dropItem' => 'items#drop', :format => 'json'

@@ -29,7 +29,7 @@
     <div class="field">
       <%= f.label :sex %>
       <br/>
-      <%= f.text_field :sex %>
+      <%= select_tag :sex, '<option value="0">M</option><option value="1">F</option>'.html_safe %>
     </div>
     <div class="field">
       <%= f.label :password %>

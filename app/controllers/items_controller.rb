@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   include SessionsHelper
   include ActiveModel::Validations
 
-  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multiNew, :multi_create_scatter]
+  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multiNew, :multi_create_scatter, :master_map]
   before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
 
   # GET /items
@@ -210,6 +210,15 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_url
+  end
+
+  def master_map
+    @lats = []
+    @longs = []
+    Item.all.each do |item|
+      @lats << item.latitude
+      @longs << item.longitude
+    end
   end
 
 end

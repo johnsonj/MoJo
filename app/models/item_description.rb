@@ -14,7 +14,7 @@
 class ItemDescription < ActiveRecord::Base
 
   belongs_to :image
-  has_one :item
+  has_many :items, :dependent => :destroy
 
 validates :name, :uniqueness => true
 validates :description, :presence => true
