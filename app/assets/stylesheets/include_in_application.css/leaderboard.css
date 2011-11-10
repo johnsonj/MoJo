@@ -1,0 +1,23 @@
+.leaderboard_nav{
+	color: white;
+	float: left;
+	display: block;
+	width: 100%;
+	background-color: white;
+	vertical-align: baseline;
+	height: 25px;
+}
+
+
+
+.leaderboard_nav ul li{
+	display: inline;
+	text-decoration: none;
+	font: normal 20px sans-serif;
+	text-indent: 30px;
+}
+
+.leaderboard_nav ul li a{
+	display: inline;
+	text-align: center;
+}
