@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include SessionsHelper
 
   before_filter :admin_login_required, :only => :admin
-  before_filter :login_required, :only => [:leaderboards, :users, :items, :items2]
+  before_filter :login_required, :only => [:leaderboards, :top_hops_by_user, :top_hops_by_item, :running_distance_by_item]
 
   def home
     if current_user
@@ -20,41 +20,22 @@ class PagesController < ApplicationController
   end
 
   def leaderboards
-
-    respond_to do |format|
-      format.html
-    end
   end
 
-  def users
-    @TopUsers = ItemHistory.find(:all, :select => "user_id, count(id) as user_count", :group => "user_id", :order => "user_count DESC")
-
-    respond_to do |format|
-      format.html
-    end
+  def top_hops_by_user
+    @top_users = ItemHistory.find(:all, :select => "user_id, count(id) as user_count", :group => "user_id", :order => "user_count DESC")
   end
 
-  def items
-    @TopItems = ItemHistory.find(:all, :select => "item_id, count(id) as item_count", :group => "item_id", :order => "item_count DESC")
-
-    respond_to do |format|
-      format.html
-    end
+  def top_hops_by_item
+    @top_items = ItemHistory.find(:all, :select => "item_id, count(id) as item_count", :group => "item_id", :order => "item_count DESC")
   end
 
 
-  def items2
-    @TopItems2 = ItemHistory.find(:all, :select => "runningdistance, max{runningdistance} as item_distance", :group => "runningdistance", :order => "runningdistance DESC")
-
-    respond_to do |format|
-      format.html
-    end
+  def running_distance_by_item
+    @top_items = ItemHistory.find(:all, :select => "runningdistance, max{runningdistance} as item_distance", :group => "runningdistance", :order => "runningdistance DESC")
   end
 
-  def mapanimation
-    respond_to do |format|
-      format.html
-     end
+  def map_animation
   end
 
 end
