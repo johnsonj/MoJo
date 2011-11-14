@@ -28,6 +28,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/admin' => 'pages#admin', :as => :admin_portal_path
 
   match '/demo/mapanimation' => 'pages#map_animation'
+  match '/demo/canvasmap' => 'pages#canvasmap'
   ### API Methods ###
   match '/api/pickupItem' => 'items#pickup', :format => 'json'
   match '/api/dropItem' => 'items#drop', :format => 'json'

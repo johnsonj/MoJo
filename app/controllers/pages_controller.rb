@@ -48,4 +48,9 @@ class PagesController < ApplicationController
   def map_animation
   end
 
+  def canvasmap 
+    respond_to do |format|
+      format.html
+     end
+  end
 end

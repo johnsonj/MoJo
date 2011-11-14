@@ -1,0 +1,136 @@
+	<style type="text/css">
+		canvas { border: 1px solid black; }
+	</style>
+	<script type="application/javascript">
+	
+		// animation
+		var ctx = null;
+		var canvas = null;
+		var canvasx = 720;
+		var canvasy = 360;
+
+		// Amount per draw to move a point
+		var geographical_step = 0.01;
+		
+		// Real time per draw
+		var time_step = 50;
+
+		// "Map time" per draw
+		var geographical_time_step = 1;
+
+
+		var current_time = 0;
+		
+		var xOffset = 180;
+		var xScale = 2;
+		var yOffset = 90;
+		var yScale = -2;
+		
+		function drawDot(context, x, y) {
+		      x = x + ( (x<0 && x!=0)? 10 : -10);
+		      y = y + ( (y<0 && y!=0)? 10 : -10);
+		      context.beginPath();
+		      context.arc(x,y,10,0,Math.PI*2,true);
+		      //context.fillStyle = 'rgb('+ Math.floor(255-(100*Math.random())) + ','+Math.floor(255-(100*Math.random())) + ',0)';
+		      context.fillStyle = 'red';
+		      context.fill();
+		}
+		
+		var points = [ 
+    // Stay in center
+    { state: 0, x: NaN, y: NaN, Vx: NaN, Vy: NaN, path: [{ x: 0, y: 0, time: 0}, {x:0, y:0, time: 20}] },
+		// Corner -> Center -> Corner..
+    
+    { state: 0, x: NaN, y: NaN, Vx: NaN, Vy: NaN,
+			path: [
+			{ x: 0,	y: 0, time: 0},
+			{x: 180,y: 90,time: 20},
+			{x: 0,y: 0,time: 40},
+			{x: -180,y: -90,time: 60},
+			{x: 0,	y: 0,time: 100},
+			{x: 180,y: -90,time: 120},
+			{x: 0,	y: 0,time: 140	},
+			{x: -180,y: 90,	time: 160},
+			{x: 0,	y: 0,time: 180}
+			]
+		}, 
+    
+    // Four corners
+	{state: 0, x: NaN, y: NaN, Vx: NaN, Vy: NaN, path: [{x: 180, y: 90, time: 0}, {x: 180, y: -90, time: 40}, {x: -180, y: -90, time: 80}, {x: -180, y: 90, time: 100}, {x:180, y:90, time: 120}]}
+		
+    ]
+		
+		
+		function init() { 
+			canvas = document.getElementById('animap');
+				if (canvas.getContext) {
+					ctx = canvas.getContext('2d');
+          ctx.translate(canvasx/2,canvasy/2);
+				}
+			setTimeout(draw, time_step);
+		}
+		
+		
+		function timeToMove(p) {
+			return (current_time >= p.path[0].time && typeof p.path[1] != 'undefined');
+		}
+		
+		function calculateVelocity(p, pathSrc, pathDest) {
+			var time_for_move = (pathDest.time - pathSrc.time);
+			p.Vx =  (pathDest.x - pathSrc.x)/(time_for_move * geographical_time_step);
+			p.Vy =  (pathDest.y - pathSrc.y)/(time_for_move * geographical_time_step);
+			// if this point hasn't been drawn yet
+			if (isNaN(p.x) || isNaN(p.y)) {
+				p.x = pathSrc.x;
+				p.y = pathSrc.y;
+			}
+			p.path.splice(0,1) // remove src from path list, we don't need that anymore
+		}
+		
+		function destReached(src,dest,tollerance) {
+			return (Math.abs(src) - tollerance < Math.abs(dest) && Math.abs(src) + tollerance > Math.abs(dest));
+		}
+		
+		function calculateOffset(p) {
+			p.x = p.x + (p.Vx * geographical_time_step);
+			p.y = p.y + (p.Vy * geographical_time_step);
+		}
+
+		function draw() {
+			ctx.clearRect((0 - canvasx/2), (0 - canvasy/2),canvasx, canvasy);
+		
+			for (i in points) {
+				p = points[i];
+				if (p.state == 0) {
+					// Point is not in motion
+					
+					if (timeToMove(p)) {
+						p.state = 1;
+						// Calculate velocity
+						calculateVelocity(p, p.path[0], p.path[1]);
+						console.log("Time to move!");
+					}
+				}
+				if (p.state == 1) {
+					// Point is in motion
+					
+					// Note: We shouldn't have to check both X and Y
+					if (!destReached(p.x + xOffset, p.path[0].x + xOffset, geographical_step) || !destReached(p.y + yOffset, p.path[0].y + yOffset, geographical_step)) {
+						calculateOffset(p);
+					} else {
+						console.log("Destination reached, bravo!");
+						p.state = 0;
+					}
+				}
+				drawDot(ctx, xScale*p.x, yScale*p.y);
+			}
+			
+			current_time = current_time + geographical_time_step;
+			setTimeout(draw, time_step);
+		}
+		
+
+	</script>
+    <canvas id="animap" width="720" height="360"></canvas>
+
+    <script>$(function() { init(); })</script>
