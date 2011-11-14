@@ -1,10 +1,87 @@
 
 
-<%= stylesheet_link_tag "backpack" %>
 
 
+
+<h1 align="left" style="border-bottom: solid; border-width:1px">Your Backpack</h1>
+
+<br>
 <div id = "items">
-<h1 id="header1">Your Backpack</h1>
+
+
+<div id="backpack">
+	<div class="left_backpack">
+		<div class="backpack_wrapper roundness">
+			<div>
+				<div class="bp_left roundness">
+					Item01
+				</div>
+				<div class="bp_right roundness">
+					Item02
+				</div>
+			</div>
+			<div>	
+				<div class="bp_left roundness">
+					Item03
+				</div>
+				<div class="bp_right roundness">
+					Item04
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="white links">
+		<ul>
+			<li>Farthest Traveled</li>
+			<li>Most Hops</li>
+			<li>lalala</li>
+		</ul>
+	</div>
+	<div class="right">
+		
+		
+		
+		<div class="history">
+				<table border="0" cellspacing="5" cellpadding="5">
+					<tr>
+					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
+						<%= image_tag "logo_64.png", :alt => 'logo' =%>
+					</td>
+					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
+						<%= image_tag "logo_64.png", :alt => 'logo' =%>
+					</td>
+					<td>
+						Item Name: Serendipity Logo<br>
+						Pickup date: 01/01/2011<br>
+						Drop date: 01/01/2011<br>
+						Rarity: 1<br>
+						Hops: <br>		
+						Distance Traveled: <br>		
+					</td>
+					</tr>
+					<tr>
+					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
+						<%= image_tag "logo_64.png", :alt => 'logo' =%>
+					</td>
+					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
+						<%= image_tag "logo_64.png", :alt => 'logo' =%>
+					</td>
+					<td>
+						Item Name: Serendipity Logo<br>
+						Pickup date: 01/01/2011<br>
+						Drop date: 01/01/2011<br>
+						Rarity: 1<br>
+						Hops: <br>		
+						Distance Traveled: <br>		
+					</td>
+					</tr>
+				</table>
+		</div>
+	</div>
+</div>
+
+
+
 
 <% @items.first(8).each_with_index do |item, index| %>
 <div id = "slot<%= index + 1 %>">
@@ -16,10 +93,6 @@
 </div>
 <% end %>
 </div>
-
-
-<br />
-
 
 
 
