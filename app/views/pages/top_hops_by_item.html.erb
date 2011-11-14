@@ -3,15 +3,17 @@
 Top Drops
 <table>
   <tr>
-    <th>Item ID</th>
-    <th>Drops</th>
-    <th></th>
+    <th>Item </th>
+    <th>Name </th>
+    <th>Hops</th>
+    <th>Last Message</th>
   </tr>
 
-<% @top_items.each do |item| %>
+<% @info.each do |row| %>
   <tr>
-    <td><%= item.item_id %></td>
-    <td><%= item.item_count %></td>
+    <td><%= row.name %></td>
+    <td><%= row.hops %></td>
+    <td><%= row.last_message %></td>
   </tr>
 <% end %>
 </table>

@@ -23,16 +23,26 @@ class PagesController < ApplicationController
   end
 
   def top_hops_by_user
-    @top_users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC")
+    @top_users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
+    @top_users.each do |usr|
+      @usr = usr
+    end
   end
 
   def top_hops_by_item
-    @top_items = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC")
+    @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC")
+    @top_items = []
+    @info = []
+    @results.each do |result|
+      item = Item.find(result.item_id)
+      @info << {name => item.item_description.name}
+    end
+    @top_items = Item.find(@top_items)
   end
 
 
   def running_distance_by_item
-    @top_items = ItemHistory.select("runningdistance, max(runningdistance) as item_distance").group("runningdistance").order("runningdistance DESC")
+    @top_items = ItemHistory.select("runningdistance, max(runningdistance) as item_distance").group("runningdistance").order("runningdistance DESC").limit(10)
   end
 
   def map_animation
