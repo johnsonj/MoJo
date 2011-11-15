@@ -17,7 +17,7 @@ class ItemHistoriesController < ApplicationController
 
   def mapHistory
     @result = Array.new()
-    Item.all.each do |i|
+    Item.limit(500).all.each do |i|
       @history = Array.new()
       i.item_histories.each do |h|
         hist = {lng: h.longitude, lat: h.latitude, time: h.stamp.to_time.to_i}
