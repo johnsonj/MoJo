@@ -21,4 +21,8 @@ validates :description, :presence => true
 validates :rarity, :presence => true
 validates :image_id, :presence => true
 
+  def thumb
+    image.icon.url(:thumb)
+  end
+
 end

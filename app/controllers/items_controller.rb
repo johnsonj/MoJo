@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   include SessionsHelper
   include ActiveModel::Validations
 
-  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multiNew, :multi_create_scatter, :master_map]
+  before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multi_new_random, :multi_create_scatter, :master_map]
   before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
 
   # GET /items
@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
 
   def backpack
     @items = current_user.items
+    @histories = current_user.item_histories.first(4)
     respond_to do |format|
-	 format.html
+      format.html
       format.json { render json: @items.to_json(:only => [:item_description_id, :id, :latitude, :longitude]) }
     end
   end
@@ -40,7 +41,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def multiNew
+  def multi_new_random
   end
 
   def multi_new_specific
@@ -129,24 +130,19 @@ class ItemsController < ApplicationController
     @flag = true
     params[:number].to_i.times do
       @item = Item.new({:item_description_id => params[:item_description_id], :user_id => 0})
-      lon_off = params[:longitudeoffset].to_f
-      if lon_off != 0
+      offset = params[:offset].to_f
+      if offset != 0
         lon = params[:longitude].to_f
-        @item.longitude = rand * ((lon + lon_off) - (lon - lon_off)) + (lon - lon_off)
+        @item.longitude = rand * ((lon + offset) - (lon - offset)) + (lon - offset)
         if @item.longitude < -180
           @item.longitude = -179.9
         end
         if @item.longitude > 180
           @item.longitude = 179.9
         end
-      else
-        @item.longitude = params[:longitude]
-      end
 
-      lat_off = params[:latitudeoffset].to_f
-      if lat_off != 0
         lat = params[:latitude].to_f
-        @item.latitude = rand * ((lat + lat_off) - (lat - lat_off)) + (lat - lat_off)
+        @item.latitude = rand * ((lat + offset) - (lat - offset)) + (lat - offset)
         if @item.latitude < -90
           @item.latitude = -89.9
         end
@@ -155,6 +151,7 @@ class ItemsController < ApplicationController
         end
       else
         @item.latitude = params[:latitude]
+        @item.longitude = params[:longitude]
       end
       @flag = @item.save
     end
@@ -171,10 +168,10 @@ class ItemsController < ApplicationController
   def multi_create_specific
     lats = params[:latitudes]
     longs = params[:longitudes]
-    descriptionID = params[:item_description_id]
+    description_id = params[:item_description_id]
 
     (0..lats.size).each do |i|
-      item = Item.new({:item_description_id => descriptionID,
+      item = Item.new({:item_description_id => description_id,
                       :user_id => 0,
                       :latitude => lats[i],
                       :longitude => longs[i]})

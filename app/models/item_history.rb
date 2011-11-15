@@ -16,8 +16,8 @@
 
 class ItemHistory < ActiveRecord::Base
   belongs_to :Item
-  has_one :User
- 
+  belongs_to :user
+
   before_create :init
   before_save :calculate_runningdistance
   reverse_geocoded_by :latitude, :longitude
@@ -25,6 +25,7 @@ class ItemHistory < ActiveRecord::Base
   def init
     self.stamp = DateTime.current
   end
+
   def calculate_runningdistance
     previous = ItemHistory.where(:item_id => self.item_id).last
     if previous && previous.runningdistance
@@ -33,5 +34,9 @@ class ItemHistory < ActiveRecord::Base
     else
       self.runningdistance = 0
     end
+  end
+
+  def formatted_message
+    "#{signature} \n -#{user.username}"
   end
 end

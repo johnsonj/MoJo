@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :location
   has_many :interaction
   has_many :items
+  has_many :item_histories
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

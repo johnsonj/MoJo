@@ -24,7 +24,7 @@ class ItemDescriptionsController < ApplicationController
     @item_description = ItemDescription.find(params[:id]) if ItemDescription.exists?(params[:id])
     @lats = []
     @longs = []
-    @item_descriptions = Item.find_all_by_item_description_id(@item_description.id).paginate(:page => params[:page]) if @item_description
+    @item_descriptions = Item.find_all_by_item_description_id(@item_description.id).paginate(:page => params[:page], :per_page => 1000) if @item_description
 
     @item_descriptions.each do |item|
       @lats << item.latitude

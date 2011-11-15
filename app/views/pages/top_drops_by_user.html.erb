@@ -1,0 +1,24 @@
+<%= render 'leaderboards_header' %>
+
+<div>
+  <p>
+    My Drops : <%= current_user.item_histories.count %>
+  </p>
+</div>
+
+<table>
+  <tr>
+    <th>User ID</th>
+    <th>Drops</th>
+    <th>Last Message</th>
+  </tr>
+
+  <% @top_users.each do |user| %>
+      <tr>
+        <td><%= user[:username] %></td>
+        <td><%= user[:drops] %></td>
+        <td><%= user[:last_message] %></td>
+      </tr>
+  <% end %>
+</table>
+<br/>
