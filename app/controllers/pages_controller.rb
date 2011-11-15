@@ -32,7 +32,7 @@ class PagesController < ApplicationController
 
   def top_hops_by_item
     @title = "Items With The Most Hops!!"
-    @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC")
+    @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC").limit(10)
     @world = []
     @results.each do |result|
       item = Item.find(result.item_id)
@@ -42,7 +42,7 @@ class PagesController < ApplicationController
                  :hops => result.item_count, :last_message => last_message.formatted_message}
     end
 
-    @results = ItemHistory.select("item_id, count(id) as item_count").where(:user_id => current_user.id).group("item_id").order("item_count DESC")
+    @results = ItemHistory.select("item_id, count(id) as item_count").where(:user_id => current_user.id).group("item_id").order("item_count DESC").limit(10)
     @mine = []
     @results.each do |result|
       item = Item.find(result.item_id)
