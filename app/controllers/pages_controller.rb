@@ -31,13 +31,14 @@ class PagesController < ApplicationController
 
   def top_hops_by_item
     @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC")
-    @top_items = []
     @info = []
     @results.each do |result|
       item = Item.find(result.item_id)
-      @info << {name => item.item_description.name}
+      item_desc = item.item_description
+      last_message = item.item_histories.first
+      @info << {:image => item_desc.thumb, :name => item_desc.name,
+                :hops => result.item_count, :last_message => last_message.formatted_message}
     end
-    @top_items = Item.find(@top_items)
   end
 
 
@@ -49,8 +50,5 @@ class PagesController < ApplicationController
   end
 
   def canvasmap 
-    respond_to do |format|
-      format.html
-     end
   end
 end

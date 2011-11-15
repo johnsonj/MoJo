@@ -12,9 +12,9 @@
 #
 
 class Item < ActiveRecord::Base
-  belongs_to :User
+  belongs_to :user
   belongs_to :item_description, :foreign_key => "item_description_id"
-  has_many :ItemHistory, :order => "stamp DESC", :limit => 30
+  has_many :item_histories, :order => "stamp DESC", :limit => 30
 
   validates :item_description_id, :presence => true
   validates_numericality_of :latitude, :less_than => 90, :greater_than => -90
@@ -24,7 +24,7 @@ class Item < ActiveRecord::Base
   
   validates_each :user_id do |model, attr, value|
     if (model.changed_attributes["user_id"] != nil)
-      last_history = model.ItemHistory.last
+      last_history = model.item_histories.last
      # hlist = ItemHistory.where(:item_id => model.id)
     #  last_history = hlist.last
       if (last_history != nil)

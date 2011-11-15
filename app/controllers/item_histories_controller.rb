@@ -17,7 +17,7 @@ class ItemHistoriesController < ApplicationController
 
   def itemDetails
     @item = Item.find(params[:id]) if Item.exists?(params[:id])
-    @item_histories = @item.ItemHistory if @item
+    @item_histories = @item.item_histories if @item
     respond_to do |format|
       if @item_histories
         format.json { render json: @item_histories.to_json(:only => [:id, :item_id, :latitude, :longitude, :runningdistance, :signature, :stamp, :user_id]) }
