@@ -34,6 +34,23 @@ class Item < ActiveRecord::Base
       end
     end
   end
+
+  def thumb
+    item_description.thumb
+  end
+
+  def rarity
+    item_description.rarity
+  end
+
+  def hops
+    item_histories.count
+  end
+
+  def running
+    item_histories.first.runningdistance
+  end
+
 end
 
 

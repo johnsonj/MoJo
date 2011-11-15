@@ -1,97 +1,68 @@
-
-
-
-
-
 <h1 align="left" style="border-bottom: solid; border-width:1px">Your Backpack</h1>
 
 <br>
-<div id = "items">
+<div id="items">
 
 
-<div id="backpack">
-	<div class="left_backpack">
-		<div class="backpack_wrapper roundness">
-			<div>
-				<div class="bp_left roundness">
-					Item01
-				</div>
-				<div class="bp_right roundness">
-					Item02
-				</div>
-			</div>
-			<div>	
-				<div class="bp_left roundness">
-					Item03
-				</div>
-				<div class="bp_right roundness">
-					Item04
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="white links">
-		<ul>
-			<li>Farthest Traveled</li>
-			<li>Most Hops</li>
-			<li>lalala</li>
-		</ul>
-	</div>
-	<div class="right">
-		
-		
-		
-		<div class="history">
-				<table border="0" cellspacing="5" cellpadding="5">
-					<tr>
-					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
-						<%= image_tag "logo_64.png", :alt => 'logo' =%>
-					</td>
-					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
-						<%= image_tag "logo_64.png", :alt => 'logo' =%>
-					</td>
-					<td>
-						Item Name: Serendipity Logo<br>
-						Pickup date: 01/01/2011<br>
-						Drop date: 01/01/2011<br>
-						Rarity: 1<br>
-						Hops: <br>		
-						Distance Traveled: <br>		
-					</td>
-					</tr>
-					<tr>
-					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
-						<%= image_tag "logo_64.png", :alt => 'logo' =%>
-					</td>
-					<td align="center" style="width:100px; margin-right:-100px; text-align:center;">
-						<%= image_tag "logo_64.png", :alt => 'logo' =%>
-					</td>
-					<td>
-						Item Name: Serendipity Logo<br>
-						Pickup date: 01/01/2011<br>
-						Drop date: 01/01/2011<br>
-						Rarity: 1<br>
-						Hops: <br>		
-						Distance Traveled: <br>		
-					</td>
-					</tr>
-				</table>
-		</div>
-	</div>
-</div>
+  <div id="backpack">
+    <div class="left_backpack">
+      <div class="backpack_wrapper roundness">
+        <div>
+          <div class="bp_left roundness">
+            <%= image_tag @items[1].thumb if @items[1] %>
+          </div>
+          <div class="bp_right roundness">
+            <%= image_tag @items[2].thumb if @items[2] %>
+          </div>
+        </div>
+        <div>
+          <div class="bp_left roundness">
+            <%= image_tag @items[3].thumb if @items[3] %>
+          </div>
+          <div class="bp_right roundness">
+            <%= image_tag @items[4].thumb if @items[4] %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="white links">
+      <ul>
+        <li>Farthest Traveled</li>
+        <li>Most Hops</li>
+        <li>lalala</li>
+      </ul>
+    </div>
+    <div class="right">
 
 
-
-
-<% @items.first(8).each_with_index do |item, index| %>
-<div id = "slot<%= index + 1 %>">
-  <div id = "item<%= index + 1 %>">
-    <a href="/items/<%= item.id %>"><%= image_tag item.item_description.image.icon.url(:thumb) if item.item_description.image if item.item_description %>
-<span><%= item.item_description.name if item.item_description %></span>
- </a>
+      <div class="history">
+        <table border="0" cellspacing="5" cellpadding="5">
+          <% @histories.each do |hist| %>
+              <tr>
+                <td align="center" style="width:100px; margin-right:-100px; text-align:center;">
+                  <%= image_tag hist.item.thumb %>
+                </td>
+                <td align="center" style="width:100px; margin-right:-100px; text-align:center;">
+                  <%= hist.signature %>
+                </td>
+                <td>
+                  Item Name: <%= hist.item.name %>
+                  <br>
+                  Drop date: <%= hist.stamp %>
+                  <br>
+                  Rarity: <%= hist.item.rarity %>
+                  <br>
+                  Hops: <%= hist.hops %>
+                  <br>
+                  Distance Traveled: <%= hist.running %>
+                  <br>
+                </td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
-<% end %>
 </div>
 
 

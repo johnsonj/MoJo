@@ -14,8 +14,9 @@ class ItemsController < ApplicationController
 
   def backpack
     @items = current_user.items
+    @histories = current_user.item_histories.first(4)
     respond_to do |format|
-	 format.html
+      format.html
       format.json { render json: @items.to_json(:only => [:item_description_id, :id, :latitude, :longitude]) }
     end
   end
@@ -171,10 +172,10 @@ class ItemsController < ApplicationController
   def multi_create_specific
     lats = params[:latitudes]
     longs = params[:longitudes]
-    descriptionID = params[:item_description_id]
+    description_id = params[:item_description_id]
 
     (0..lats.size).each do |i|
-      item = Item.new({:item_description_id => descriptionID,
+      item = Item.new({:item_description_id => description_id,
                       :user_id => 0,
                       :latitude => lats[i],
                       :longitude => longs[i]})
