@@ -15,6 +15,21 @@ class ItemHistoriesController < ApplicationController
     end
   end
 
+  def mapHistory
+    @result = Array.new()
+    Item.all.each do |i|
+      @history = Array.new()
+      i.item_histories.each do |h|
+        hist = {lng: h.longitude, lat: h.latitude, time: h.stamp.to_time.to_i}
+        puts hist.to_json
+        @history.push(hist)
+      end
+      @result.push({state: 0, lng: "nan".to_f, lat: "nan".to_f, Vlng: "nan".to_f, Vlat: "nan".to_f, path: @history}) if @history.length > 0
+    end    
+    respond_to do |format|
+      format.json { render json: @result.to_json }
+    end
+  end
   def itemDetails
     @item = Item.find(params[:id]) if Item.exists?(params[:id])
     @item_histories = @item.item_histories if @item

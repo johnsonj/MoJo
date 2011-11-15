@@ -6,8 +6,8 @@
   // animation
   var ctx = null;
   var canvas = null;
-  var canvasx = 520;
-  var canvasy = 360;
+  var canvasx = 1040;
+  var canvasy = 780;
 
   // Amount per draw to move a point
   var geographical_step = 0.01;
@@ -23,9 +23,10 @@
   var centerLat = 0;
   var centerLng = 0;
   var overallZoom = 1;
+  var scale = 2;
   var backdrop = new Image();
-  backdrop.src = 'http://maps.googleapis.com/maps/api/staticmap?center='+centerLat+','+centerLng+'&zoom='+overallZoom+'&size='+canvasx+'x'+canvasy+'&sensor=false&scale=1';
-  var current_time = 0;
+  backdrop.src = 'http://maps.googleapis.com/maps/api/staticmap?center='+centerLat+','+centerLng+'&zoom='+overallZoom+'&size='+(canvasx/scale)+'x'+(canvasy/scale)+'&sensor=false&scale='+scale;
+  var current_time = 1318375670;
 
 
   var xOffset = 180;
@@ -36,16 +37,16 @@
   // Takes in real latitude/longitude, turns it into X/Y coordinates on canvas/draws it
   function drawDot(context, lat, lng) {
     var drawScale = canvasy;
-    var x = (((lng - (centerLng-(180/overallZoom)))/(360/overallZoom))*canvasx);
-    var y = (((centerLat + (90/overallZoom) - lat)/(180/overallZoom))*canvasy);
-    //var x = xScale*(lng - centerLat);
-    //var y = canvasy - yScale*(lat - centerLat);
+//    var x = (((lng - (centerLng-(180/overallZoom)))/(360/overallZoom))*canvasx);
+//    var y = (((centerLat + (90/overallZoom) - lat)/(180/overallZoom))*canvasy);
+    var x = (lng+180)/360 * canvasx;
+    var y = (90-lat)/180*canvasy;
     context.beginPath();
     context.arc(x,y,10,0,Math.PI*2,true);
     context.fillStyle = 'red';
     context.fill();
   }
-
+/*
 var points = [
 // Center real
 { state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: -86.6266956329346, lat: 41.8373648878959, time: 0}, { lng: -87.6266956329346, lat: 43.8373648878959, time: 10}] },
@@ -53,7 +54,7 @@ var points = [
 { state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: -87.6266956329346, lat: 41.8373648878959, time: 0}, { lng: -87.6266956329346, lat: 41.8373648878959, time: 10}] },
 
   // Stalat in center
-//{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: 0, lat: 0, time: 0}, {lng:0, lat:0, time: 20}] },
+{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: 0, lat: 0, time: 0}, {lng:0, lat:0, time: 20}] },
   // Corner -> Center -> Corner..
 
 /*{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN,
@@ -73,7 +74,10 @@ path: [
   // Four corners
 {state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{lng: 180, lat: 90, time: 0}, {lng: 180, lat: -90, time: 40}, {lng: -180, lat: -90, time: 80}, {lng: -180, lat: 90, time: 100}, {lng:180, lat:90, time: 120}]}
 */
-];
+//];
+
+var points; 
+
 function init() { 
   canvas = document.getElementById('animap');
   if (canvas.getContext) {
@@ -143,6 +147,16 @@ function draw() {
 
 
 </script>
-<canvas id="animap" width="520" height="360"></canvas>
+<canvas id="animap" width="1040" height="780"></canvas>
 
-<script>$(function() { init(); })</script>
+<script>$(function() { 
+    
+    $.ajax({
+      url: '/api/allHistory/',
+      success: function(data) {
+        points = data;
+        init();
+      }
+    });
+
+    })</script>
