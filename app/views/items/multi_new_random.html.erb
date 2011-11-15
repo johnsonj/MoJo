@@ -34,10 +34,10 @@
                 map: map,
                 animation: google.maps.Animation.DROP
             });
-            if(($("#latitudeoffset").val() != 0) && ($("#longitudeoffset").val() != 0)) {
+            if($("#offset").val() != 0) {
                 // Add circle overlay and bind to marker
-                var rad = haversine(location.lat(), location.lat() + parseFloat($("#latitudeoffset").val()),
-                        location.lng(), location.lng() + parseFloat($("#longitudeoffset").val()));
+                var rad = haversine(location.lat(), location.lat() + parseFloat($("#offset").val()),
+                        location.lng(), location.lng() + parseFloat($("#offset").val()));
                 if(circle != null) {
                     circle.setMap(null);
                 }
@@ -100,11 +100,8 @@
 		          	<div class="label">Number of Items to Make: </div>
 		            <div class="input_box"><%= number_field_tag "number", 1 %></div>
 
-		          	<div class="label">Latitude Offset: </div>
-		            <div class="input_box"><%= text_field_tag "latitudeoffset", 0 %></div>
-
-		          	<div class="label">Longitude Offset: </div>
-		            <div class="input_box"><%= text_field_tag "longitudeoffset", 0 %></div>
+		          	<div class="label">GPS Offset: </div>
+		            <div class="input_box"><%= text_field_tag "offset", 0 %></div>
 	    			<br><br>
 		    		<p>
 			          <%= submit_tag 'Create Multiple' %>
