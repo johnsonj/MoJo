@@ -31,24 +31,6 @@
 	text-decoration: none;
 }
 
-.admin_nav{
-	
-}
-
-.admin_nav ul{
-	list-style: none;
-	display: block;
-	text-decoration: none;
-}
-
-.admin_nav ul li{
-	list-style: none;
-	display: inline;
-}
-
-.admin_nav ul li a{
-	text-decoration: none;
-}
 
 
 .blue {	
@@ -62,7 +44,6 @@
 
 .blue ul{
 	width: 960px;
-
 }
 
 .blue ul li{
@@ -72,6 +53,9 @@
 	display: inline;
 	width: 190px;
 	height: 30px;	
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
 	
 	color: #d9eef7;
 	border: solid 1px #0076a3;
