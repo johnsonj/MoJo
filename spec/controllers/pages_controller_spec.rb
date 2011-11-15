@@ -8,7 +8,7 @@ describe PagesController do
 
   describe "GET 'leaderboards'" do
     it "should be successful" do
-      get 'leaderboards'
+      get 'top_drops_by_user'
       response.should be_success
     end
   end
