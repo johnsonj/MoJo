@@ -1,5 +1,6 @@
 <h1>Top Item Hops!!</h1>
 
+<div>The World</div>
 <table>
   <tr>
     <th>Item</th>
@@ -8,7 +9,26 @@
     <th>Last Message</th>
   </tr>
 
-  <% @info.each do |row| %>
+  <% @world.each do |row| %>
+      <tr>
+        <td><%= image_tag row[:image] %></td>
+        <td><%= row[:name] %></td>
+        <td><%= row[:hops] %></td>
+        <td><%= row[:last_message] %></td>
+      </tr>
+  <% end %>
+</table>
+
+<div>My Items</div>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Name</th>
+    <th>Hops</th>
+    <th>Last Message</th>
+  </tr>
+
+  <% @mine.each do |row| %>
       <tr>
         <td><%= image_tag row[:image] %></td>
         <td><%= row[:name] %></td>

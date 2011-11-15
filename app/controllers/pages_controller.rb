@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include SessionsHelper
 
   before_filter :admin_login_required, :only => :admin
-  before_filter :login_required, :only => [:leaderboards, :top_hops_by_user, :top_hops_by_item, :running_distance_by_item]
+  before_filter :login_required, :only => [:leaderboards, :top_drops_by_user, :top_hops_by_item, :running_distance_by_item]
 
   def home
     if current_user
@@ -22,22 +22,35 @@ class PagesController < ApplicationController
   def leaderboards
   end
 
-  def top_hops_by_user
-    @top_users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
-    @top_users.each do |usr|
-      @usr = usr
+  def top_drops_by_user
+    users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
+    @top_users = []
+    users.each do |usr|
+      user = User.find(usr.user_id)
+      last_message = user.item_histories.first
+      @top_users << {:username => user.username, :drops => usr.user_count, :last_message => last_message.signature}
     end
   end
 
   def top_hops_by_item
     @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC")
-    @info = []
+    @world = []
     @results.each do |result|
       item = Item.find(result.item_id)
       item_desc = item.item_description
       last_message = item.item_histories.first
-      @info << {:image => item_desc.thumb, :name => item_desc.name,
-                :hops => result.item_count, :last_message => last_message.formatted_message}
+      @world << {:image => item_desc.thumb,  :name => item_desc.name,
+                 :hops => result.item_count, :last_message => last_message.formatted_message}
+    end
+
+    @results = ItemHistory.select("item_id, count(id) as item_count").where(:user_id => current_user.id).group("item_id").order("item_count DESC")
+    @mine = []
+    @results.each do |result|
+      item = Item.find(result.item_id)
+      item_desc = item.item_description
+      last_message = item.item_histories.first
+      @mine << {:image => item_desc.thumb,  :name => item_desc.name,
+                :hops => result.item_count, :last_message => last_message.signature}
     end
   end
 
