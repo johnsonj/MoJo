@@ -52,7 +52,8 @@
 
 
 .blue {
-	width: 120px;
+	width: 190px;
+	height: 30px;
 	float: left;	
 	
 	color: #d9eef7;
@@ -64,7 +65,10 @@
 }
 
 .blue a{
+	text-decoration:none;
 	color: white;
+	vertical-align:middle;
+	
 }
 
 .blue:hover {
