@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include SessionsHelper
 
   before_filter :admin_login_required, :only => :admin
-  before_filter :login_required, :only => [:leaderboards, :top_drops_by_user, :top_hops_by_item, :running_distance_by_item]
+  before_filter :login_required, :only => [:top_drops_by_user, :top_hops_by_item, :running_distance_by_item]
 
   def home
     if current_user
@@ -19,10 +19,8 @@ class PagesController < ApplicationController
   def admin
   end
 
-  def leaderboards
-  end
-
   def top_drops_by_user
+    @title = "Users With The Most Drops!!"
     users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
     @top_users = []
     users.each do |usr|
@@ -33,6 +31,7 @@ class PagesController < ApplicationController
   end
 
   def top_hops_by_item
+    @title = "Items With The Most Hops!!"
     @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC")
     @world = []
     @results.each do |result|
@@ -56,12 +55,19 @@ class PagesController < ApplicationController
 
 
   def running_distance_by_item
-    @top_items = ItemHistory.select("runningdistance, max(runningdistance) as item_distance").group("runningdistance").order("runningdistance DESC").limit(10)
+    @title = "Farthest Traveled Items!!"
+    results = ItemHistory.select("item_id, sum(runningdistance) as item_distance").group("item_id").order("runningdistance DESC").limit(10)
+    @top_items = []
+    results.each do |res|
+      item = Item.find(res.item_id)
+      desc = item.item_description
+      @top_items << {:image => item.thumb, :name => desc.name, :distance => res.item_distance, :last_message => item.last_message}
+    end
   end
 
   def map_animation
   end
 
-  def canvasmap 
+  def canvas_map
   end
 end

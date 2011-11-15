@@ -51,6 +51,10 @@ class Item < ActiveRecord::Base
     item_histories.first.runningdistance
   end
 
+  def last_message
+    item_histories.first.formatted_message
+  end
+
 end
 
 

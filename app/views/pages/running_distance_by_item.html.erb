@@ -1,17 +1,19 @@
-<h1>Leaderboards - Items</h1>
+<%= render 'leaderboards_header' %>
 
-Top Locations
 <table>
   <tr>
-    <th>Item ID</th>
-    <th>Running Distance</th>
     <th></th>
+    <th>Name</th>
+    <th>Running Distance</th>
+    <th>Last Message</th>
   </tr>
 
 <% @top_items.each do |item| %>
   <tr>
-    <td><%= item.runningdistance %></td>
-    <td><%= item.item_distance %></td>
+    <td><%= image_tag item[:image] %></td>
+    <td><%= item[:name] %></td>
+    <td><%= item[:distance] %></td>
+    <td><%= item[:last_message] %></td>
   </tr>
 <% end %>
 </table>
