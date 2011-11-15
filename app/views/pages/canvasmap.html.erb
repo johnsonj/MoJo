@@ -1,135 +1,148 @@
 	<style type="text/css">
 		canvas { border: 1px solid black; }
 	</style>
-	<script type="application/javascript">
-	
-		// animation
-		var ctx = null;
-		var canvas = null;
-		var canvasx = 720;
-		var canvasy = 360;
+  <script type="application/javascript">
 
-		// Amount per draw to move a point
-		var geographical_step = 0.01;
-		
-		// Real time per draw
-		var time_step = 50;
+  // animation
+  var ctx = null;
+  var canvas = null;
+  var canvasx = 520;
+  var canvasy = 360;
 
-		// "Map time" per draw
-		var geographical_time_step = 1;
+  // Amount per draw to move a point
+  var geographical_step = 0.01;
+
+  // Real time per draw
+  var time_step = 50;
+
+  // "Map time" per draw
+  var geographical_time_step = 1;
+
+  var current_time = 0;
+
+  var centerLat = 0;
+  var centerLng = 0;
+  var overallZoom = 1;
+  var backdrop = new Image();
+  backdrop.src = 'http://maps.googleapis.com/maps/api/staticmap?center='+centerLat+','+centerLng+'&zoom='+overallZoom+'&size='+canvasx+'x'+canvasy+'&sensor=false&scale=1';
+  var current_time = 0;
 
 
-		var current_time = 0;
-		
-		var xOffset = 180;
-		var xScale = 2;
-		var yOffset = 90;
-		var yScale = 2;
-		
-    // Takes in real latitude/longitude, turns it into X/Y coordinates on canvas/draws it
-		function drawDot(context, lat, lng) {
-		      var x = lng*xScale + xScale*180;
-          var y = canvasy - (lat*yScale + yScale*90);
-          context.beginPath();
-		      context.arc(x,y,10,0,Math.PI*2,true);
-		      context.fillStyle = 'red';
-		      context.fill();
-		}
-		
-		var points = [ 
-    // Stalat in center
-    { state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: 0, lat: 0, time: 0}, {lng:0, lat:0, time: 20}] },
-		// Corner -> Center -> Corner..
-    
-    { state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN,
-			path: [
-			{ lng: 0,	lat: 0, time: 0},
-			{lng: 180,lat: 90,time: 20},
-			{lng: 0,lat: 0,time: 40},
-			{lng: -180,lat: -90,time: 60},
-			{lng: 0,	lat: 0,time: 100},
-			{lng: 180,lat: -90,time: 120},
-			{lng: 0,	lat: 0,time: 140	},
-			{lng: -180,lat: 90,	time: 160},
-			{lng: 0,	lat: 0,time: 180}
-			]
-		}, 
-    
-    // Four corners
-	{state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{lng: 180, lat: 90, time: 0}, {lng: 180, lat: -90, time: 40}, {lng: -180, lat: -90, time: 80}, {lng: -180, lat: 90, time: 100}, {lng:180, lat:90, time: 120}]}
-		
-    ]
-		
-		
-		function init() { 
-			canvas = document.getElementById('animap');
-				if (canvas.getContext) {
-					ctx = canvas.getContext('2d');
-				}
-			setTimeout(draw, time_step);
-		}
-		
-		
-		function timeToMove(p) {
-			return (current_time >= p.path[0].time && typeof p.path[1] != 'undefined');
-		}
-		
-		function calculateVelocity(p, pathSrc, pathDest) {
-			var time_for_move = (pathDest.time - pathSrc.time);
-			p.Vlat =  (pathDest.lat - pathSrc.lat)/(time_for_move * geographical_time_step);
-			p.Vlng =  (pathDest.lng - pathSrc.lng)/(time_for_move * geographical_time_step);
-			// if this point hasn't been drawn yet
-			if (isNaN(p.lat) || isNaN(p.lng)) {
-				p.lat = pathSrc.lat;
-				p.lng = pathSrc.lng;
-			}
-			p.path.splice(0,1) // remove src from path list, we don't need that anymore
-		}
-		
-		function destReached(src,dest,tollerance) {
-			return (Math.abs(src + 180) - tollerance < Math.abs(dest + 180) && Math.abs(src + 180) + tollerance > Math.abs(dest + 180));
-		}
-		
-		function calculateOffset(p) {
-			p.lat = p.lat + (p.Vlat * geographical_time_step);
-			p.lng = p.lng + (p.Vlng * geographical_time_step);
-		}
+  var xOffset = 180;
+  var xScale = 2;
+  var yOffset = 90;
+  var yScale = 2;
 
-		function draw() {
-			ctx.clearRect(0, 0 ,canvasx, canvasy);
-		
-			for (i in points) {
-				p = points[i];
-				if (p.state == 0) {
-					// Point is not in motion
-					
-					if (timeToMove(p)) {
-						p.state = 1;
-						// Calculate velocity
-						calculateVelocity(p, p.path[0], p.path[1]);
-						console.log("Time to move!");
-					}
-				}
-				if (p.state == 1) {
-					// Point is in motion
-					
-					// Note: We shouldn't have to check both X and Y
-					if (!destReached(p.lat, p.path[0].lat, geographical_step) || !destReached(p.lng, p.path[0].lng, geographical_step)) {
-						calculateOffset(p);
-					} else {
-						console.log("Destination reached, bravo!");
-						p.state = 0;
-					}
-				}
-				drawDot(ctx, p.lat, p.lng);
-			}
-			
-			current_time = current_time + geographical_time_step;
-			setTimeout(draw, time_step);
-		}
-		
+  // Takes in real latitude/longitude, turns it into X/Y coordinates on canvas/draws it
+  function drawDot(context, lat, lng) {
+    var drawScale = canvasy;
+    var x = (((lng - (centerLng-(180/overallZoom)))/(360/overallZoom))*canvasx);
+    var y = (((centerLat + (90/overallZoom) - lat)/(180/overallZoom))*canvasy);
+    //var x = xScale*(lng - centerLat);
+    //var y = canvasy - yScale*(lat - centerLat);
+    context.beginPath();
+    context.arc(x,y,10,0,Math.PI*2,true);
+    context.fillStyle = 'red';
+    context.fill();
+  }
 
-	</script>
-    <canvas id="animap" width="720" height="360"></canvas>
+var points = [
+// Center real
+{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: -86.6266956329346, lat: 41.8373648878959, time: 0}, { lng: -87.6266956329346, lat: 43.8373648878959, time: 10}] },
 
-    <script>$(function() { init(); })</script>
+{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: -87.6266956329346, lat: 41.8373648878959, time: 0}, { lng: -87.6266956329346, lat: 41.8373648878959, time: 10}] },
+
+  // Stalat in center
+//{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{ lng: 0, lat: 0, time: 0}, {lng:0, lat:0, time: 20}] },
+  // Corner -> Center -> Corner..
+
+/*{ state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN,
+path: [
+      { lng: 0,	lat: 0, time: 0},
+      {lng: 180,lat: 90,time: 20},
+      {lng: 0,lat: 0,time: 40},
+      {lng: -180,lat: -90,time: 60},
+      {lng: 0,	lat: 0,time: 100},
+      {lng: 180,lat: -90,time: 120},
+      {lng: 0,	lat: 0,time: 140	},
+      {lng: -180,lat: 90,	time: 160},
+      {lng: 0,	lat: 0,time: 180}
+      ]
+}, 
+
+  // Four corners
+{state: 0, lng: NaN, lat: NaN, Vlng: NaN, Vlat: NaN, path: [{lng: 180, lat: 90, time: 0}, {lng: 180, lat: -90, time: 40}, {lng: -180, lat: -90, time: 80}, {lng: -180, lat: 90, time: 100}, {lng:180, lat:90, time: 120}]}
+*/
+];
+function init() { 
+  canvas = document.getElementById('animap');
+  if (canvas.getContext) {
+    ctx = canvas.getContext('2d');
+  }
+  setTimeout(draw, time_step);
+}
+
+
+function timeToMove(p) {
+  return (current_time >= p.path[0].time && typeof p.path[1] != 'undefined');
+}
+
+function calculateVelocity(p, pathSrc, pathDest) {
+  var time_for_move = (pathDest.time - pathSrc.time);
+  p.Vlat =  (pathDest.lat - pathSrc.lat)/(time_for_move * geographical_time_step);
+  p.Vlng =  (pathDest.lng - pathSrc.lng)/(time_for_move * geographical_time_step);
+  // if this point hasn't been drawn yet
+  if (isNaN(p.lat) || isNaN(p.lng)) {
+    p.lat = pathSrc.lat;
+    p.lng = pathSrc.lng;
+  }
+  p.path.splice(0,1) // remove src from path list, we don't need that anymore
+}
+
+function destReached(src,dest,tollerance) {
+  return (Math.abs(src + 180) - tollerance < Math.abs(dest + 180) && Math.abs(src + 180) + tollerance > Math.abs(dest + 180));
+}
+
+function calculateOffset(p) {
+  p.lat = p.lat + (p.Vlat * geographical_time_step);
+  p.lng = p.lng + (p.Vlng * geographical_time_step);
+}
+
+function draw() {
+  ctx.clearRect(0, 0 ,canvasx, canvasy);
+  ctx.drawImage(backdrop,0,0);
+  for (i in points) {
+    p = points[i];
+    if (p.state == 0) {
+      // Point is not in motion
+
+      if (timeToMove(p)) {
+        p.state = 1;
+        // Calculate velocity
+        calculateVelocity(p, p.path[0], p.path[1]);
+        console.log("Time to move!");
+      }
+    }
+    if (p.state == 1) {
+      // Point is in motion
+
+      // Note: We shouldn't have to check both X and Y
+      if (!destReached(p.lat, p.path[0].lat, geographical_step) || !destReached(p.lng, p.path[0].lng, geographical_step)) {
+        calculateOffset(p);
+      } else {
+        console.log("Destination reached, bravo!");
+        p.state = 0;
+      }
+    }
+    drawDot(ctx, p.lat, p.lng);
+  }
+
+  current_time = current_time + geographical_time_step;
+  setTimeout(draw, time_step);
+}
+
+
+</script>
+<canvas id="animap" width="520" height="360"></canvas>
+
+<script>$(function() { init(); })</script>
