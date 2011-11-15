@@ -15,7 +15,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/leaderboards/users' => 'pages#top_drops_by_user', :as => :leaderboards_users_path
   match '/leaderboards/items' => 'pages#top_hops_by_item', :as => :leaderboards_items_path
   match '/leaderboards/distance' => 'pages#running_distance_by_item', :as => :leaderboards_distance_path
-  match '/items_admin/multiNew' => 'items#multiNew', :as => :items_multinew_path
+  match '/items_admin/multiNew' => 'items#multi_new_random', :as => :items_multinew_path
   match '/items_admin/multi_create' => 'items#multi_create_scatter', :via => :post
   post '/items_admin/mn_specific' => 'items#multi_create_specific', :as => :mn_specific_path
   match '/items_admin/multiNewSpecific' => 'items#multi_new_specific', :as => :items_multinew_specific
