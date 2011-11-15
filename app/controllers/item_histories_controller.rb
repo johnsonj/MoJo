@@ -24,7 +24,7 @@ class ItemHistoriesController < ApplicationController
         puts hist.to_json
         @history.push(hist)
       end
-      @result.push({state: 0, lng: "nan".to_f, lat: "nan".to_f, Vlng: "nan".to_f, Vlat: "nan".to_f, path: @history}) if @history.length > 0
+      @result.push({state: 0, lng: -999, lat: -999, Vlng: -999, Vlat: -999, path: @history}) if @history.length > 0
     end    
     respond_to do |format|
       format.json { render json: @result.to_json }

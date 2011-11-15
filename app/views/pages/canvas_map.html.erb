@@ -28,11 +28,15 @@
   backdrop.src = 'http://maps.googleapis.com/maps/api/staticmap?center='+centerLat+','+centerLng+'&zoom='+overallZoom+'&size='+(canvasx/scale)+'x'+(canvasy/scale)+'&sensor=false&scale='+scale;
   var current_time = 1318375670;
 
+  var sentinalNaN = -999;
+
 
   var xOffset = 180;
   var xScale = 2;
   var yOffset = 90;
   var yScale = 2;
+
+  function isNaN(x) { return (x == sentinalNaN); }
 
   // Takes in real latitude/longitude, turns it into X/Y coordinates on canvas/draws it
   function drawDot(context, lat, lng) {
