@@ -2,13 +2,15 @@
 <div class="leaderboard_nav">
   <ul>
     <li>
-      <%= link_to "Items With The Most Hops", :leaderboards_items_path %>
+      <%= link_to "Most Hops", :leaderboards_items_path %>
     </li>
+	<li>
+      <%= link_to "Farthest Traveled", :leaderboards_distance_path %>
+    </li>
+  </ul>
+  <ul>
     <li>
       <%= link_to "Users With The Most Drops", :leaderboards_users_path %>
-    </li>
-    <li>
-      <%= link_to "Farthest Traveled Items", :leaderboards_distance_path %>
     </li>
   </ul>
 </div>
