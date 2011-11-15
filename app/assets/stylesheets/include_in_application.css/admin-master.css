@@ -37,9 +37,13 @@
 .admin_nav{
 	width: 960px;
 	height: 90px;
-	margin-top: 30px;
+	margin-top: 30px;	
 }
 
+
+.admin_nav ul li{
+
+}
 
 .blue ul{
 	
@@ -49,9 +53,7 @@
 	text-decoration:none;
 	color: white;
 	vertical-align:middle;
-	display: inline;
-	width: 190px;
-	height: 30px;	
+	display: inline;	
 	border-radius: 5px;
 	padding: 15px;
 	margin: 5px;
