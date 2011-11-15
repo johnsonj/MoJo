@@ -42,7 +42,7 @@
     var x = (lng+180)/360 * canvasx;
     var y = (90-lat)/180*canvasy;
     context.beginPath();
-    context.arc(x,y,10,0,Math.PI*2,true);
+    context.arc(x,y,2,0,Math.PI*2,true);
     context.fillStyle = 'red';
     context.fill();
   }
@@ -93,8 +93,10 @@ function timeToMove(p) {
 
 function calculateVelocity(p, pathSrc, pathDest) {
   var time_for_move = (pathDest.time - pathSrc.time);
-  p.Vlat =  (pathDest.lat - pathSrc.lat)/(time_for_move * geographical_time_step);
-  p.Vlng =  (pathDest.lng - pathSrc.lng)/(time_for_move * geographical_time_step);
+  p.Vlat =  (pathDest.lat - pathSrc.lat)/20;
+  p.Vlng =  (pathDest.lng - pathSrc.lng)/20;
+//  p.Vlat =  (pathDest.lat - pathSrc.lat)/(time_for_move * geographical_time_step);
+//  p.Vlng =  (pathDest.lng - pathSrc.lng)/(time_for_move * geographical_time_step);
   // if this point hasn't been drawn yet
   if (isNaN(p.lat) || isNaN(p.lng)) {
     p.lat = pathSrc.lat;
