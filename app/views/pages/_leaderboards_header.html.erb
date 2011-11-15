@@ -1,3 +1,24 @@
+<div class="admin_nav blue">
+	<ul style="float:left; margin-bottom: 40px">	
+		<li><%= link_to "Manage Users", users_path %></li>
+	</ul>
+	<ul style="float:left; margin-bottom: 40px">
+		<li><%= link_to "Manage Item Icons", images_path %></li>
+		<li><%= link_to "Manage Images", images_path %></li>
+		<li><%= link_to "Manage Item Descriptions", item_descriptions_path %></li>
+		<li><%= link_to "Manage Items", items_path %></li>
+		<li><%= link_to "Manage Item Histories", item_histories_path %></li>
+	</ul>
+	<br>
+	<ul style="float:left; margin-bottom: 40px">	
+		<li><%= link_to "Manage Locations", locations_path %></li>
+		<li><%= link_to "Manage Bagtypes", bagtypes_path %></li>
+		<li><%= link_to "Manage Interactions", interactions_path %></li>
+	</ul>
+</div>
+
+
+
 <h1><%= @title %></h1>
 <div class="leaderboard_nav">
   <ul>
