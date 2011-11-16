@@ -41,14 +41,19 @@ class SessionsController < ApplicationController
      }
      format.json {
        if current_user
-         @current_user.api_key = ""
-         @current_user.save
+         current_user.api_key = ""
+         current_user.save
          render :json => "You have been logged out", :status => :ok
        else
          render :json => "Cannot find key", :status => :not_found
        end
      }
     end
+  end
+
+  def create_by_app
+    log_user_in current_user
+    redirect_to :home_page
   end
 
 end

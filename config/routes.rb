@@ -48,6 +48,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/api/writeInteraction' => 'interactions#create', :format => 'json'
   match '/api/getItemDescription' => 'item_descriptions#show', :format => 'json'
   match '/api/getDescriptionUpdates' => 'item_descriptions#get_description_updates', :format => 'json'
+  match '/api/loginToSite' => 'sessions#create_by_app'
 
 end
 
