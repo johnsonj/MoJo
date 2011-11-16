@@ -22,9 +22,18 @@
     <td><%= user.email %></td>
     <td><%= user.age %></td>
     <td><%= user.sex %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+		<span class="button"><%= link_to 'Show', user %>
+		</span>
+	</td>
+    <td>
+		<span class="button"><%= link_to 'Edit', edit_user_path(user) %>
+		</span>
+	</td>
+    <td>
+		<span class="button"><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+		</span>
+	</td>
   </tr>
 <% end %>
 </table>

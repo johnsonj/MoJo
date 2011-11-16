@@ -8,7 +8,8 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
+    <th>Icon</th>
+	<th>Description</th>
     <th>Rarity</th>
     <th>Image</th>
     <th></th>
@@ -22,9 +23,21 @@
     <td><%= item_description.description %></td>
     <td><%= item_description.rarity %></td>
     <td><%= item_description.image_id %></td>
-    <td><%= link_to 'Show', item_description %></td>
-    <td><%= link_to 'Edit', edit_item_description_path(item_description) %></td>
-    <td><%= link_to 'Destroy', item_description, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+		<span class="button">
+			<%= link_to 'Show', item_description %>
+		</span>
+	</td>
+    <td>
+		<span class="button">
+			<%= link_to 'Edit', edit_item_description_path(item_description) %>
+		</span>
+		</td>
+    <td>
+		<span class="red button">
+			<%= link_to 'Destroy', item_description, confirm: 'Are you sure?', method: :delete %>
+		</span>
+	</td>
   </tr>
 <% end %>
 </table>

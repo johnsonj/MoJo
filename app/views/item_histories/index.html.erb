@@ -26,9 +26,9 @@
     <td><%= item_history.signature %></td>
     <td><%= item_history.stamp %></td>
     <td><%= item_history.runningdistance %></td>
-    <td><%= link_to 'Show', item_history %></td>
-    <td><%= link_to 'Edit', edit_item_history_path(item_history) %></td>
-    <td><%= link_to 'Destroy', item_history, confirm: 'Are you sure?', method: :delete %></td>
+    <td><span class="button"><%= link_to 'Show', item_history %></span></td>
+    <td><span class="button"><%= link_to 'Edit', edit_item_history_path(item_history) %></span></td>
+    <td><span class="button"><%= link_to 'Destroy', item_history, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>

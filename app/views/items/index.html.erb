@@ -30,9 +30,9 @@
 
     <td><%= item.latitude %></td>
     <td><%= item.longitude %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>
+    <td><span class="button"><%= link_to 'Show', item %></span></td>
+    <td><span class="button"><%= link_to 'Edit', edit_item_path(item) %></span></td>
+    <td><span class="button"><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>

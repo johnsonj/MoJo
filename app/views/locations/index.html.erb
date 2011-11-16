@@ -25,9 +25,9 @@
     <td><%= location.longitude %></td>
     <td><%= location.timestamp %></td>
     <td><%= location.user_id %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><span class="button"><%= link_to 'Show', location %></span></td>
+    <td><span class="button"><%= link_to 'Edit', edit_location_path(location) %></span></td>
+    <td><span class="button"><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></span></td>
   </tr>
 <% end %>
 </table>

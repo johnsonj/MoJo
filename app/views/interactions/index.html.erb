@@ -24,9 +24,9 @@
     <td><a href="/users/<%= interaction.PersonB %>"><%= interaction.PersonB %></a> (<%=interaction.personb.username if interaction.personb %>)</td>
     <td><%= interaction.Timestamp %></td>
     <td><%= interaction.deltime %></td>
-    <td><%= link_to 'Show', interaction %></td>
-    <td><%= link_to 'Edit', edit_interaction_path(interaction) %></td>
-    <td><%= link_to 'Destroy', interaction, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><span class="button"><%= link_to 'Show', interaction %></span></td>
+    <td><span class="button"><%= link_to 'Edit', edit_interaction_path(interaction) %></span></td>
+    <td><span class="button"><%= link_to 'Destroy', interaction, :confirm => 'Are you sure?', :method => :delete %></span></td>
   </tr>
 <% end %>
 </table>
