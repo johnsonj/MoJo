@@ -1,43 +1,8 @@
 <%= render 'leaderboards_header' %>
 
-<div class="right">The World</div>
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Name</th>
-    <th>Hops</th>
-    <th>Last Message</th>
-  </tr>
+<%= render :partial => 'top_hops_table', :locals => {:rows => @world, :name => 'The World'} %>
 
-  <% @world.each do |row| %>
-      <tr>
-        <td><%= image_tag row[:image] %></td>
-        <td><%= row[:name] %></td>
-        <td><%= row[:hops] %></td>
-        <td><%= row[:last_message] %></td>
-      </tr>
-  <% end %>
-</table>
-
-<div class"left">My Items</div>
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Name</th>
-    <th>Hops</th>
-    <th>Last Message</th>
-  </tr>
-
-  <% @mine.each do |row| %>
-      <tr>
-        <td><%= image_tag row[:image] %></td>
-        <td><%= row[:name] %></td>
-        <td><%= row[:hops] %></td>
-        <td><%= row[:last_message] %></td>
-      </tr>
-  <% end %>
-</table>
-<br/>
+<%= render :partial => 'top_hops_table', :locals => {:rows => @mine, :name => 'My Items'} %>
 
 
 

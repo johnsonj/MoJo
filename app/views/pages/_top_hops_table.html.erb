@@ -1,0 +1,26 @@
+<div class="right"><%= name %></div>
+<table style=" background:gray;">
+  <tr style="background:gray">
+    <th>Rank</th>
+    <th>Item</th>
+    <th>Rarity</th>
+    <th>Description</th>
+    <th>Last Message</th>
+  </tr>
+
+  <% rows.each_with_index do |row, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= image_tag row[:image] %></td>
+        <td><%= image_tag "rarity_icons/bg-#{row[:rarity]}.png" %></td>
+        <td>
+          Item Name: <%= row[:name] %><br>
+          Last Drop date: <%= row[:drop_date] %><br>
+          Rarity: <%= row[:rarity] %><br>
+          Hops: <%= row[:hops] %><br>
+          Distance Traveled: <%= row[:distance] %><br>
+        </td>
+        <td><%= row[:last_message] %></td>
+      </tr>
+  <% end %>
+</table>

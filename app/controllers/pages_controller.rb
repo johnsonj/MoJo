@@ -30,27 +30,27 @@ class PagesController < ApplicationController
     end
   end
 
+  def build_hops_table_for(results)
+    output = []
+    results.each do |result|
+      item = Item.find(result.item_id)
+      item_desc = item.item_description
+      last_drop = item.item_histories.first
+      output << {:image => item_desc.thumb, :name => item_desc.name,
+                 :hops => result.item_count, :last_message => last_drop.formatted_message,
+                 :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
+                 :distance => last_drop.runningdistance}
+    end
+    output
+  end
+
   def top_hops_by_item
     @title = "Items With The Most Hops!!"
     @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC").limit(10)
-    @world = []
-    @results.each do |result|
-      item = Item.find(result.item_id)
-      item_desc = item.item_description
-      last_message = item.item_histories.first
-      @world << {:image => item_desc.thumb,  :name => item_desc.name,
-                 :hops => result.item_count, :last_message => last_message.formatted_message}
-    end
+    @world = build_hops_table_for @results
 
     @results = ItemHistory.select("item_id, count(id) as item_count").where(:user_id => current_user.id).group("item_id").order("item_count DESC").limit(10)
-    @mine = []
-    @results.each do |result|
-      item = Item.find(result.item_id)
-      item_desc = item.item_description
-      last_message = item.item_histories.first
-      @mine << {:image => item_desc.thumb,  :name => item_desc.name,
-                :hops => result.item_count, :last_message => last_message.signature}
-    end
+    @mine = build_hops_table_for @results
   end
 
 

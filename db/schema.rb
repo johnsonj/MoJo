@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115034543) do
+ActiveRecord::Schema.define(:version => 20111116014742) do
 
   create_table "bagtypes", :force => true do |t|
     t.integer   "size"
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(:version => 20111115034543) do
   end
 
   create_table "item_descriptions", :force => true do |t|
-    t.string    "name"
-    t.text      "description"
-    t.string    "rarity"
-    t.integer   "image_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rarity"
   end
 
   create_table "item_histories", :force => true do |t|
