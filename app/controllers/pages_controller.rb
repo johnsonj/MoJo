@@ -56,7 +56,7 @@ class PagesController < ApplicationController
 
   def running_distance_by_item
     @title = "Farthest Traveled Items!!"
-    results = ItemHistory.select("item_id, sum(runningdistance) as item_distance").group("item_id").order("runningdistance DESC").limit(10)
+    results = ItemHistory.select("item_id, sum(runningdistance) as item_distance").group("item_id").order("item_distance DESC").limit(10)
     @top_items = []
     results.each do |res|
       item = Item.find(res.item_id)
