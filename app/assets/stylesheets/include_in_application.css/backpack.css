@@ -44,9 +44,6 @@
 }
 
 	.backpack_wrapper{
-		background-image: url(../../images/bg-paperbag.png);
-		background-position: center center;
-		background-repeat: no-repeat;
 		width: 440px;
 		height: 440px;
 	//	float: left;

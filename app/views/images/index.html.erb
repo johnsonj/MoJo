@@ -23,9 +23,9 @@
 <% @images.each do |image| %>
   <tr>
     <td align="center"><%= image_tag image.icon.url(:thumb) %></td>
-    <td><%= link_to 'Show', image %></td>
-    <td><%= link_to 'Edit', edit_image_path(image) %></td>
-    <td><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></td>
+    <td><span class="green white button"><%= link_to 'Show', image %></span></td>
+    <td><span class="black white button"><%= link_to 'Edit', edit_image_path(image) %></span></td>
+    <td><span class="red white button"><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>

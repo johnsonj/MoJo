@@ -14,9 +14,9 @@
   <tr>
     <td><%= bagtype.size %></td>
     <td><%= bagtype.name %></td>
-    <td><%= link_to 'Show', bagtype %></td>
-    <td><%= link_to 'Edit', edit_bagtype_path(bagtype) %></td>
-    <td><%= link_to 'Destroy', bagtype, confirm: 'Are you sure?', method: :delete %></td>
+    <td><span class="green white button"><%= link_to 'Show', bagtype %></span></td>
+    <td><span class="black white button"><%= link_to 'Edit', edit_bagtype_path(bagtype) %></span></td>
+    <td><span class="red white button"><%= link_to 'Destroy', bagtype, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>
