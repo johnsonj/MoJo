@@ -45,3 +45,12 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+
+
+
+
+.resize_rarity tr td img{
+	width: 100px;
+	height: 100px;
+}
