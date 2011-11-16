@@ -55,6 +55,10 @@ class Item < ActiveRecord::Base
     item_histories.first.formatted_message
   end
 
+  def name
+    item_description.name
+  end
+
 end
 
 
