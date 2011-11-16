@@ -48,7 +48,7 @@
                 <td>
                   Item Name: <%= hist.item.name %>
                   <br>
-                  Drop date: <%= hist.stamp %>
+                  Drop date: <%= hist.stamp.strftime("%Y/%m/%d %H:%M") %>
                   <br>
                   Rarity: <%= hist.item.rarity %>
                   <br>
