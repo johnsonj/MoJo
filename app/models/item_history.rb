@@ -15,7 +15,7 @@
 #
 
 class ItemHistory < ActiveRecord::Base
-  belongs_to :Item
+  belongs_to :item
   belongs_to :user
 
   before_create :init
