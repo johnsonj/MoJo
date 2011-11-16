@@ -1,20 +1,34 @@
 <%= render 'leaderboards_header' %>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Running Distance</th>
+<div class="right">The World</div>
+<table style=" background:gray;">
+  <tr style="background:gray">
+    <th>Rank</th>
+    <th>Item</th>
+    <th>Rarity</th>
+    <th>Distance</th>
+    <th>Description</th>
     <th>Last Message</th>
   </tr>
 
-<% @top_items.each do |item| %>
-  <tr>
-    <td><%= image_tag item[:image] %></td>
-    <td><%= item[:name] %></td>
-    <td><%= item[:distance] %></td>
-    <td><%= item[:last_message] %></td>
-  </tr>
-<% end %>
+  <% @top_items.each_with_index do |row, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= image_tag row[:image] %></td>
+        <td><%= image_tag "rarity_icons/bg-#{row[:rarity]}.png" %></td>
+        <td><%= row[:distance] %></td>
+        <td>
+          Item Name: <%= row[:name] %>
+          <br>
+          Last Drop date: <%= row[:drop_date] %>
+          <br>
+          Rarity: <%= row[:rarity] %>
+          <br>
+          Hops: <%= row[:hops] %>
+          <br>
+        </td>
+        <td><%= row[:last_message] %></td>
+      </tr>
+  <% end %>
 </table>
 <br/>

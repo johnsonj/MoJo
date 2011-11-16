@@ -57,12 +57,22 @@ class PagesController < ApplicationController
   def running_distance_by_item
     @title = "Farthest Traveled Items!!"
     results = ItemHistory.select("item_id, sum(runningdistance) as item_distance").group("item_id").order("item_distance DESC").limit(10)
-    @top_items = []
-    results.each do |res|
-      item = Item.find(res.item_id)
-      desc = item.item_description
-      @top_items << {:image => item.thumb, :name => desc.name, :distance => res.item_distance, :last_message => item.last_message}
+    @top_items = build_distance_table_for results
+  end
+
+
+  def build_distance_table_for(results)
+    output = []
+    results.each do |result|
+      item = Item.find(result.item_id)
+      item_desc = item.item_description
+      last_drop = item.item_histories.first
+      output << {:image => item_desc.thumb, :name => item_desc.name,
+                 :last_message => last_drop.formatted_message, :distance => result.item_distance,
+                 :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
+                 :hops => item.hops}
     end
+    output
   end
 
   def map_animation
