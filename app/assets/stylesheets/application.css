@@ -77,3 +77,7 @@ body {
 #footer a {
     color: #000000;
 }
+
+td{
+	text-align:center;
+}

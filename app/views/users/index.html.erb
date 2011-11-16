@@ -10,9 +10,11 @@
     <th>Email</th>
     <th>Age</th>
     <th>Sex</th>
-    <th>Phoneinformation</th>
     <th></th>
     <th></th>
+	<th></th>
+	<th></th>
+	<th></th>
     <th></th>
   </tr>
 
@@ -22,12 +24,15 @@
     <td><%= user.email %></td>
     <td><%= user.age %></td>
     <td><%= user.sex %></td>
-    <td>
-		<span class="button"><%= link_to 'Show', user %>
+    <td></td>
+	<td></td>
+	<td></td>
+	<td>
+		<span class="green white button"><%= link_to 'Show', user %>
 		</span>
 	</td>
     <td>
-		<span class="button"><%= link_to 'Edit', edit_user_path(user) %>
+		<span class="blue button"><%= link_to 'Edit', edit_user_path(user) %>
 		</span>
 	</td>
     <td>
