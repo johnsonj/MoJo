@@ -1,8 +1,8 @@
-<h1>Listing item_histories</h1>
+<h1 style="width:100%; text-align:left;">Listing Item Histories</h1>
 <span class="white orange button"><%= link_to 'New Item history', new_item_history_path %></span>
 <br><br>
 <%= will_paginate %>
-
+<br>
 <table>
   <tr>
     <th>User</th>
@@ -26,9 +26,9 @@
     <td><%= item_history.signature %></td>
     <td><%= item_history.stamp %></td>
     <td><%= item_history.runningdistance %></td>
-    <td><span class="button"><%= link_to 'Show', item_history %></span></td>
-    <td><span class="button"><%= link_to 'Edit', edit_item_history_path(item_history) %></span></td>
-    <td><span class="button"><%= link_to 'Destroy', item_history, confirm: 'Are you sure?', method: :delete %></span></td>
+    <td><span class="button white orange"><%= link_to 'Show', item_history %></span></td>
+    <td><span class="button white black"><%= link_to 'Edit', edit_item_history_path(item_history) %></span></td>
+    <td><span class="button white red"><%= link_to 'Destroy', item_history, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>

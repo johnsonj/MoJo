@@ -1,14 +1,9 @@
-<h1>Listing images</h1>
-<br><br>
-
-<span class="white orange button">
-<%= link_to 'UPLOAD New Image Icon', new_image_path %>
-</span>
-
+<h1 style="width:100%; text-align:left;">Listing Images</h1>
+<span class="white orange button"><%= link_to 'UPLOAD New Image Icon', new_image_path %></span>
 <br><br>
 
 <%= will_paginate %>
-
+<br>
 <table>
   <tr>
     <th>Image</th>
@@ -23,9 +18,9 @@
 <% @images.each do |image| %>
   <tr>
     <td align="center"><%= image_tag image.icon.url(:thumb) %></td>
-    <td><span class="green white button"><%= link_to 'Show', image %></span></td>
-    <td><span class="black white button"><%= link_to 'Edit', edit_image_path(image) %></span></td>
-    <td><span class="red white button"><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></span></td>
+    <td><span class="right green white button"><%= link_to 'Show', image %></span></td>
+    <td><span class="right black white button"><%= link_to 'Edit', edit_image_path(image) %></span></td>
+    <td><span class="right red white button"><%= link_to 'Destroy', image, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>

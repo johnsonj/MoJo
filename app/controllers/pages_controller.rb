@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   end
 
   def top_drops_by_user
-    @title = "Users With The Most Drops!!"
+    @title = "Users With The Most Drops"
     users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
     @top_users = []
     users.each do |usr|
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   end
 
   def top_hops_by_item
-    @title = "Items With The Most Hops!!"
+    @title = "Items With The Most Hops"
     @results = ItemHistory.select("item_id, count(id) as item_count").group("item_id").order("item_count DESC").limit(10)
     @world = build_hops_table_for @results
 
@@ -55,7 +55,7 @@ class PagesController < ApplicationController
 
 
   def running_distance_by_item
-    @title = "Farthest Traveled Items!!"
+    @title = "Farthest Traveled Item"
     results = ItemHistory.select("item_id, sum(runningdistance) as item_distance").group("item_id").order("item_distance DESC").limit(10)
     @top_items = build_distance_table_for results
   end

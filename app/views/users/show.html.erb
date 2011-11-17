@@ -1,5 +1,12 @@
-<p id="notice"><%= notice %></p>
+<span class="white button orange left"><%= link_to 'Back', users_path %></span>
+<span class="white orange button left"><%= link_to 'Edit', edit_user_path(@user) %></span>
 
+<br>
+<br>
+<br>
+
+<div style="float:left; text-align:left; margin-left:300px ">
+	<p id="notice"><%= notice %></p>
 <p>
   <b>Username:</b>
   <%= @user.username %>
@@ -19,6 +26,4 @@
   <b>Sex:</b>
   <%= @user.sex %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>

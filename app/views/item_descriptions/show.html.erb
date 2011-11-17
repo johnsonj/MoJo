@@ -1,32 +1,36 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>ID :</b>
-  <%= @item_description.id %>
-</p>
+<span class="left white orage button"><%= link_to 'Edit', edit_item_description_path(@item_description) %></span>
+<span class="left white orage button"><%= link_to 'Back', item_descriptions_path %></span>
+<br><br><br><br>
 
-<p>
-  <b>Name:</b>
-  <%= @item_description.name %>
-</p>
+<div class="left" style="text-align:left">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Description:</b>
-  <%= @item_description.description %>
-</p>
+	<p>
+	  <b>ID :</b>
+	  <%= @item_description.id %>
+	</p>
 
-<p>
-  <b>Rarity:</b>
-  <%= @item_description.rarity %>
-</p>
+	<p>
+	  <b>Name:</b>
+	  <%= @item_description.name %>
+	</p>
 
-<p>
-  <b>Image:</b>
-  <%= @item_description.image_id %>
-</p>
+	<p>
+	  <b>Description:</b>
+	  <%= @item_description.description %>
+	</p>
 
-<%= link_to 'Edit', edit_item_description_path(@item_description) %> |
-<%= link_to 'Back', item_descriptions_path %>
+	<p>
+	  <b>Rarity:</b>
+	  <%= @item_description.rarity %>
+	</p>
+
+	<p>
+	  <b>Image:</b>
+	  <%= @item_description.image_id %>
+	</p>
+</div>
 
 <script type="text/javascript">
     var map;

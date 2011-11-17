@@ -1,9 +1,7 @@
-<h1>>Listing locations</h1>
-
+<h1 style="width:100%; text-align:left;">Listing Locations</h1>
 <span class="white orange button"><%= link_to 'New Location', new_location_path %></span>
 <br><br>
 <%= will_paginate %>
-
 <br>
 
 <table class="ll_table">
@@ -25,9 +23,9 @@
     <td><%= location.longitude %></td>
     <td><%= location.timestamp %></td>
     <td><%= location.user_id %></td>
-    <td><span class="button"><%= link_to 'Show', location %></span></td>
-    <td><span class="button"><%= link_to 'Edit', edit_location_path(location) %></span></td>
-    <td><span class="button"><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></span></td>
+    <td><span class="button white orange"><%= link_to 'Show', location %></span></td>
+    <td><span class="button white black"><%= link_to 'Edit', edit_location_path(location) %></span></td>
+    <td><span class="button white red"><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></span></td>
   </tr>
 <% end %>
 </table>

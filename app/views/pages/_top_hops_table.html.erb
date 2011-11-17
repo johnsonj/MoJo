@@ -1,4 +1,9 @@
-<div class="right"><%= name %></div>
+
+
+
+<div class="left"><span class="white"><h1><%= name %><h1></span></div>
+
+
 <table style=" background:gray;" class="resize_rarity">
   <tr style="background:gray;">
     <th>Rank</th>
@@ -10,7 +15,7 @@
 
   <% rows.each_with_index do |row, index| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td  style="width:20px; font-size:20px; color:white; text-align: center;"><%= index + 1 %></td>
         <td><%= image_tag row[:image] %></td>
         <td><%= image_tag "rarity_icons/bg-#{row[:rarity]}.png" %></td>
         <td>

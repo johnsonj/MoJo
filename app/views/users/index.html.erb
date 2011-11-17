@@ -1,9 +1,9 @@
-<h1>Listing users</h1>
-<span class="white orange button"><%= link_to 'New User', new_user_path %></span>
+<h1 style="width:100%; text-align:left;">Listing users</h1>
+<div class="white orange button"><%= link_to 'New User', new_user_path %></div>
 <br><br>
 
 <%= will_paginate %>
-
+<br>
 <table>
   <tr>
     <th>Username</th>
@@ -15,7 +15,7 @@
 	<th></th>
 	<th></th>
 	<th></th>
-    <th></th>
+
   </tr>
 
 <% @users.each do |user| %>
@@ -27,10 +27,6 @@
     <td></td>
 	<td></td>
 	<td></td>
-	<td>
-		<span class="green white button"><%= link_to 'Show', user %>
-		</span>
-	</td>
     <td>
 		<span class="black white button"><%= link_to 'Edit', edit_user_path(user) %>
 		</span>

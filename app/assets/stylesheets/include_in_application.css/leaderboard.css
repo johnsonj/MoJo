@@ -1,24 +1,48 @@
-.leaderboard_nav ul{
-	color: white;
-	width: 100%;
-	border-radius:15px;
-}
+.leaderboard_nav{
+	border-radius:10px; 
+	padding: 5px; 
 
-.leaderboard_nav ul li{
-	display: inline;
-	text-decoration: none;
-	font: normal 20px sans-serif;
-	text-indent: 30px;
-	padding: 5px;
-	border-radius:5px;
-	margin: 5px;
-		
+	width:940px; 
+	height:35px; 
+	
 	color: #606060;
 	border: solid 1px #b7b7b7;
 	background: #fff;
 	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
 	background: -moz-linear-gradient(top,  #fff,  #ededed);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');	
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+
+
+
+
+.leaderboard_nav ul{
+	color: white;
+	border-radius:15px;
+	margin-top: 0;
+	padding-top: 6px;
+	padding-left: 0;
+}
+
+.leaderboard_nav ul li{
+	display: inline;
+	text-decoration: none;
+	font: normal 15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	width: 130px;
+	height: 20px;
+	padding: 5px;
+	border-radius:5px;
+	vertical-align: middle;
+	margin: 5px;
+	text-align: center;
+	
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+	text-transform: capitalize;
 }
 
 .leaderboard_nav ul li:hover {
@@ -48,7 +72,16 @@
 
 
 
-
+.tpage{
+	font-weight: bold;
+	text-align: left;
+	text-transform: capitalize;
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-color: white;
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	width: 100%;
+}
 
 .resize_rarity tr td img{
 	width: 100px;

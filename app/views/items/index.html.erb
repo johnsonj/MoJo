@@ -1,7 +1,4 @@
-<h1>Listing Items</h1>
-<br>
-<br>
-
+<h1 style="width:100%; text-align:left;">Listing Items</h1>
 <span class="white orange button"><%= link_to 'New Item', new_item_path %></span>
 <span class="white orange button"><%= link_to 'Create Multiple Random', :items_multinew_path %></span>
 <span class="white orange button"><%= link_to 'Create Multiple Specific', :items_multinew_specific %></span>
@@ -9,7 +6,7 @@
 <br><br>
 
 <%= will_paginate %>
-
+<br>
 <table>
   <tr>
     <th>User</th>
@@ -30,9 +27,9 @@
 
     <td><%= item.latitude %></td>
     <td><%= item.longitude %></td>
-    <td><span class="button"><%= link_to 'Show', item %></span></td>
-    <td><span class="button"><%= link_to 'Edit', edit_item_path(item) %></span></td>
-    <td><span class="button"><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></span></td>
+    <td><span class="button white orange"><%= link_to 'Show', item %></span></td>
+    <td><span class="button white black"><%= link_to 'Edit', edit_item_path(item) %></span></td>
+    <td><span class="button white red"><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></span></td>
   </tr>
 <% end %>
 </table>

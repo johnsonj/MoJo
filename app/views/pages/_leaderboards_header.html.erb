@@ -1,21 +1,17 @@
 
-
-
-
-<h1><%= @title %></h1>
-<div class="leaderboard_nav">
-  <ul>
+<div class="left leaderboard_nav">
+  <ul class="left">
     <li>
       <%= link_to "Most Hops", :leaderboards_items_path %>
     </li>
 	<li>
       <%= link_to "Farthest Traveled", :leaderboards_distance_path %>
     </li>
-  </ul>
-  <ul>
     <li>
-      <%= link_to "Users With The Most Drops", :leaderboards_users_path %>
+      <%= link_to "Most Drops", :leaderboards_users_path %>
     </li>
   </ul>
 </div>
-<br>
+<div class="left" style="width:100%">
+<h2 class="left white tpage"><%= @title %></h2>
+</div>

@@ -1,17 +1,17 @@
-<h1>Listing item_descriptions</h1>
-<br><br><br>
+<h1 style="width:100%; text-align:left;">Listing Item Descriptions</h1>
+
 <span class="white orange button"><%= link_to 'CREATE New Item description', new_item_description_path %></span>
-<br><br><br>
+<br><br>
 
 <%= will_paginate %>
-
+<br>
 <table>
   <tr>
     <th>Name</th>
     <th>Icon</th>
 	<th>Description</th>
     <th>Rarity</th>
-    <th>Image</th>
+    <th>Map</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,17 +24,17 @@
     <td><%= item_description.rarity %></td>
     <td><%= item_description.image_id %></td>
     <td>
-		<span class="button">
+		<span class="button white orange">
 			<%= link_to 'Show', item_description %>
 		</span>
 	</td>
     <td>
-		<span class="button">
+		<span class="button white black">
 			<%= link_to 'Edit', edit_item_description_path(item_description) %>
 		</span>
 		</td>
     <td>
-		<span class="red button">
+		<span class="red button white">
 			<%= link_to 'Destroy', item_description, confirm: 'Are you sure?', method: :delete %>
 		</span>
 	</td>

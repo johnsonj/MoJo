@@ -36,14 +36,11 @@
 
 .admin_nav{
 	width: 960px;
-	height: 90px;
+	height: 100%;
 	margin-top: 30px;	
 }
 
 
-.admin_nav ul li{
-
-}
 
 .blue ul{
 	
@@ -53,11 +50,13 @@
 	text-decoration:none;
 	color: white;
 	vertical-align:middle;
-	display: inline;	
+	display: block;	
 	border-radius: 5px;
-	padding: 15px;
+	padding: 10px;
 	margin: 5px;
-	
+	width: 140px;
+	height: 30px;
+	float: left;
 	color: #d9eef7;
 	border: solid 1px #0076a3;
 	background: #0095cd;

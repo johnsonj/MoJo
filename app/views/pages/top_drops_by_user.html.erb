@@ -1,16 +1,20 @@
 <%= render 'leaderboards_header' %>
 
-<div>
-  <p>
-    My Drops : <%= current_user.item_histories.count %>
-  </p>
+<div style="width:100%;">
+    <div class="left green white" style="padding:5px;border-radius:5px;">
+		My Total Drops # of: 
+	</div>
+	<div class="left green white" style="padding:5px;border-radius:5px;">
+		<%= current_user.item_histories.count %>
+  	</div>
 </div>
-<div class="leaderboard">
-  <div class="title2">World Leaderboard</div>
-  <br><br>
+<br><br><br><br><br><br><br>
 
+<!--<div class="left white"><h1>World Leaderboard<h1></div>-->
+
+<div class="leaderboard" style="width:100%">
   <div>
-    <div style="width:100%">
+    <div>
       <table style=" background:gray;">
         <tr style="background:gray">
           <th>Rank</th>
@@ -18,7 +22,6 @@
           <th>Drops</th>
           <th>Last Message</th>
         </tr>
-
         <% @top_users.each_with_index do |user, index| %>
             <tr>
               <td style="width:20px; font-size:20px; color:white; text-align: center;">
