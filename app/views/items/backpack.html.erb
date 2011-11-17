@@ -9,18 +9,18 @@
       <div class="backpack_wrapper roundness">
         <div>
           <div class="bp_left roundness">
-            <%= image_tag @items[1].thumb if @items[1] %>
+            <%= icon_for_image(@items[1]) if @items[1] %>
           </div>
           <div class="bp_right roundness">
-            <%= image_tag @items[2].thumb if @items[2] %>
+            <%= icon_for_image(@items[2]) if @items[2] %>
           </div>
         </div>
         <div>
           <div class="bp_left roundness">
-            <%= image_tag @items[3].thumb if @items[3] %>
+            <%= icon_for_image(@items[3]) if @items[3] %>
           </div>
           <div class="bp_right roundness">
-            <%= image_tag @items[4].thumb if @items[4] %>
+            <%= icon_for_image(@items[4]) if @items[4] %>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
           <% @histories.each do |hist| %>
               <tr>
                 <td align="center" style="width:100px; margin-right:-100px; text-align:center;">
-                  <%= image_tag hist.item.thumb %>
+                  <%= icon_for_image(hist.item) %>
                 </td>
                 <td align="center" style="width:100px; margin-right:-100px; text-align:center;">
                   <%= hist.signature %>

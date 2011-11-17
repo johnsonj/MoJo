@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   include SessionsHelper
+  include ItemHistoriesHelper
   include ActiveModel::Validations
 
   before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multi_new_random, :multi_create_scatter, :master_map]
   before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
+  before_filter :admin_or_has_owned, :only => :show
 
   # GET /items
   # GET /items.json
@@ -33,8 +35,19 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
-
+    if Item.exists?(params[:id])
+      @item = Item.find(params[:id])
+    else
+      redirect_to :home_page
+      return
+    end
+    lats = []
+    longs = []
+    @item.item_histories.each do |it|
+      lats << it.latitude
+      longs << it.longitude
+    end
+    @positions = {:longs => longs, :lats => lats}
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -77,7 +90,7 @@ class ItemsController < ApplicationController
       if valid
         format.json { render :json => 1 }
       else
-        format.json { render :json => -1, :status => :unprocessable_entry  }
+        format.json { render :json => -1, :status => :unprocessable_entry }
       end
     end
   end
@@ -172,9 +185,9 @@ class ItemsController < ApplicationController
 
     (0..lats.size).each do |i|
       item = Item.new({:item_description_id => description_id,
-                      :user_id => 0,
-                      :latitude => lats[i],
-                      :longitude => longs[i]})
+                       :user_id => 0,
+                       :latitude => lats[i],
+                       :longitude => longs[i]})
       if item.save
         flash[:success] = "#{lats.size} items successfully created"
       else

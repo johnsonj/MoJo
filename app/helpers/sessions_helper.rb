@@ -9,7 +9,11 @@ module SessionsHelper
   end
 
   def admin_login_required
-    deny_access unless is_logged_in && isAdmin?
+    admin_deny unless is_logged_in && isAdmin?
+  end
+
+  def admin_or_has_owned
+    admin_deny unless isAdmin? || user_has_owned(params[:item])
   end
 
   def admin_or_app_required
