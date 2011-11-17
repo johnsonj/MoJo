@@ -1,4 +1,10 @@
-<div style="background-image: bg-<%= @item.rarity %>.png">
+<% if isAdmin? %>
+    <span class="white orange button"><%= link_to 'Edit', edit_item_path(@item) %></span>
+    <span class="white orange button"><%= link_to 'Back', items_path %></span>
+<% end %>
+
+
+<div style="text-align:left;background-image: bg-<%= @item.rarity %>.png">
   <p>
     <b>Current Latitude:</b>
     <%= @item.latitude %>
@@ -10,10 +16,7 @@
   </p>
 </div>
 
-<% if isAdmin? %>
-    <%= link_to 'Edit', edit_item_path(@item) %> |
-    <%= link_to 'Back', items_path %>
-<% end %>
+
 
 <script type="text/javascript">
     var map;
