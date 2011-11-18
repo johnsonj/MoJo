@@ -1,24 +1,31 @@
 <% if isAdmin? %>
-    <span class="white orange button"><%= link_to 'Edit', edit_item_path(@item) %></span>
-    <span class="white orange button"><%= link_to 'Back', items_path %></span>
+    <span class="left white orange button"><%= link_to 'Edit', edit_item_path(@item) %></span>
+    <span class="left white orange button"><%= link_to 'Back', items_path %></span>
 <% end %>
 
 
-<div style="text-align:left;background-image: url('bg-<%= @item.rarity %>.png')">
-  <%= render :partial => 'item_details_for', :locals => {:item => @item} %>
+
+<div class="left item_history">
+	<div class="left" style="text-align:left;background-image: url('bg-<%= @item.rarity %>.png')">
+	  <%= render :partial => 'item_details_for', :locals => {:item => @item} %>
+	</div>
+	<div style="float: left; text-align:left">
+	<%= will_paginate @positions[:histories] %>
+	<% @positions[:histories].each do |hist| %>
+	  <div>
+	    Drop Date: <%= hist.stamp.strftime("%Y/%m/%d %H:%M") %>
+	    <br>
+	    Message: <%= hist.formatted_message %>
+	  </div>
+	<% end %>
+	<%= will_paginate @positions[:histories] %>
+	</div>
 </div>
 
-<%= will_paginate @positions[:histories] %>
 
-<% @positions[:histories].each do |hist| %>
-  <div>
-    Drop Date: <%= hist.stamp.strftime("%Y/%m/%d %H:%M") %>
-    <br>
-    Message: <%= hist.formatted_message %>
-  </div>
-<% end %>
 
-<%= will_paginate @positions[:histories] %>
+<!--GOOGLE MAP BELOW--><!--GOOGLE MAP BELOW--><!--GOOGLE MAP BELOW--><!--GOOGLE MAP BELOW--><!--GOOGLE MAP BELOW--><!--GOOGLE MAP BELOW-->
+
 
 <script type="text/javascript">
     var map;
