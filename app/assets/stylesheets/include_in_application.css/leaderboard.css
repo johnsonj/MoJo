@@ -13,7 +13,12 @@
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
 }
 
-
+.rank{
+	width:20px; 
+	font-size:20px; 
+	color:white; 
+	text-align: center;
+}
 
 
 .leaderboard_nav ul{

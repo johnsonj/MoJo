@@ -18,7 +18,7 @@
         <td  style="width:20px; font-size:20px; color:white; text-align: center;"><%= index + 1 %></td>
         <td><%= image_tag row[:image] %></td>
         <td><%= image_tag "rarity_icons/bg-#{row[:rarity]}.png" %></td>
-        <td>
+        <td style="text-align:left">
           Item Name: <%= row[:name] %><br>
           Last Drop date: <%= row[:drop_date] %><br>
           Rarity: <%= row[:rarity] %><br>
