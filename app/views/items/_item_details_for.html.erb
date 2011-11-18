@@ -1,12 +1,14 @@
 <div>
+	<div class="white"><h2><%= item.name %><h2></div>
+	<br>
   <div align="center" style="width:100px; margin-right:-100px; text-align:center;">
-    <%= icon_for_item(item) %>
+	<%= icon_for_item(item) %>
   </div>
   <div align="center" style="width:100px; margin-right:-100px; text-align:center;">
     <%= item.last_message %>
   </div>
-  <div>
-    Item Name: <%= item.name %>
+  <div class="white">
+    <%= item.name %>
     <br>
     Last Drop date: <%= item.last_drop %>
     <br>

@@ -10,7 +10,7 @@
 	  <%= render :partial => 'item_details_for', :locals => {:item => @item} %>
 	</div>
 	<div style="float: left; text-align:left">
-	<%= will_paginate @positions[:histories] %>
+	<span class="white"><%= will_paginate @positions[:histories] %></span>
 	<% @positions[:histories].each do |hist| %>
 	  <div>
 	    Drop Date: <%= hist.stamp.strftime("%Y/%m/%d %H:%M") %>
@@ -18,7 +18,7 @@
 	    Message: <%= hist.formatted_message %>
 	  </div>
 	<% end %>
-	<%= will_paginate @positions[:histories] %>
+	<span><%= will_paginate @positions[:histories] %></span>
 	</div>
 </div>
 
