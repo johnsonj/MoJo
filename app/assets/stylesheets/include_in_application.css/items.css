@@ -1,4 +1,8 @@
 .item_history{
-	background: green;
-	width: 400px;
+	width: 300px;
+}
+
+.message{
+	border-radius:5px;
+	background:white;
 }

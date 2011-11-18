@@ -1,15 +1,17 @@
 <div>
-	<div class="white"><h2><%= item.name %><h2></div>
+	<h2 class="white"><%= item.name %><h2>
 	<br>
-  <div align="center" style="width:100px; margin-right:-100px; text-align:center;">
+
+<div class="left" style="background:red">
+  <div align="center" style="float:left; width:100px; margin-right:-100px; text-align:center;">
 	<%= icon_for_item(item) %>
   </div>
-  <div align="center" style="width:100px; margin-right:-100px; text-align:center;">
+  <div align="center" class="orange" style="border-raidus:5px; width:100px; margin-right:-100px; text-align:left;">
     <%= item.last_message %>
   </div>
-  <div class="white">
-    <%= item.name %>
-    <br>
+</div>
+
+  <div class="white orange" style="border-raidus:5px; padding:5px">
     Last Drop date: <%= item.last_drop %>
     <br>
     Rarity: <%= item.rarity %>
