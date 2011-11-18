@@ -59,6 +59,10 @@ class Item < ActiveRecord::Base
     item_description.name
   end
 
+  def last_drop
+    item_histories.first.stamp.strftime("%Y/%m/%d %H:%M")
+  end
+
 end
 
 

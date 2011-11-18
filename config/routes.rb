@@ -24,7 +24,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/login' => 'sessions#new', :as => :login_path
   match '/logout' => 'sessions#destroy', :as => :logout_path
   match '/backpack' => 'items#backpack', :as => :backpack_path
-  match '/itemDetails/:id' => 'item_histories#itemDetails'
+  match '/history' => 'items#user_item_history', :as => :user_history_path
   match '/admin' => 'pages#admin', :as => :admin_portal_path
 
   match '/demo/mapanimation' => 'pages#map_animation'

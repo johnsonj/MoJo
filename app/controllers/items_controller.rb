@@ -13,6 +13,13 @@ class ItemsController < ApplicationController
     @items = Item.paginate(:page => params[:page])
   end
 
+  def user_item_history
+    item_ids = []
+    ItemHistory.select("item_id").where(:user_id => current_user.id).group("item_id").each do |hist|
+      item_ids << hist.item_id
+    end
+    @items = Item.find(item_ids)
+  end
 
   def backpack
     @items = current_user.items
