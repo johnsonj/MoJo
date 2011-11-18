@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
       lats << it.latitude
       longs << it.longitude
     end
-    @positions = {:longs => longs, :lats => lats}
+    @positions = {:longs => longs, :lats => lats, :histories => @item.item_histories.paginate(:page => params[:page], :per_page => 10)}
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }

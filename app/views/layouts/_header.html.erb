@@ -8,6 +8,9 @@
           <li>
             <%= link_to "Leaderboard", :leaderboards_users_path %>
           </li>
+          <li>
+            <%= link_to "History", :user_history_path %>
+          </li>
           <% if isAdmin? %>
               <li>
                 <%= link_to "Admin", :admin_portal_path %>

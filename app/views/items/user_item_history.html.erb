@@ -9,15 +9,12 @@
     var map;
 
     function initialize() {
-
         var myOptions = {
             zoom: 8,
             center: new google.maps.LatLng(41.83872375564222, -87.62723207473755),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
     }
 
     function placeMarker(location) {

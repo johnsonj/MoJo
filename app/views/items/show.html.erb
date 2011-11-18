@@ -4,19 +4,21 @@
 <% end %>
 
 
-<div style="text-align:left;background-image: bg-<%= @item.rarity %>.png">
-  <p>
-    <b>Current Latitude:</b>
-    <%= @item.latitude %>
-  </p>
-
-  <p>
-    <b>Current Longitude:</b>
-    <%= @item.longitude %>
-  </p>
+<div style="text-align:left;background-image: url('bg-<%= @item.rarity %>.png')">
+  <%= render :partial => 'item_details_for', :locals => {:item => @item} %>
 </div>
 
+<%= will_paginate @positions[:histories] %>
 
+<% @positions[:histories].each do |hist| %>
+  <div>
+    Drop Date: <%= hist.stamp.strftime("%Y/%m/%d %H:%M") %>
+    <br>
+    Message: <%= hist.formatted_message %>
+  </div>
+<% end %>
+
+<%= will_paginate @positions[:histories] %>
 
 <script type="text/javascript">
     var map;
