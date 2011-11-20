@@ -10,7 +10,7 @@
 	<div class="left" style="text-align:left;background-image: url('bg-<%= @item.rarity %>.png')">
 	  <%= render :partial => 'item_details_for', :locals => {:item => @item} %>
 	</div>
-	<div style="float: left; text-align:left">
+<!--	<div style="float: left; text-align:left">
 	<span class="white"><%= will_paginate @positions[:histories] %></span>
 	<% @positions[:histories].each do |hist| %>
 	  <div>
@@ -20,7 +20,7 @@
 	  </div>
 	<% end %>
 	<span><%= will_paginate @positions[:histories] %></span>
-	</div>
+	</div>-->
 </div>
 
 
