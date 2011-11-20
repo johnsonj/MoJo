@@ -48,11 +48,11 @@ class Item < ActiveRecord::Base
   end
 
   def running
-    item_histories.first.runningdistance
+    item_histories.first.runningdistance if item_histories.first
   end
 
   def last_message
-    item_histories.first.formatted_message
+    item_histories.first.formatted_message if item_histories.first
   end
 
   def name
@@ -60,7 +60,7 @@ class Item < ActiveRecord::Base
   end
 
   def last_drop
-    item_histories.first.stamp.strftime("%Y/%m/%d %H:%M")
+    item_histories.first.stamp.strftime("%Y/%m/%d %H:%M") if item_histories.first
   end
 
 end
