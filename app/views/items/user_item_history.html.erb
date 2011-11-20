@@ -1,8 +1,9 @@
-<div>
+<div style="margin-left:-45px; width:1200px">
   <% @items.each do |item| %>
-      <%= render :partial => 'item_details_for', :locals => {:item => item} %>
+      <div class="left" style="margin:5px"><%= render :partial => 'item_details_for', :locals => {:item => item} %>
       <button class="right showonmap">Show On Map</button>
-	<br>
+		<br>
+	  </div>
   <% end %>
 </div>
 

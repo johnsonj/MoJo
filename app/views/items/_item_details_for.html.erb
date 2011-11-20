@@ -1,22 +1,22 @@
 <div class="round white" style="border:solid; border-width:1px; border-color:white; width:300px; text-align: left">
 	<h2 class="white" style="text-align:left; width:200px; border-bottom:solid; border-width:1px; border-color:white"><%= item.name %><h2>
 	<br>
+	
+	<div align="center" style="float:left; width:100px; margin-right:-100px; text-align:center;">
+		<%= icon_for_item(item) %>
+	 </div>
 
 <div class="" style="width:280px">
-  <div align="center" style="float:left; width:100px; margin-right:-100px; text-align:center;">
-	<%= icon_for_item(item) %>
-  </div>
 	<br>
 	<h2 style="font-size:20px; color:white">Drop message:</h2>
-  <div class="right message round" style=" color:grey; border-raidus:5px; width:180px;  text-align:left; font-size:10px">
-    <br>
+  <div class="right round" style="margin-top:-15px; color:grey; border-raidus:5px; width:180px;  text-align:left; font-size:10px">
 	<%= item.last_message %><br>
 	<%= item.last_drop %>
   </div>
-	<br><br><br>
+	<br>
 </div>
 <h2 style="font-size:20px; color:white">Info:</h2>
-  <div class="round white" style="margin-top:-25px; margin-left:50px; width:250px; text-align:left; border-raidus:10px; padding:5px; font-size:10px; border:solid; border-width:1px; border-color:white">
+  <div class="round white" style="padding-left:10px;margin-top:-25px; margin-left:50px; width:250px; text-align:left; border-raidus:10px; padding:5px; font-size:10px; border:solid; border-width:1px; border-color:white">
     Drop date: <%= item.last_drop %>
     <br>
     Rarity: <%= item.rarity %>
