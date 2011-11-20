@@ -1,20 +1,26 @@
 
 
 
-<div class="left"><span class="white"><h1><%= name %><h1></span></div>
+
+<div>	
+	<span class="white">
+		<h1 style="text-align:left" ><%= name %><h1>
+	</span>
+	<div style="margin-bottom:10px; margin-top:-22px;border-bottom:solid 4px white; width:500px" class="left" >
+	</div>
+</div>
 
 
-<table style=" background:#3C9CFF;" class="resize_rarity">
-  <tr style="background:#3C9CFF;">
-    <th>Rank</th>
-    <th>Item</th>
-    <th>Rarity</th>
-    <th>Description</th>
-    <th>Last Message</th>
+<table style="width:500px; background:#3C9CFF;" class="resize_rarity">
+  <tr style=" background:#3C9CFF;">
+    <th style="color:white;font-weight:bold">Rank</th>
+    <th style="color:white;font-weight:bold">Item</th>
+    <th style="color:white;font-weight:bold">Rarity</th>
+    <th style="color:white;font-weight:bold">Description</th>
   </tr>
 
   <% rows.each_with_index do |row, index| %>
-      <tr>
+      <tr style="padding:10px">
         <td  style="width:20px; font-size:20px; color:white; text-align: center;"><%= index + 1 %></td>
         <td><%= image_tag row[:image] %></td>
         <td><%= image_tag "rarity_icons/bg-#{row[:rarity]}.png" %></td>
@@ -23,9 +29,8 @@
           Last Drop date: <%= row[:drop_date] %><br>
           Rarity: <%= row[:rarity] %><br>
           Hops: <%= row[:hops] %><br>
-          Distance Traveled: <%= row[:distance] %><br>
-        </td>
-        <td><%= row[:last_message] %></td>
+          Distance Traveled: <%= row[:distance] %><br><br>
+          <b>Last Message: </b><%= row[:last_message] %></td>
       </tr>
   <% end %>
 </table>
