@@ -30,7 +30,9 @@ Ipro369MoJo::Application.routes.draw do
   match '/demo/mapanimation' => 'pages#map_animation'
   match '/demo/canvasmap' => 'pages#canvas_map'
   match '/api/allHistory' => 'item_histories#mapHistory', :format => 'json'
-  ### API Methods ###
+  match '/api/demo/itemDensity' => 'items#density', :format => 'json'
+
+### API Methods ###
   match '/api/pickupItem' => 'items#pickup', :format => 'json'
   match '/api/dropItem' => 'items#drop', :format => 'json'
   match '/api/getItemDetails/:id' => 'item_histories#itemDetails', :format => 'json'

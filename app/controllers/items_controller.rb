@@ -39,6 +39,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def density
+    items = Item.near([params[:latitude].to_f, params[:longitude].to_f], params[:distance].to_f).where(:user_id => WORLD_USER_ID)
+    items = items.where(:item_description_id => params[:item_description_id]) if params[:item_description_id]
+    
+    respond_to do |format|
+      format.json { render json: {:density => items.all.count} }
+    end
+  end
+
   # GET /items/1
   # GET /items/1.json
   def show
