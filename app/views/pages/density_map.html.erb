@@ -27,7 +27,7 @@ function initialize() {
   });
   drawingManager.setMap(map);
   function densityToColor(i, r) {
-    return colorToHex('rgb('+Math.floor((i^2)/r)+1+', ' + Math.floor((i^2)/r) + ', ' + Math.floor((i^2)/r) + ')');
+    return colorToHex('rgb('+Math.floor(255/((i^2)/r))*200 ', ' +  Math.floor(255/((i^2)/r))*200 + ', ' + Math.floor((i^2)/r) + ')');
   }
   function metersToMiles(m) {
     return m * 0.000621371192;
