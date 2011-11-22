@@ -27,7 +27,14 @@ function initialize() {
   });
   drawingManager.setMap(map);
   function densityToColor(i, r) {
-    return colorToHex('rgb('+Math.floor(255/((i^2)/r))*200 + ', ' +  Math.floor(255/((i^2)/r))*200 + ', ' + Math.floor((i^2)/r) + ')');
+  //  i = i + 1;
+  //  var cvalue = Math.floor(Math.log(i/r)*20) + 20;
+  //  if (cvalue > 255) cvalue = 255;
+  //  if (cvalue < 0) cavalue = 0;
+  //  return colorToHex('rgb('+ cvalue + ', ' + cvalue + ', ' + cvalue + ')');
+    var color;
+    eval($('#densityFunction').val());
+    return color;
   }
   function metersToMiles(m) {
     return m * 0.000621371192;
@@ -40,6 +47,17 @@ function initialize() {
       function(data) {
         circle.fillColor = densityToColor(data.density, radius);
         circle.setMap(map);
+        
+          var marker = new google.maps.Marker({
+                  position: new google.maps.LatLng(lat,lng),
+                  map: map,
+                  title: "" + data.density + " items within " + radius + " miles"
+                  });
+          var infowindow = new google.maps.InfoWindow({
+              content: "<b>" + data.density + "</b> items within <b>" + radius + "</b> miles"
+
+            });
+          google.maps.event.addListener(marker, 'click', function() { infowindow.open(map,marker); });
       });
   });
   // http://haacked.com/archive/2009/12/29/convert-rgb-to-hex.aspx
@@ -64,5 +82,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <div style="width:600px; height:600px;"> 
 <div id="map_canvas" style="width:100%; height:100%"></div> 
+<textarea id="densityFunction">
+i = i + 1;
+var cvalue = Math.floor(Math.log(i/r)*20) + 20;
+if (cvalue > 255) cvalue = 255;
+if (cvalue < 0) cavalue = 0;
+color = colorToHex('rgb('+ cvalue + ', ' + cvalue + ', ' + cvalue + ')');
+</textarea>
 </div> 
 
