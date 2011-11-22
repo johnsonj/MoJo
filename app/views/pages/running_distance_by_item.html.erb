@@ -13,11 +13,11 @@
 
   <% @top_items.each_with_index do |row, index| %>
       <tr>
-        <td><%= index + 1 %></td>
+        <td><h2 class="white"><%= index + 1 %></h2></td>
         <td><%= image_tag row[:image] %></td>
         <td><%= image_tag "rarity_icons/bg-#{row[:rarity]}.png" %></td>
         <td><%= row[:distance] %></td>
-        <td>
+        <td style="text-align:left">
           Item Name: <%= row[:name] %>
           <br>
           Last Drop date: <%= row[:drop_date] %>
