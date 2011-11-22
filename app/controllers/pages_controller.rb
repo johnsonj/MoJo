@@ -80,4 +80,7 @@ class PagesController < ApplicationController
 
   def canvas_map
   end
+  
+  def density_map
+  end
 end

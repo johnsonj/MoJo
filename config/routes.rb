@@ -31,7 +31,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/demo/canvasmap' => 'pages#canvas_map'
   match '/api/allHistory' => 'item_histories#mapHistory', :format => 'json'
   match '/api/demo/itemDensity' => 'items#density', :format => 'json'
-
+  match '/demo/densitymap' => 'pages#density_map'
 ### API Methods ###
   match '/api/pickupItem' => 'items#pickup', :format => 'json'
   match '/api/dropItem' => 'items#drop', :format => 'json'
