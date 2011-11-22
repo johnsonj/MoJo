@@ -29,10 +29,13 @@ function initialize() {
   function densityToColor(i, r) {
     return colorToHex('rgb('+Math.floor((i^2)/r)+1+', ' + Math.floor((i^2)/r) + ', ' + Math.floor((i^2)/r) + ')');
   }
+  function metersToMiles(m) {
+    return m * 0.000621371192;
+  }
   google.maps.event.addListener(drawingManager, 'circlecomplete', function(circle) {
     var lat = circle.getCenter().Pa
     var lng = circle.getCenter().Qa
-    var radius = circle.getRadius()
+    var radius = metersToMiles(circle.getRadius())
     $.get('/api/demo/itemDensity', {latitude: lat, longitude: lng, distance: radius}, 
       function(data) {
         circle.fillColor = densityToColor(data.density, radius);
