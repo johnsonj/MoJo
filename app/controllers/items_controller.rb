@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   include ActiveModel::Validations
 
   before_filter :admin_login_required, :only => [:index, :new, :create, :destroy, :edit, :multi_new_random, :multi_create_scatter, :master_map]
-  before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup]
+  before_filter :login_required, :only => [:backpack, :nearby, :update, :drop, :pickup, :user_item_history]
   before_filter :admin_or_has_owned, :only => :show
 
   # GET /items
@@ -19,11 +19,19 @@ class ItemsController < ApplicationController
       item_ids << hist.item_id
     end
     @items = Item.find(item_ids)
+    lats = []
+    longs = []
+    @items.each do |item|
+      it = item.item_histories.last
+      lats << it.latitude
+      longs << it.longitude
+    end
+    @positions = {:longs => longs, :lats => lats}
   end
 
   def backpack
     @items = current_user.items
-    @histories = current_user.item_histories.first(4)
+    @histories = current_user.item_histories.last(4)
     respond_to do |format|
       format.html
       format.json { render json: @items.to_json(:only => [:item_description_id, :id, :latitude, :longitude]) }

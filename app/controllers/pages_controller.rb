@@ -19,6 +19,9 @@ class PagesController < ApplicationController
   def admin
   end
 
+  def about
+  end
+
   def top_drops_by_user
     @title = "Users With The Most Drops"
     users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
