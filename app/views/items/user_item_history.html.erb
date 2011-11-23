@@ -1,24 +1,27 @@
-<div style="float:left; margin:0; width:280px">
+<div style="padding:7px; float:left; margin:0; width:250px">
   <% @items.each do |item| %>
-      <div class="left round" style="margin:0px auto; border-radius:10px; font-size:10px; border: 1px solid white; margin:10px; float:left; clear:left">
-        <div class="historyimage" style="width:10px; height:100px; margin-bottom:40px"><%= icon_for_item(item) %></div>
-        <div class="round white" style="padding: 5px;margin-top:-25px; width:200px; text-align:left; border-radius:10px; font-size:10px; border: 1px solid white;">
-          Last Drop On: <%= item.last_drop %>
-          <br>
-          Message: <%= item.last_message %>
-          <br>
+      <div class="left round" style="margin:0px auto; border-radius:10px; font-size:10px; border: 1px solid white; margin-bottom:5px; padding:10px"> 	
+		<div class="historyimage left" style="width:100%;">
+			<%= icon_for_item(item) %>
+			<button style="margin-top:10px" class="green  showonmap" onclick="">Show On Map</button>
+		</div>
+		
+		<div class="white left box" style=" width:200px; text-align:left; margin-bottom:5px; border-radius:10px; font-size:10px; border: 1px solid white;">
+          <%= item.last_message %><br>
+		 <span class="right"><%= item.last_drop %></span>
+		</div>
+        <!--<div class="left box white" style=" width:200px; text-align:left; border-radius:10px; font-size:10px; border: 1px solid white;">
           Rarity: <%= item.rarity %>
           <br>
           Hops: <%= item.hops %>
           <br>
-          Distance Traveled: <%= item.running %>
+          Dist. Traveled: <%= item.running %> miles
           <br>
           Last Known Latitude: <%= item.latitude %>
           <br>
           Last Known Longitude: <%= item.longitude %>
-        </div>
+        </div>-->
         <br>
-        <button class="green right showonmap" onclick="">Show On Map</button>
       </div>
   <% end %>
 </div>
@@ -62,9 +65,10 @@
 
 </script>
 
-<p>Where are they now?</p>
-<div style="float:right">
-  <div style="margin:0px auto; float:left; width:600px; height:500px;">
+
+<div style="float:right; position:relative;">
+	<h2 class="white" style="border-bottom:solid 1px white " >Location of Items</h2>
+  <div style="margin:0px auto; float:left; width:680px; height:450px;">
     <div id="map_canvas" style="width:100%; height:100%"></div>
   </div>
 </div>
