@@ -95,11 +95,15 @@
         }
     }
 
+    function reset() {
+        positions.clear();
+        counter = positionsRaw.length;
+    }
+    
     function startAnimation() {
         // Kick off the animation
         window.setTimeout(function () {
-            positions.clear();
-            counter = positionsRaw.length;
+            reset();
             play();
         }, 200);
     }
@@ -119,6 +123,7 @@
 	<p class="red white button" style="margin-top:5px; width:25%; padding:10px" onclick="previousFrame()">Previous Frame</p>
 	<p class="green white button" style="margin-top:5px; width:25%; padding:10px" onclick="startAnimation()">Play</p>
 	<p class="orange white button" style="margin-top:5px; width:25%; padding:10px" onclick="nextFrame()">Next Frame</p>
+	<p class="orange white button" style="margin-top:5px; width:5%; padding:10px" onclick="reset()">Reset</p>
 	</div>
 </div>
 
