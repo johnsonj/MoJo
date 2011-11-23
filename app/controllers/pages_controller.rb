@@ -42,7 +42,7 @@ class PagesController < ApplicationController
       output << {:image => item_desc.thumb, :name => item_desc.name,
                  :hops => result.item_count, :last_message => last_drop.formatted_message,
                  :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
-                 :distance => last_drop.runningdistance}
+                 :distance => item.running}
     end
     output
   end
@@ -71,7 +71,7 @@ class PagesController < ApplicationController
       item_desc = item.item_description
       last_drop = item.item_histories.first
       output << {:image => item_desc.thumb, :name => item_desc.name,
-                 :last_message => last_drop.formatted_message, :distance => result.item_distance,
+                 :last_message => last_drop.formatted_message, :distance => result.item_distance.round(2),
                  :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
                  :hops => item.hops}
     end
