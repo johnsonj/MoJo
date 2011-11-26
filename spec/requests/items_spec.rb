@@ -72,7 +72,7 @@ describe "API" do
             get '/api/pickupItem', params 
             response.status.should >= 500
           end
-          it "shoud allow us to pick up an item we've owned that someone else has picked up and dropped" do
+          it "should allow us to pick up an item we've owned that someone else has picked up and dropped" do
             get '/api/pickupItem', params 
             response.status.should == 200
             get '/api/dropItem', params
