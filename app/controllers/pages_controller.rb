@@ -71,7 +71,7 @@ class PagesController < ApplicationController
       item_desc = item.item_description
       last_drop = item.item_histories.last
       output << {:image => item_desc.thumb, :name => item_desc.name,
-                 :last_message => last_drop.formatted_message, :distance => result.item_distance.round(2),
+                 :last_message => last_drop.formatted_message, :distance => result.item_distance.to_f.round(2),
                  :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
                  :hops => item.hops}
     end
