@@ -26,6 +26,7 @@ Ipro369MoJo::Application.routes.draw do
   match '/backpack' => 'items#backpack', :as => :backpack_path
   match '/history' => 'items#user_item_history', :as => :user_history_path
   match '/admin' => 'pages#admin', :as => :admin_portal_path
+  match '/about' => 'pages#about', :as => :about_path
 
   match '/demo/mapanimation' => 'pages#map_animation'
   match '/demo/canvasmap' => 'pages#canvas_map'

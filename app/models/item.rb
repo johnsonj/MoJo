@@ -48,7 +48,7 @@ class Item < ActiveRecord::Base
   end
 
   def running
-    item_histories.first.runningdistance if item_histories.first
+    item_histories.first.runningdistance.round(2) if item_histories.first
   end
 
   def last_message

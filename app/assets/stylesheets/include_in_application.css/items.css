@@ -6,3 +6,15 @@
 	border-radius:5px;
 	background:white;
 }
+
+
+.historyimage a img{
+	width:36px;
+	height:36px;
+	float:left;
+	margin:5px;
+}
+
+.box{
+	background:none;
+}

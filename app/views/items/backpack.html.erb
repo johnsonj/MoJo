@@ -23,10 +23,11 @@
         </div>
       </div>
     </div>
-    <div class="white links">
-      History
-    </div>
+   
     <div class="right">
+		<div class="white links" style="text-align:left;width:100%">
+	      <h3 class="white" style="border-bottom:solid 1px white; width:450px">Recent Drop History</h3>
+	    </div>
       <div class="history roundness">
         <table border="0" cellspacing="5" cellpadding="5">
           <% @histories.each do |hist| %>
@@ -37,7 +38,7 @@
                 <td align="center" style="width:100px; margin-right:-100px; text-align:center;">
                   <%= hist.signature %>
                 </td>
-                <td>
+                <td style="text-align:left">
                   Item Name: <%= hist.item.name %>
                   <br>
                   Drop date: <%= hist.stamp.strftime("%Y/%m/%d %H:%M") %>

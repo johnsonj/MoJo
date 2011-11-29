@@ -19,13 +19,16 @@ class PagesController < ApplicationController
   def admin
   end
 
+  def about
+  end
+
   def top_drops_by_user
     @title = "Users With The Most Drops"
     users = ItemHistory.select("user_id, count(id) as user_count").group("user_id").order("user_count DESC").limit(10)
     @top_users = []
     users.each do |usr|
       user = User.find(usr.user_id)
-      last_message = user.item_histories.first
+      last_message = user.item_histories.last
       @top_users << {:username => user.username, :drops => usr.user_count, :last_message => last_message.signature}
     end
   end
@@ -35,11 +38,11 @@ class PagesController < ApplicationController
     results.each do |result|
       item = Item.find(result.item_id)
       item_desc = item.item_description
-      last_drop = item.item_histories.first
+      last_drop = item.item_histories.last
       output << {:image => item_desc.thumb, :name => item_desc.name,
                  :hops => result.item_count, :last_message => last_drop.formatted_message,
                  :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
-                 :distance => last_drop.runningdistance}
+                 :distance => item.running}
     end
     output
   end
@@ -66,9 +69,9 @@ class PagesController < ApplicationController
     results.each do |result|
       item = Item.find(result.item_id)
       item_desc = item.item_description
-      last_drop = item.item_histories.first
+      last_drop = item.item_histories.last
       output << {:image => item_desc.thumb, :name => item_desc.name,
-                 :last_message => last_drop.formatted_message, :distance => result.item_distance,
+                 :last_message => last_drop.formatted_message, :distance => result.item_distance.to_f.round(2),
                  :rarity => item_desc.rarity, :drop_date => last_drop.stamp.strftime("%Y/%m/%d %H:%M"),
                  :hops => item.hops}
     end
