@@ -14,7 +14,7 @@
 class Item < ActiveRecord::Base
   belongs_to :user
   belongs_to :item_description, :foreign_key => "item_description_id"
-  has_many :item_histories, :order => "stamp DESC", :limit => 30
+  has_many :item_histories, :order => "stamp DESC", :limit => 30, :dependent => :destroy
 
   validates :item_description_id, :presence => true
   validates_numericality_of :latitude, :less_than => 90, :greater_than => -90
