@@ -65,12 +65,12 @@ describe "API" do
               @valid_api_params2.merge(@coordinates).merge(:id => @item1.id)
             end
           it "should not allow us to pick up an item after we just picked it up" do
-            #get '/api/pickupItem', params
-            #response.status.should == 200
-            #get '/api/dropItem', params
-            #response.status.should == 200
-            #get '/api/pickupItem', params
-            #response.status.should >= 500
+            get '/api/pickupItem', params 
+            response.status.should == 200
+            get '/api/dropItem', params
+            response.status.should == 200
+            get '/api/pickupItem', params 
+            response.status.should >= 500
           end
           it "should allow us to pick up an item we've owned that someone else has picked up and dropped" do
             get '/api/pickupItem', params 

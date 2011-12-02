@@ -22,18 +22,18 @@ class Item < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude
   
-  #validates_each :user_id do |model, attr, value|
-  #  if (model.changed_attributes["user_id"] != nil)
-  #    last_history = model.item_histories.last
-  #   # hlist = ItemHistory.where(:item_id => model.id)
-  #  #  last_history = hlist.last
-  #    if (last_history != nil)
-  #     if (last_history.user_id == value)
-  #         model.errors.add(attr, "A user can not pick up this item until someone else has")
-  #      end
-  #    end
-  #  end
-  #end
+  validates_each :user_id do |model, attr, value|
+    if (model.changed_attributes["user_id"] != nil)
+      last_history = model.item_histories.last
+     # hlist = ItemHistory.where(:item_id => model.id)
+    #  last_history = hlist.last
+      if (last_history != nil)
+       if (last_history.user_id == value)
+           model.errors.add(attr, "A user can not pick up this item until someone else has")
+        end
+      end
+    end
+  end
 
   def thumb
     item_description.thumb
