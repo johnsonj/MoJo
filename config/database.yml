@@ -23,6 +23,3 @@ production:
   adapter: postgresql
   username: izgakdaotz
   port: 5432
-  host: ec2-107-20-239-110.compute-1.amazonaws.com
-  database: izgakdaotz
-  password: jEDrgRPVU7W8CflMqvDQ
